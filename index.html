@@ -1,607 +1,547 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-<meta name="keywords" content="unique, unique music, zambian mp3, unique mobile, uniquemusicblogz.com, nice songs, tubidy.net" /> 
-<title>Unique Music Blogz</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <style>
-        :root {
-            --primary: #FF6B6B;
-            --bg: #1a1a1a;
-            --card-bg: #2d2d2d;
-            --text: #ffffff;
-        }
-
-        body {
-            margin: 0;
-            font-family: 'Segoe UI', sans-serif;
-            background: var(--bg);
-            color: var(--text);
-        }
-
-        .navbar {
-            padding: 1rem 2rem;
-            background: var(--card-bg);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-        }
-
-        .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-        }
-
-        .search-bar {
-            max-width: 600px;
-            margin: 2rem auto;
-            position: relative;
-        }
-
-        .search-input {
-            width: 100%;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            border: none;
-            background: var(--card-bg);
-            color: var(--text);
-            font-size: 1rem;
-        }
-
-        .media-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
-            padding: 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .media-card {
-            background: var(--card-bg);
-            border-radius: 10px;
-            padding: 1rem;
-            transition: transform 0.3s;
-        }
-
-        .media-card:hover {
-            transform: translateY(-5px);
-        }
-
-    
-        .media-cover {
-    width: 100%;
-    height: 200px; /* You can adjust this value */
-    border-radius: 8px;
-    object-fit: contain; /* Changed from 'cover' to 'contain' */
-    background-color: var(--card-bg); /* Add matching background */
-}
-
-        .media-info {
-            padding: 1rem 0;
-        }
-
-        .media-title {
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .media-artist {
-            color: #888;
-            font-size: 0.9rem;
-        }
-
-        
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="unique, unique music, zambian mp3, unique mobile, uniquemusicblogz.com, nice songs, tubidy.net" />
+  <title>Unique Music Blogz</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #FF6B6B;
+      --bg: #1a1a1a;
+      --card-bg: #2d2d2d;
+      --text: #ffffff;
+    }
+    /* Reset */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    /* Navbar */
+    .navbar {
+      background: var(--card-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo a {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    /* Hero Section with Search */
+    .hero {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--card-bg);
+    }
+    .hero h1 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+    }
+    .search-bar {
+      max-width: 600px;
+      margin: 0 auto;
+      display: flex;
+      border: 1px solid #444;
+      border-radius: 30px;
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .search-bar input {
+      flex: 1;
+      padding: 0.8rem 1rem;
+      border: none;
+      outline: none;
+      background: transparent;
+      color: var(--text);
+      font-size: 1rem;
+    }
+    .search-bar button {
+      background: var(--primary);
+      border: none;
+      padding: 0 1rem;
+      cursor: pointer;
+      color: #fff;
+      font-size: 1rem;
+    }
+    /* Media List (List Layout similar to Tubidy) */
+    .media-list {
+      max-width: 1200px;
+      margin: 2rem auto;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      padding: 0 1rem;
+    }
+    .media-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      transition: background 0.3s;
+    }
+    .media-card:hover {
+      background: #3a3a3a;
+    }
+    .media-cover {
+      width: 80px;
+      height: 80px;
+      border-radius: 5px;
+      object-fit: cover;
+      margin-right: 1rem;
+      background-color: var(--bg);
+    }
+    .media-info {
+      flex: 1;
+    }
+    .media-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+    .media-artist {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .media-duration {
+      font-size: 0.8rem;
+      color: #ccc;
+    }
+    .media-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .media-actions button {
+      background: var(--primary);
+      border: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 5px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+    /* Player Controls */
     .player-controls {
-        display: none; /* Hidden by default */
-        position: fixed;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        background: var(--card-bg);
-        padding: 1rem;
-        box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      padding: 0.5rem 1rem;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
     }
-
-    .player-controls.show {
-        display: flex; /* Show when active */
+    .player-controls audio {
+      width: 100%;
+      max-width: 800px;
     }
-        .theme-toggle {
-            background: none;
-            border: none;
-            color: var(--text);
-            cursor: pointer;
-            font-size: 1.2rem;
-        }
-    </style>
+    /* Footer */
+    .site-footer {
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      padding: 1rem;
+    }
+    .footer-section h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: var(--text);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: 1px solid rgba(255,255,255,0.1);
+      background: var(--bg);
+      color: var(--text);
+    }
+    .newsletter-form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+      .hero h1 {
+        font-size: 1.8rem;
+      }
+      .media-card {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .media-cover {
+        width: 100%;
+        height: auto;
+        margin-bottom: 1rem;
+      }
+      .media-actions {
+        flex-direction: row;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="logo"><a style="color:orange;" href="index.html ">UniqueMusic</a></div>
-        <button class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
-    </nav>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><a href="index.html">UniqueMusic</a></div>
+    <!-- You can add additional menu items or even a theme toggle here if desired -->
+  </nav>
 
+  <!-- Hero Section with Search -->
+  <section class="hero">
+    <h1>Search for your favorite music</h1>
     <div class="search-bar">
-        <input type="text" class="search-input" placeholder="Search songs, artists..." id="search-input">
+      <input type="text" placeholder="Search songs, artists..." id="search-input" />
+      <button id="search-btn"><i class="fas fa-search"></i></button>
     </div>
-<button id="about-toggle" class="nav-item" style="background: none; border: none; cursor: pointer;">
-    <div class="media-grid" id="media-container"></div>
+  </section>
 
-    <div class="player-controls" id="player-controls">
-        <audio id="audio-player" controls></audio>
-    </div>
+  <!-- Media List (Tracks will be listed here) -->
+  <div class="media-list" id="media-container">
+    <!-- Media items will be rendered by JavaScript -->
+  </div>
 
-  
+  <!-- Player Controls (Fixed at bottom) -->
+  <div class="player-controls" id="player-controls">
+    <audio id="audio-player" controls></audio>
+  </div>
 
-  
-  <script>
-        // Theme Toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        let isDark = true;
-
-        themeToggle.addEventListener('click', () => {
-            isDark = !isDark;
-            document.documentElement.style.setProperty('--bg', isDark ? '#1a1a1a' : '#f5f5f5');
-            document.documentElement.style.setProperty('--card-bg', isDark ? '#2d2d2d' : '#ffffff');
-            document.documentElement.style.setProperty('--text', isDark ? '#ffffff' : '#1a1a1a');
-            themeToggle.textContent = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
-            localStorage.setItem('theme', isDark ? 'dark' : 'light');
-        });
-
-        // Media Data - 24 Sample Tracks
-        const mediaData = [
-            { 
-                title: "Crazy", 
-                artist: "Nasty C", 
-                cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+1",
-                audio: "Nasty C - Crazy.mp3",
-                duration: "02:38"
-            
-            },
-            {
-                title: "Ngate ba yaweh",
-                artist: "Yo maps",
-                cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp?200x200/FF6B6B/ffffff?text=Track+2",
-                audio: "D:/brian/website/Yo maps - Ngate ba Yaweh.mp3",
-                duration: "4:20"
-            },
-            {
-                title: "Never Settle for Less",
-                artist:"Jona D",
-                cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp?200x200/FF6B6B/ffffff?text=Track+2",
-                audio: "D:/brian/website/Yo maps - Ngate ba Yaweh.mp3",
-                duration: "3:55"
-            },
-            {
-                title: "Mountain High",
-                artist: "Nature Mix",
-                cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+4",
-                audio: "song4.mp3",
-                duration: "5:10"
-            },
-            {
-                title: "Dancing Flame",
-                artist: "Fire Collective",
-                cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+5",
-                audio: "song5.mp3",
-                duration: "3:30"
-            },
-            {
-                title: "Ocean Waves",
-                artist: "Aqua Marine",
-                cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+4",
-                audio: "song6.mp3",
-                duration: "4:45"
-            },
-            {
-                title: "Space Journey",
-                artist: "Cosmic Sound",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+7",
-                audio: "song7.mp3",
-                duration: "6:15"
-            },
-            {
-                title: "Jazz Night",
-                artist: "Smooth Cats",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+8",
-                audio: "song8.mp3",
-                duration: "4:00"
-            },
-            {
-                title: "Rock Anthem",
-                artist: "Guitar Heroes",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+9",
-                audio: "song9.mp3",
-                duration: "3:50"
-            },
-            {
-                title: "Classic Vibes",
-                artist: "Piano Masters",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+10",
-                audio: "song10.mp3",
-                duration: "5:25"
-            },
-            {
-                title: "Urban Flow",
-                artist: "HipHop Nation",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+11",
-                audio: "song11.mp3",
-                duration: "3:15"
-            },
-            {
-                title: "Country Roads",
-                artist: "Southern Band",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+12",
-                audio: "song12.mp3",
-                duration: "4:10"
-            },
-            {
-                title: "Electronic Pulse",
-                artist: "Synth Wave",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+13",
-                audio: "song13.mp3",
-                duration: "3:55"
-            },
-            {
-                title: "Romantic Evening",
-                artist: "Love Strings",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+14",
-                audio: "song14.mp3",
-                duration: "4:30"
-            },
-            {
-                title: "Meditation Zone",
-                artist: "Zen Garden",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+15",
-                audio: "song15.mp3",
-                duration: "7:00"
-            },
-            {
-                title: "Party Starter",
-                artist: "DJ Max",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+16",
-                audio: "song16.mp3",
-                duration: "3:20"
-            },
-            {
-                title: "Blues Night",
-                artist: "Moody Cats",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+17",
-                audio: "song17.mp3",
-                duration: "4:15"
-            },
-            {
-                title: "Reggae Sun",
-                artist: "Island Beats",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+18",
-                audio: "song18.mp3",
-                duration: "3:50"
-            },
-            {
-                title: "Metal Storm",
-                artist: "Thunder Band",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+19",
-                audio: "song19.mp3",
-                duration: "4:05"
-            },
-            {
-                title: "Pop Magic",
-                artist: "Star Singer",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+20",
-                audio: "song20.mp3",
-                duration: "3:35"
-            },
-            {
-                title: "Soul Food",
-                artist: "Groove Masters",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+21",
-                audio: "song21.mp3",
-                duration: "4:25"
-            },
-            {
-                title: "Funky Beats",
-                artist: "Disco King",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+22",
-                audio: "song22.mp3",
-                duration: "3:45"
-            },
-            {
-                title: "R&B Nights",
-                artist: "Velvet Voice",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+23",
-                audio: "song23.mp3",
-                duration: "4:10"
-            },
-            {
-                title: "EDM Festival",
-                artist: "Bass Drop",
-                cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+24",
-                audio: "song24.mp3",
-                duration: "3:55"
-            }
-        ];
-
-        // Rest of the JavaScript remains exactly the same
-        // Render Media Items
-       function renderMedia(items) {
-    const container = document.getElementById('media-container');
-    container.innerHTML = items.map(item => `
-        <div class="media-card">
-            <img src="${item.cover}" class="media-cover" alt="${item.title}">
-            <div class="media-info">
-                <div class="media-title">${item.title}</div>
-                <div class="media-artist">${item.artist}</div>
-                <div class="media-duration">${item.duration}</div>
-                <button class="play-btn" data-src="${item.audio}">Play</button>
-                <button class="download-btn" data-src="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/${item.audio}">Download</button>
-            </div>
-        </div>
-    `).join('');
-}
-
-
-        
-    // Audio Player
-    const audioPlayer = document.getElementById('audio-player');
-    const playerControls = document.getElementById('player-controls');
-    let currentAudio = null;
-
-    document.body.addEventListener('click', (e) => {
-        if (e.target.classList.contains('play-btn')) {
-            const audioSrc = e.target.dataset.src;
-            
-            if (currentAudio !== audioSrc) {
-                audioPlayer.src = audioSrc;
-                audioPlayer.play();
-                currentAudio = audioSrc;
-                playerControls.classList.add('hide');
-            } else {
-                if(audioPlayer.paused) {
-                    audioPlayer.play();
-                    playerControls.classList.add('hide');
-                } else {
-                    audioPlayer.pause();
-                }
-            }
-        }
-    });
-
-    // Hide player when audio ends
-    audioPlayer.addEventListener('ended', () => {
-        playerControls.classList.remove('hide');
-    });
-
-    // Optional: Hide player when paused via controls
-    audioPlayer.addEventListener('pause', () => {
-        if(audioPlayer.currentTime === 0) {
-            playerControls.classList.remove('show');
-        }
-    });
-
-        // Search Functionality
-        document.getElementById('search-input').addEventListener('input', (e) => {
-            const searchTerm = e.target.value.toLowerCase();
-            const filtered = mediaData.filter(item =>
-                item.title.toLowerCase().includes(searchTerm) ||
-                item.artist.toLowerCase().includes(searchTerm)
-            );
-            renderMedia(filtered);
-        });
-
-        // Initial Render
-        renderMedia(mediaData);
-    </script>
-
-<!-- Add this footer section -->
-<footer class="site-footer">
+  <!-- Footer -->
+  <footer class="site-footer">
     <div class="footer-content">
-        <div class="footer-section">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
-            </div>
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
         </div>
-
-        <div class="footer-section">
-            <h4>Quick Links</h4>
-            <ul class="footer-links">
-                <li><a href="about us.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
-        </div>
- <div class="footer-section">
-            <h4>Newsletter</h4>
-            <form class="newsletter-form">
-                <input type="email" placeholder="Enter your email" required>
-                <button type="submit">Subscribe</button>
-            </form>
-        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h4>Newsletter</h4>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
     </div>
-    
     <div class="footer-bottom">
-        <p>Copyright &copy; <script> document.write(new Date().getFullYear()) </script> | All rights Reserved |<a style="color: orange;" href="index.html"> Unique Music Blog </a> | Proudly designed by <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a></p>
+      <p>
+        Copyright &copy;
+        <script>document.write(new Date().getFullYear())</script>
+        | All rights Reserved | <a style="color: orange;" href="index.html">Unique Music Blog</a> | Proudly designed by
+        <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a>
+      </p>
     </div>
-</footer>
+  </footer>
 
-<!-- Add this CSS -->
-<style>
-    .site-footer {
-        background: var(--card-bg);
-        color: var(--text);
-        padding: 2rem 1rem;
-        margin-top: 3rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
+  <!-- JavaScript -->
+  <script>
+    // Sample Media Data – 24 Tracks
+    const mediaData = [
+      {
+        title: "Crazy",
+        artist: "Nasty C",
+        cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+1",
+        audio: "Nasty C - Crazy.mp3",
+        duration: "02:38"
+      },
+      {
+        title: "Ngate ba yaweh",
+        artist: "Yo maps",
+        cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp?200x200/FF6B6B/ffffff?text=Track+2",
+        audio: "D:/brian/website/Yo maps - Ngate ba Yaweh.mp3",
+        duration: "4:20"
+      },
+      {
+        title: "Never Settle for Less",
+        artist: "Jona D",
+        cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp?200x200/FF6B6B/ffffff?text=Track+2",
+        audio: "D:/brian/website/Yo maps - Ngate ba Yaweh.mp3",
+        duration: "3:55"
+      },
+      {
+        title: "Mountain High",
+        artist: "Nature Mix",
+        cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+4",
+        audio: "song4.mp3",
+        duration: "5:10"
+      },
+      {
+        title: "Dancing Flame",
+        artist: "Fire Collective",
+        cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+5",
+        audio: "song5.mp3",
+        duration: "3:30"
+      },
+      {
+        title: "Ocean Waves",
+        artist: "Aqua Marine",
+        cover: "Ali.jpeg?w=fit&auto=format&fit=crop&h=50&text=Track+4",
+        audio: "song6.mp3",
+        duration: "4:45"
+      },
+      {
+        title: "Space Journey",
+        artist: "Cosmic Sound",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+7",
+        audio: "song7.mp3",
+        duration: "6:15"
+      },
+      {
+        title: "Jazz Night",
+        artist: "Smooth Cats",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+8",
+        audio: "song8.mp3",
+        duration: "4:00"
+      },
+      {
+        title: "Rock Anthem",
+        artist: "Guitar Heroes",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+9",
+        audio: "song9.mp3",
+        duration: "3:50"
+      },
+      {
+        title: "Classic Vibes",
+        artist: "Piano Masters",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+10",
+        audio: "song10.mp3",
+        duration: "5:25"
+      },
+      {
+        title: "Urban Flow",
+        artist: "HipHop Nation",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+11",
+        audio: "song11.mp3",
+        duration: "3:15"
+      },
+      {
+        title: "Country Roads",
+        artist: "Southern Band",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+12",
+        audio: "song12.mp3",
+        duration: "4:10"
+      },
+      {
+        title: "Electronic Pulse",
+        artist: "Synth Wave",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+13",
+        audio: "song13.mp3",
+        duration: "3:55"
+      },
+      {
+        title: "Romantic Evening",
+        artist: "Love Strings",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+14",
+        audio: "song14.mp3",
+        duration: "4:30"
+      },
+      {
+        title: "Meditation Zone",
+        artist: "Zen Garden",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+15",
+        audio: "song15.mp3",
+        duration: "7:00"
+      },
+      {
+        title: "Party Starter",
+        artist: "DJ Max",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+16",
+        audio: "song16.mp3",
+        duration: "3:20"
+      },
+      {
+        title: "Blues Night",
+        artist: "Moody Cats",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+17",
+        audio: "song17.mp3",
+        duration: "4:15"
+      },
+      {
+        title: "Reggae Sun",
+        artist: "Island Beats",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+18",
+        audio: "song18.mp3",
+        duration: "3:50"
+      },
+      {
+        title: "Metal Storm",
+        artist: "Thunder Band",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+19",
+        audio: "song19.mp3",
+        duration: "4:05"
+      },
+      {
+        title: "Pop Magic",
+        artist: "Star Singer",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+20",
+        audio: "song20.mp3",
+        duration: "3:35"
+      },
+      {
+        title: "Soul Food",
+        artist: "Groove Masters",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+21",
+        audio: "song21.mp3",
+        duration: "4:25"
+      },
+      {
+        title: "Funky Beats",
+        artist: "Disco King",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+22",
+        audio: "song22.mp3",
+        duration: "3:45"
+      },
+      {
+        title: "R&B Nights",
+        artist: "Velvet Voice",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+23",
+        audio: "song23.mp3",
+        duration: "4:10"
+      },
+      {
+        title: "EDM Festival",
+        artist: "Bass Drop",
+        cover: "https://via.placeholder.com/200x200/FF6B6B/ffffff?text=Track+24",
+        audio: "song24.mp3",
+        duration: "3:55"
+      }
+    ];
+
+    // Render Media Items as a List
+    function renderMedia(items) {
+      const container = document.getElementById('media-container');
+      container.innerHTML = items.map(item => `
+        <div class="media-card">
+          <img src="${item.cover}" alt="${item.title}" class="media-cover" />
+          <div class="media-info">
+            <div class="media-title">${item.title}</div>
+            <div class="media-artist">${item.artist}</div>
+            <div class="media-duration">${item.duration}</div>
+          </div>
+          <div class="media-actions">
+            <button class="play-btn" data-src="${item.audio}">Play</button>
+            <button class="download-btn" data-src="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/${item.audio}">Download</button>
+          </div>
+        </div>
+      `).join('');
     }
 
-    .footer-content {
-        max-width: 1200px;
-        margin: 0 auto;
-        display: flex;
-        flex-wrap: wrap;
-        gap: 2rem;
-        justify-content: space-between;
-    }
-
-    .footer-section {
-        flex: 1;
-        min-width: 250px;
-        padding: 1rem;
-    }
-
-    .footer-section h4 {
-        color: var(--primary);
-        margin-bottom: 1rem;
-    }
-
-    .social-links {
-        display: flex;
-        gap: 1rem;
-    }
-
-    .social-links a {
-        color: var(--text);
-        font-size: 1.5rem;
-        transition: color 0.3s;
-    }
-
-    .social-links a:hover {
-        color: var(--primary);
-    }
-
-    .footer-links {
-        list-style: none;
-        padding: 0;
-    }
-
-    .footer-links li {
-        margin-bottom: 0.5rem;
-    }
-
-    .footer-links a {
-        color: var(--text);
-        text-decoration: none;
-    }
-
-    .footer-links a:hover {
-        color: var(--primary);
-    }
-
-    .newsletter-form {
-        display: flex;
-        gap: 0.5rem;
-    }
-
-    .newsletter-form input {
-        flex: 1;
-        padding: 0.8rem;
-        border-radius: 5px;
-        border: 1px solid rgba(255,255,255,0.1);
-        background: var(--bg);
-        color: var(--text);
-    }
-
-    .newsletter-form button {
-        background: var(--primary);
-        color: white;
-        border: none;
-        padding: 0.8rem 1.5rem;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .footer-bottom {
-        text-align: center;
-        margin-top: 2rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(255,255,255,0.1);
-    }
-
-    @media (max-width: 768px) {
-        .footer-content {
-            flex-direction: column;
-            text-align: center;
+    // Audio Player functionality
+    const audioPlayer = document.getElementById('audio-player');
+    let currentAudio = null;
+    document.body.addEventListener('click', (e) => {
+      if (e.target.classList.contains('play-btn')) {
+        const audioSrc = e.target.dataset.src;
+        if (currentAudio !== audioSrc) {
+          audioPlayer.src = audioSrc;
+          audioPlayer.play();
+          currentAudio = audioSrc;
+        } else {
+          audioPlayer.paused ? audioPlayer.play() : audioPlayer.pause();
         }
-        
-        .social-links {
-            justify-content: center;
-        }
-        
-        .newsletter-form {
-            flex-direction: center;
-        }
-    }
-    /* Ensure the page scales properly on different devices */
-html {
-    box-sizing: border-box;
-}
+      }
+    });
 
-*, *::before, *::after {
-    box-sizing: inherit;
-}
+    // Search functionality: filter mediaData on input
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filtered = mediaData.filter(item =>
+        item.title.toLowerCase().includes(searchTerm) ||
+        item.artist.toLowerCase().includes(searchTerm)
+      );
+      renderMedia(filtered);
+    });
 
-/* Basic reset for margin and padding */
-body, h1, p {
-    margin: 0;
-    padding: 0;
-}
-
-/* Set a responsive font size */
-body {
-    font-family: Arial, sans-serif;
-    font-size: 16px;
-    line-height: 1.6;
-}
-
-/* Make sure the content fits within the viewport */
-header, main, footer {
-    padding: 20px;
-    max-width: 1200px;
-    margin: auto;
-}
-
-/* Responsive typography */
-h1 {
-    font-size: 2em;
-    text-align: center;
-}
-
-p {
-    font-size: 1em;
-    text-align: center;
-}
-
-/* Media queries for different screen sizes */
-@media (max-width: 768px) {
-    h1 {
-        font-size: 1.5em;
-    }
-
-    p {
-        font-size: 0.9em;
-    }
-}
-
-@media (max-width: 480px) {
-    h1 {
-        font-size: 1.2em;
-    }
-
-    p {
-        font-size: 0.8em;
-    }
-}
-
-</style>
+    // Initial render
+    renderMedia(mediaData);
+  </script>
 </body>
 </html>
