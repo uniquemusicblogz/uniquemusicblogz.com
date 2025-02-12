@@ -382,7 +382,24 @@
 
   <!-- JavaScript -->
   <script>
-    // Sample Media Data – 24 Tracks with a dedicated "video" field
+    // Helper function to get video source.
+    // If a dedicated video property exists, use it; otherwise derive it from the audio property.
+    function getVideoSource(item) {
+      return item.video ? item.video : item.audio.replace('.mp3', '.mp4');
+    }
+
+    // New helper function: get audio source.
+    // If an audio property exists, use it; otherwise, if a video property exists, convert its .mp4 to .mp3.
+    function getAudioSource(item) {
+      if (item.audio) {
+        return item.audio;
+      } else if (item.video) {
+        return item.video.replace('.mp4', '.mp3');
+      }
+      return "";
+    }
+
+    // Sample Media Data – 24 Tracks (using dedicated video fields or fallback)
     const mediaData = [
       {
         title: "Crazy",
@@ -405,7 +422,7 @@
         artist: "Jona D",
         cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp?200x200/FF6B6B/ffffff?text=Track+3",
         audio: "D:/brian/website/Yo maps - Ngate ba Yaweh.mp3",
-        video: "NBA EMO LOVE.mp4",
+        // No dedicated video field here; will be derived.
         duration: "3:55"
       },
       {
@@ -632,9 +649,10 @@
     // Event Listeners for modal buttons:
     document.getElementById('modal-close').addEventListener('click', hideSelectionModal);
 
+    // Use getAudioSource() to support conversion if no dedicated audio exists.
     document.getElementById('play-audio-btn').addEventListener('click', () => {
       if (currentMediaItem) {
-        audioPlayer.src = currentMediaItem.audio;
+        audioPlayer.src = getAudioSource(currentMediaItem);
         audioPlayer.play();
         hideSelectionModal();
       }
@@ -643,8 +661,8 @@
     document.getElementById('download-audio-btn').addEventListener('click', () => {
       if (currentMediaItem) {
         const link = document.createElement('a');
-        link.href = "https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/" + currentMediaItem.audio;
-        link.download = currentMediaItem.audio;
+        link.href = "https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/" + getAudioSource(currentMediaItem);
+        link.download = getAudioSource(currentMediaItem);
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
@@ -652,9 +670,10 @@
       }
     });
 
+    // Use getVideoSource() for video actions.
     document.getElementById('play-video-btn').addEventListener('click', () => {
       if (currentMediaItem) {
-        const videoSrc = currentMediaItem.video;
+        const videoSrc = getVideoSource(currentMediaItem);
         hideSelectionModal();
         showVideoModal(videoSrc);
       }
@@ -662,7 +681,7 @@
 
     document.getElementById('download-video-btn').addEventListener('click', () => {
       if (currentMediaItem) {
-        const videoSrc = currentMediaItem.video;
+        const videoSrc = getVideoSource(currentMediaItem);
         const link = document.createElement('a');
         link.href = "https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/" + videoSrc;
         link.download = videoSrc;
