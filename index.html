@@ -538,6 +538,67 @@
             flex-direction: center;
         }
     }
+    /* Ensure the page scales properly on different devices */
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+/* Basic reset for margin and padding */
+body, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set a responsive font size */
+body {
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+/* Make sure the content fits within the viewport */
+header, main, footer {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+/* Responsive typography */
+h1 {
+    font-size: 2em;
+    text-align: center;
+}
+
+p {
+    font-size: 1em;
+    text-align: center;
+}
+
+/* Media queries for different screen sizes */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5em;
+    }
+
+    p {
+        font-size: 0.9em;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.2em;
+    }
+
+    p {
+        font-size: 0.8em;
+    }
+}
+
 </style>
 </body>
 </html>
