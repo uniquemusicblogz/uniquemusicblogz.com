@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - Music Hub</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #FF6B6B;
+      --bg: #1a1a1a;
+      --card-bg: #2d2d2d;
+      --text: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* Navbar styling (same as homepage) */
+    .navbar {
+      padding: 1rem 2rem;
+      background: var(--card-bg);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--primary);
+      text-decoration: none;
+    }
+    .theme-toggle {
+      background: none;
+      border: none;
+      color: var(--text);
+      cursor: pointer;
+      font-size: 1.2rem;
+    }
+
+    /* About Section Styling */
+    .about-section {
+      background: var(--bg);
+      padding: 2rem 0;
+    }
+    .about-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    .about-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      padding: 2rem;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+    .about-card h2 {
+      color: var(--primary);
+      margin-bottom: 1.5rem;
+      font-size: 2rem;
+    }
+    .about-content p {
+      margin-bottom: 1.5rem;
+      font-size: 1.1rem;
+    }
+    .about-content h3 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .about-content ul {
+      list-style: none;
+      padding: 0;
+    }
+    .about-content ul li {
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .about-quote {
+      border-left: 3px solid var(--primary);
+      padding-left: 1rem;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+    .about-quote p:last-child {
+      color: var(--primary);
+      font-weight: bold;
+      margin: 0;
+    }
+    .social-icons {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .social-icons a {
+      color: var(--text);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-icons a:hover {
+      color: var(--primary);
+    }
+
+    /* Footer Styling (same as homepage) */
+    .site-footer {
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 2rem 1rem;
+      margin-top: 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      padding: 1rem;
+    }
+    .footer-section h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: var(--text);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    .newsletter-form {
+      display: flex;
+      gap: 0.5rem;
+    }
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.8rem;
+      border-radius: 5px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: var(--bg);
+      color: var(--text);
+    }
+    .newsletter-form button {
+      background: var(--primary);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.5rem;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        flex-direction: column;
+        text-align: center;
+      }
+      .social-links {
+        justify-content: center;
+      }
+      .newsletter-form {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <a href="index Web.html" class="logo">UniqueMusic</a>
+    <button class="theme-toggle" id="theme-toggle">🌙 Dark Mode</button>
+  </nav>
+
+  <!-- About Section -->
+  <section class="about-section">
+    <div class="about-container">
+      <div class="about-card">
+        <h2>
+          <i class="fas fa-music"></i> About Unique Music Blog
+        </h2>
+        <div class="about-content">
+          <p>
+            <span style="color: var(--primary); font-weight: bold;">Where Melodies Meet Souls</span> 🎶
+          </p>
+          <div>
+            <h3>Our Story</h3>
+            <p>
+              Founded in 2023 by music archivists and audio enthusiasts, we've created a digital sanctuary for those who crave more than just sound – seeking stories, connections, and the electric spark that only music can ignite.
+            </p>
+          </div>
+          <div>
+            <h3>Our Promise</h3>
+            <ul>
+              <li>
+                <span style="color: var(--primary);">🎧</span>
+                <strong>Human-Curated:</strong> No bots, just handpicked recommendations.
+              </li>
+              <li>
+                <span style="color: var(--primary);">🌍</span>
+                <strong>Global Sounds:</strong> From Lusaka to Lagos, Nashville to Nairobi.
+              </li>
+              <li>
+                <span style="color: var(--primary);">🔥</span>
+                <strong>For the Curious:</strong> Underground gems and lyrical deep-dives.
+              </li>
+            </ul>
+          </div>
+          <div class="about-quote">
+            <p>"Music is the language we all speak fluently."</p>
+            <p>- The Unique Music Blog Team</p>
+          </div>
+          <div class="social-icons">
+            <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="https://www.youtube.com/@JoyfulMotivator1" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.instagram.com/jucy8740/" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="#"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-section">
+        <h4>Newsletter</h4>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required />
+          <button type="submit">Subscribe</button>
+        </form>
+      </div>
+    </div>
+    
+    <div class="footer-bottom">
+      <p>
+        Copyright &copy;
+        <script>document.write(new Date().getFullYear());</script> | All rights Reserved |
+        <a style="color: orange;" href="index.html">Unique Music Blog</a> | Proudly designed by
+        <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: white;">Brian Simumba</a>
+      </p>
+    </div>
+  </footer>
+
+  <!-- Optional JavaScript for Theme Toggle -->
+  <script>
+    // Theme Toggle functionality (same as homepage)
+    const themeToggle = document.getElementById('theme-toggle');
+    let isDark = true;
+    themeToggle.addEventListener('click', () => {
+      isDark = !isDark;
+      document.documentElement.style.setProperty('--bg', isDark ? '#1a1a1a' : '#f5f5f5');
+      document.documentElement.style.setProperty('--card-bg', isDark ? '#2d2d2d' : '#ffffff');
+      document.documentElement.style.setProperty('--text', isDark ? '#ffffff' : '#1a1a1a');
+      themeToggle.textContent = isDark ? '🌙 Dark Mode' : '☀️ Light Mode';
+      localStorage.setItem('theme', isDark ? 'dark' : 'light');
+    });
+  </script>
+</body>
+</html>
