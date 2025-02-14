@@ -365,10 +365,31 @@
       <div class="footer-section">
         <h4>Newsletter</h4>
        
-       <form class="newsletter-form" action="https://formspree.io/f/meoelyrg" method="POST">
-  <input type="email" name="email" placeholder="Your Email" required />
+       <form id="newsletter-form" action="https://formspree.io/f/meoelyrg" method="POST" onsubmit="clearInput(event)">
+  <input type="email" id="emailInput" name="email" placeholder="Your Email" required />
   <button type="submit">Subscribe</button>
-       </form>   
+</form>
+
+<script>
+  function clearInput(event) {
+    event.preventDefault(); // Prevent the form from submitting immediately
+    let form = document.getElementById("newsletterForm");
+    let emailInput = document.getElementById("emailInput");
+
+    fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { "Accept": "application/json" }
+    }).then(response => {
+      if (response.ok) {
+        emailInput.value = ""; // Clear input field
+        alert("Subscription successful!"); // Show confirmation
+      } else {
+        alert("Something went wrong. Please try again.");
+      }
+    }).catch(error => alert("Error: " + error));
+  }
+</script>   
       </div>
     </div>
     <div class="footer-bottom">
