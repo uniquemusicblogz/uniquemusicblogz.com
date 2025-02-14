@@ -66,13 +66,13 @@
   <title>Unique Music Blogz - Free Zambian MP3 & MP4 Downloads</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
+    /* All previous CSS styles remain unchanged */
     :root {
       --primary: #FF6B6B;
       --bg: #1a1a1a;
       --card-bg: #2d2d2d;
       --text: #ffffff;
     }
-    /* Reset */
     * {
       margin: 0;
       padding: 0;
@@ -84,7 +84,6 @@
       color: var(--text);
       line-height: 1.6;
     }
-    /* Navbar */
     .navbar {
       background: var(--card-bg);
       padding: 1rem 2rem;
@@ -98,7 +97,6 @@
       color: var(--primary);
       text-decoration: none;
     }
-    /* Hero Section with Search */
     .hero {
       text-align: center;
       padding: 2rem 1rem;
@@ -135,7 +133,6 @@
       color: #fff;
       font-size: 1rem;
     }
-    /* Media List */
     .media-list {
       max-width: 1200px;
       margin: 2rem auto;
@@ -181,7 +178,6 @@
       font-size: 0.8rem;
       color: #ccc;
     }
-    /* Player Controls */
     .player-controls {
       position: fixed;
       bottom: 0;
@@ -199,7 +195,6 @@
       width: 100%;
       max-width: 800px;
     }
-    /* Footer */
     .site-footer {
       background: var(--card-bg);
       color: var(--text);
@@ -276,7 +271,6 @@
       padding-top: 1rem;
       border-top: 1px solid rgba(255,255,255,0.1);
     }
-    /* Modal Styles */
     .media-modal {
       display: none;
       position: fixed;
@@ -326,7 +320,6 @@
       color: #fff;
       cursor: pointer;
     }
-    /* Responsive */
     @media (max-width: 768px) {
       .navbar {
         flex-direction: column;
@@ -348,6 +341,7 @@
   </style>
 </head>
 <body>
+  <!-- Navigation and Hero Section (same as before) -->
   <nav class="navbar">
     <div class="logo"><a href="index.html">UniqueMusic</a></div>
   </nav>
@@ -362,6 +356,7 @@
 
   <div class="media-list" id="media-container"></div>
 
+  <!-- Player Controls and Modals (same as before) -->
   <div class="player-controls" id="player-controls">
     <audio id="audio-player" controls></audio>
   </div>
@@ -392,6 +387,7 @@
     </div>
   </div>
 
+  <!-- Footer (same as before) -->
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-section">
@@ -431,75 +427,217 @@
   </footer>
 
   <script>
-    // SEO-Friendly URL Generator
-    const generateSlug = (text) => {
-      return text.toLowerCase()
-        .replace(/[^\w ]+/g, '')
-        .replace(/ +/g, '-');
-    };
-
-    // Enhanced Media Data with SEO URLs
+    // Preserving original filenames exactly as provided
     const mediaData = [
       {
         title: "Crazy",
         artist: "Nasty C",
-        cover: "nasty-c-crazy.jpg",
-        audio: "nasty-c-crazy.mp3",
-        video: "nasty-c-crazy.mp4",
-        duration: "02:38",
-        urlSlug: generateSlug("Nasty C Crazy")
+        cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp",
+        audio: "Nasty C - Crazy.mp3",
+        video: "Dax - To Be A Man.mp4",
+        duration: "02:38"
       },
       {
         title: "Ngate ba yaweh",
         artist: "Yo maps",
-        cover: "yo-maps-ngate.jpg",
-        audio: "yo-maps-ngate.mp3",
-        video: "yo-maps-ngate.mp4",
-        duration: "4:20",
-        urlSlug: generateSlug("Yo Maps Ngate ba Yahweh")
+        cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp",
+        audio: "Yo maps - Ngate ba Yaweh.mp3",
+        video: "NBA EMO LOVE.mp4",
+        duration: "4:20"
       },
-      // ... (other media entries with urlSlug)
+      {
+        title: "Never Settle for Less",
+        artist: "Jona D",
+        cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp",
+        audio: "Yo maps - Ngate ba Yaweh.mp3",
+        duration: "3:55"
+      },
+      {
+        title: "EMO LOVE",
+        artist: "YOUNG BOY NBA",
+        cover: "a11.jpg",
+        audio: "song4.mp3",
+        video: "NBA EMO LOVE.mp4",
+        duration: "5:10"
+      },
+      {
+        title: "To Be A Man",
+        artist: "Dax",
+        cover: "a11.jpg",
+        audio: "song5.mp3",
+        video: "Dax To Be A Man.mp4",
+        duration: "3:30"
+      },
+      {
+        title: "Bupilo",
+        artist: "Simumba J",
+        cover: "a11.jpg",
+        audio: "song6.mp3",
+        video: "song6.mp4",
+        duration: "4:45"
+      },
+      {
+        title: "Space Journey",
+        artist: "Cosmic Sound",
+        cover: "a11.jpg",
+        audio: "song7.mp3",
+        video: "song7.mp4",
+        duration: "6:15"
+      },
+      {
+        title: "Jazz Night",
+        artist: "Smooth Cats",
+        cover: "a11.jpg",
+        audio: "song8.mp3",
+        video: "song8.mp4",
+        duration: "4:00"
+      },
+      {
+        title: "Rock Anthem",
+        artist: "Guitar Heroes",
+        cover: "a11.jpg",
+        audio: "song9.mp3",
+        video: "song9.mp4",
+        duration: "3:50"
+      },
+      {
+        title: "Classic Vibes",
+        artist: "Piano Masters",
+        cover: "a11.jpg",
+        audio: "song10.mp3",
+        video: "song10.mp4",
+        duration: "5:25"
+      },
+      {
+        title: "Urban Flow",
+        artist: "HipHop Nation",
+        cover: "a11.jpg",
+        audio: "song11.mp3",
+        video: "song11.mp4",
+        duration: "3:15"
+      },
+      {
+        title: "Country Roads",
+        artist: "Southern Band",
+        cover: "a11.jpg",
+        audio: "song12.mp3",
+        video: "song12.mp4",
+        duration: "4:10"
+      },
+      {
+        title: "Electronic Pulse",
+        artist: "Synth Wave",
+        cover: "a11.jpg",
+        audio: "song13.mp3",
+        video: "song13.mp4",
+        duration: "3:55"
+      },
+      {
+        title: "Romantic Evening",
+        artist: "Love Strings",
+        cover: "a11.jpg",
+        audio: "song14.mp3",
+        video: "song14.mp4",
+        duration: "4:30"
+      },
+      {
+        title: "Meditation Zone",
+        artist: "Zen Garden",
+        cover: "a11.jpg",
+        audio: "song15.mp3",
+        video: "song15.mp4",
+        duration: "7:00"
+      },
+      {
+        title: "Party Starter",
+        artist: "DJ Max",
+        cover: "a11.jpg",
+        audio: "song16.mp3",
+        video: "song16.mp4",
+        duration: "3:20"
+      },
+      {
+        title: "Blues Night",
+        artist: "Moody Cats",
+        cover: "a11.jpg",
+        audio: "song17.mp3",
+        video: "song17.mp4",
+        duration: "4:15"
+      },
+      {
+        title: "Reggae Sun",
+        artist: "Island Beats",
+        cover: "a11.jpg",
+        audio: "song18.mp3",
+        video: "song18.mp4",
+        duration: "3:50"
+      },
+      {
+        title: "Metal Storm",
+        artist: "Thunder Band",
+        cover: "a11.jpg",
+        audio: "song19.mp3",
+        video: "song19.mp4",
+        duration: "4:05"
+      },
+      {
+        title: "Pop Magic",
+        artist: "Star Singer",
+        cover: "a11.jpg",
+        audio: "song20.mp3",
+        video: "song20.mp4",
+        duration: "3:35"
+      },
+      {
+        title: "Soul Food",
+        artist: "Groove Masters",
+        cover: "a11.jpg",
+        audio: "song21.mp3",
+        video: "song21.mp4",
+        duration: "4:25"
+      },
+      {
+        title: "Funky Beats",
+        artist: "Disco King",
+        cover: "a11.jpg",
+        audio: "song22.mp3",
+        video: "song22.mp4",
+        duration: "3:45"
+      },
+      {
+        title: "R&B Nights",
+        artist: "Velvet Voice",
+        cover: "a11.jpg",
+        audio: "song23.mp3",
+        video: "song23.mp4",
+        duration: "4:10"
+      },
+      {
+        title: "Drifta Trek",
+        artist: "New song",
+        cover: "a11.jpg",
+        audio: "song24.mp3",
+        video: "song24.mp4",
+        duration: "3:55"
+      }
     ];
 
-    // Dynamic Schema Generation
-    const generateSchema = () => {
-      const musicRecordings = mediaData.map(item => ({
-        "@type": "MusicRecording",
-        "name": item.title,
-        "byArtist": item.artist,
-        "duration": `PT${item.duration.replace(':', 'M')}S`,
-        "url": `https://uniquemusicblogz.com/${item.urlSlug}`,
-        "audio": `https://uniquemusicblogz.com/audio/${item.audio}`,
-        "image": `https://uniquemusicblogz.com/images/${item.cover}`
-      }));
-
-      const schema = {
-        "@context": "https://schema.org",
-        "@type": "MusicAlbum",
-        "name": "Zambian Music Collection",
-        "description": "Free downloads of popular Zambian songs and music videos",
-        "url": "https://uniquemusicblogz.com",
-        "genre": ["Afrobeat", "Gospel", "Hip-Hop"],
-        "track": musicRecordings.slice(0, 10) // Show first 10 tracks
-      };
-
-      const script = document.createElement('script');
-      script.type = 'application/ld+json';
-      script.textContent = JSON.stringify(schema);
-      document.head.appendChild(script);
-    };
-
-    // Initialize Schema
-    generateSchema();
-
-    // Original JavaScript with Enhanced Features
+    // Original JavaScript functionality with SEO enhancements
     let currentMediaItem = null;
 
-    const renderMedia = (items) => {
+    function getVideoSource(item) {
+      return item.video ? item.video : item.audio.replace('.mp3', '.mp4');
+    }
+
+    function getAudioSource(item) {
+      return item.audio ? item.audio : item.video.replace('.mp4', '.mp3');
+    }
+
+    function renderMedia(items) {
       const container = document.getElementById('media-container');
       container.innerHTML = items.map((item, index) => `
-        <div class="media-card" data-index="${index}" data-slug="${item.urlSlug}">
-          <img src="images/${item.cover}" alt="${item.title} by ${item.artist}" class="media-cover">
+        <div class="media-card" data-index="${index}">
+          <img src="${item.cover}" alt="${item.title} by ${item.artist}" class="media-cover">
           <div class="media-info">
             <div class="media-title">${item.title}</div>
             <div class="media-artist">${item.artist}</div>
@@ -508,21 +646,37 @@
         </div>
       `).join('');
 
-      document.querySelectorAll('.media-card').forEach((card, idx) => {
+      const cards = document.querySelectorAll('.media-card');
+      cards.forEach((card, idx) => {
         card.addEventListener('click', () => {
           currentMediaItem = items[idx];
           showSelectionModal();
-          history.pushState({}, '', `/${items[idx].urlSlug}`);
-          document.title = `${items[idx].title} by ${items[idx].artist} - Unique Music Blogz`;
         });
       });
-    };
+    }
 
-    // Rest of original JavaScript functions remain the same
+    // Rest of original JavaScript functions remain unchanged
     // (showSelectionModal, hideSelectionModal, audio/video handling, etc.)
 
     // Initialize
     renderMedia(mediaData);
+
+    // Add MusicRecording schema for each track
+    const musicRecordings = mediaData.map(item => ({
+      "@context": "https://schema.org",
+      "@type": "MusicRecording",
+      "name": item.title,
+      "byArtist": item.artist,
+      "duration": `PT${item.duration.replace(':', 'M')}S`,
+      "url": `https://uniquemusicblogz.com/${item.title.replace(/ /g, '-')}`,
+      "audio": `https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/${item.audio}`,
+      "image": `https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/${item.cover}`
+    }));
+
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.textContent = JSON.stringify(musicRecordings);
+    document.head.appendChild(schemaScript);
   </script>
 </body>
 </html>
