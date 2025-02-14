@@ -81,7 +81,7 @@
       font-size: 1rem;
     }
 
-    <!-- Add this CSS -->
+    
  /* Inline Loading Animation */
     .media-card.loading {
         position: relative;
@@ -404,7 +404,7 @@
 <script>
   function clearInput(event) {
     event.preventDefault(); // Prevent the form from submitting immediately
-    let form = document.getElementById("newsletterForm");
+    let form = document.getElementById("newsletter-form");
     let emailInput = document.getElementById("emailInput");
 
     fetch(form.action, {
@@ -666,14 +666,14 @@
       `).join('');
 
       // Attach click event to each card to show the selection modal.
-      const cards = document.querySelectorAll('.media-card');
-      cards.forEach((card, idx) => {
-        card.addEventListener('click', () => {
-          currentMediaItem = items[idx];
-          showSelectionModal();
-        });
-      });
-    }
+      // ADD THIS INSTEAD (single unified handler with loading)
+document.querySelectorAll('.media-card').forEach((card, idx) => {
+  card.addEventListener('click', () => {
+    card.classList.add('loading');
+    currentMediaItem = mediaData[idx]; // Changed items → mediaData
+    showSelectionModal();
+  });
+});    
 
     // Show/hide the selection modal (for Audio/Video options)
     function showSelectionModal() {
@@ -697,6 +697,8 @@
     }
 
     // Audio player from the fixed controls at the bottom.
+      // ADD THIS VIDEO PLAYER REFERENCE AT THE TOP
+const videoPlayer = document.getElementById('video-player'); // Add with audioPlayer
     const audioPlayer = document.getElementById('audio-player');
 
 
@@ -726,12 +728,21 @@
     });
 
     // Add error cleanup
-    [audioPlayer, videoPlayer].forEach(player => {
-        player.addEventListener('error', () => {
-            document.querySelector('.media-card.loading')?.classList.remove('loading');
-        });
-    });
-    // Use getAudioSource() to support conversion if no dedicated audio exists.
+    
+      
+    
+
+// WITH THIS
+function clearLoading() {
+  document.querySelector('.media-card.loading')?.classList.remove('loading');
+}
+
+audioPlayer.addEventListener('play', clearLoading);
+videoPlayer.addEventListener('play', clearLoading);
+audioPlayer.addEventListener('error', clearLoading);
+videoPlayer.addEventListener('error', clearLoading);
+  
+      // Use getAudioSource() to support conversion if no dedicated audio exists.
     document.getElementById('play-audio-btn').addEventListener('click', () => {
       if (currentMediaItem) {
         audioPlayer.src = getAudioSource(currentMediaItem);
