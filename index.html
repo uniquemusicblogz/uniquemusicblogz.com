@@ -316,9 +316,7 @@
   padding: 1rem;
   border-radius: 8px;
   width: 300px; /* Fixed width for sidebar */
-  height: auto;
-  max-height: 80vh;
-  overflow-y: auto;
+  height: auto; /* Allow height to adjust based on content */
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
 }
 
@@ -336,6 +334,17 @@
   margin-bottom: 0.5rem;
   display: flex;
   align-items: center; /* Align images and texts */
+  font-size: 1rem; /* Match media card text size */
+  color: var(--text); /* Match media card text color */
+}
+
+.sidebar ul li a {
+  color: var(--text); /* Match media card text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.sidebar ul li a:hover {
+  color: var(--primary); /* Hover effect */
 }
 
 .sidebar-cover {
