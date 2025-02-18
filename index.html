@@ -299,6 +299,43 @@
         margin-bottom: 1rem;
       }
     }
+    .sidebar {
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 1rem;
+  border-radius: 8px;
+  width: 300px;
+  position: fixed;
+  right: 20px;
+  top: 100px;
+  height: auto;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h4 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 0.5rem;
+}
+
+.sidebar ul li a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.sidebar ul li a:hover {
+  color: var(--primary);
+}
   </style>
 </head>
 <body>
@@ -315,6 +352,19 @@
   </section>
 
   <div class="media-list" id="media-container"></div>
+ 
+
+<!-- Sidebar -->
+<div class="sidebar">
+  <h4>Trending Songs</h4>
+  <ul id="trending-songs"></ul>
+  <h4>Most Searched Songs</h4>
+  <ul id="most-searched-songs"></ul>
+</div>
+
+<div class="player-controls" id="player-controls">
+  <audio id="audio-player" controls></audio>
+</div>
 
   <div class="player-controls" id="player-controls">
     <audio id="audio-player" controls></audio>
@@ -730,6 +780,23 @@ function hideVideoModal() {
     });
 
     renderMedia(mediaData);
+  const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
+const mostSearchedSongs = mediaData.slice(5, 10); // Example: Next 5 items
+
+function renderSidebar() {
+  const trendingContainer = document.getElementById('trending-songs');
+  const searchedContainer = document.getElementById('most-searched-songs');
+
+  trendingContainer.innerHTML = trendingSongs.map(item => `
+    <li><a href="#">${item.title} - ${item.artist}</a></li>
+  `).join('');
+
+  searchedContainer.innerHTML = mostSearchedSongs.map(item => `
+    <li><a href="#">${item.title} - ${item.artist}</a></li>
+  `).join('');
+}
+
+renderSidebar();
   </script>
   <script type="text/javascript" src="https://cdn.livetrafficfeed.com/static/v5/live.js?bc=ffffff&tc=000000&brd1=2853a8&lnk=135d9e&hc=ffffff&hfc=2853a8&nc=19ff19&vv=330&tft=10&ro=1&tz=Africa%2FLusaka&res=1"></script><noscript id="LTF_live_website_visitor"><a href="http://livetrafficfeed.com">Website Counter</a></noscript>
 </body>
