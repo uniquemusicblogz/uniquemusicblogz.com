@@ -385,9 +385,7 @@
   <audio id="audio-player" controls></audio>
 </div>
 
-  <div class="player-controls" id="player-controls">
-    <audio id="audio-player" controls></audio>
-  </div>
+  
 
   <div id="media-modal" class="media-modal">
     <div class="modal-content">
@@ -734,13 +732,17 @@ function hideVideoModal() {
     audioPlayer.addEventListener('error', clearLoading);
     videoPlayer.addEventListener('error', clearLoading);
 
-    document.getElementById('play-audio-btn').addEventListener('click', () => {
-      if (currentMediaItem) {
-        audioPlayer.src = currentMediaItem.audio;
-        audioPlayer.play();
-        hideSelectionModal();
-      }
+  document.getElementById('play-audio-btn').addEventListener('click', () => {
+  if (currentMediaItem) {
+    audioPlayer.src = currentMediaItem.audio; // Ensure this path is correct
+    audioPlayer.play().catch(error => {
+      console.error('Error playing audio:', error);
+      alert('Unable to play audio. Please check your browser settings.');
     });
+    hideSelectionModal();
+  }
+});
+  console.log(currentMediaItem.audio);
 
     document.getElementById('download-audio-btn').addEventListener('click', () => {
       if (currentMediaItem) {
