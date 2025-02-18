@@ -299,15 +299,23 @@
         margin-bottom: 1rem;
       }
     }
-    .sidebar {
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px; /* Adjust as needed */
+}
+
+.media-list {
+  flex: 1; /* Takes available space */
+  margin-right: 20px; /* Space between media list and sidebar */
+}
+
+.sidebar {
   background: var(--card-bg);
   color: var(--text);
   padding: 1rem;
   border-radius: 8px;
-  width: 300px;
-  position: fixed;
-  right: 20px;
-  top: 100px;
+  width: 300px; /* Fixed width for sidebar */
   height: auto;
   max-height: 80vh;
   overflow-y: auto;
@@ -326,17 +334,11 @@
 
 .sidebar ul li {
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center; /* Align images and texts */
 }
 
-.sidebar ul li a {
-  color: var(--text);
-  text-decoration: none;
-}
-
-.sidebar ul li a:hover {
-  color: var(--primary);
-}
-    .sidebar-cover {
+.sidebar-cover {
   width: 50px;
   height: 50px;
   border-radius: 5px;
@@ -358,15 +360,16 @@
     </div>
   </section>
 
+ <div class="container">
   <div class="media-list" id="media-container"></div>
- 
-
-<!-- Sidebar -->
-<div class="sidebar">
-  <h4>Trending Songs</h4>
-  <ul id="trending-songs"></ul>
-  <h4>Most Searched Songs</h4>
-  <ul id="most-searched-songs"></ul>
+  
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h4>Trending Songs</h4>
+    <ul id="trending-songs"></ul>
+    <h4>Most Searched Songs</h4>
+    <ul id="most-searched-songs"></ul>
+  </div>
 </div>
 
 <div class="player-controls" id="player-controls">
