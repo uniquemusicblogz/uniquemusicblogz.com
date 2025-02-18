@@ -671,13 +671,6 @@ document.querySelectorAll('.media-card').forEach((card, idx) => {
     showSelectionModal(); // This will show the modal for options like download or play
   });
 });
-      document.querySelectorAll('.media-card').forEach((card, idx) => {
-        card.addEventListener('click', () => {
-          card.classList.add('loading');
-          currentMediaItem = mediaData[idx];
-          showSelectionModal();
-        });
-      });
     }
 
     function showSelectionModal() {
