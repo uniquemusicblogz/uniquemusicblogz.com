@@ -336,6 +336,13 @@
 .sidebar ul li a:hover {
   color: var(--primary);
 }
+    .sidebar-cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
   </style>
 </head>
 <body>
@@ -780,7 +787,7 @@ function hideVideoModal() {
     });
 
     renderMedia(mediaData);
-  const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
+const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
 const mostSearchedSongs = mediaData.slice(5, 10); // Example: Next 5 items
 
 function renderSidebar() {
@@ -788,11 +795,17 @@ function renderSidebar() {
   const searchedContainer = document.getElementById('most-searched-songs');
 
   trendingContainer.innerHTML = trendingSongs.map(item => `
-    <li><a href="#">${item.title} - ${item.artist}</a></li>
+    <li>
+      <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+      <a href="#">${item.title} - ${item.artist}</a>
+    </li>
   `).join('');
 
   searchedContainer.innerHTML = mostSearchedSongs.map(item => `
-    <li><a href="#">${item.title} - ${item.artist}</a></li>
+    <li>
+      <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+      <a href="#">${item.title} - ${item.artist}</a>
+    </li>
   `).join('');
 }
 
