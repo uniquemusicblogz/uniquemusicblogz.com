@@ -30,6 +30,91 @@
       justify-content: space-between;
       align-items: center;
     }
+
+    #topnav {
+            background-color: orange;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #topnav a {
+            color: black;
+            padding: 10px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        #topnav a:hover {
+            color: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 95%;
+        }
+
+        .content {
+            flex: 3;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .quote-item {
+            margin: 10px 0;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: white;
+            transition: background-color 0.3s;
+        }
+
+        .quote-item.dark {
+            background-color: #3a3a3a;
+            border-color: #555;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff8c00;
+            transform: scale(1.2);
+        }
     .logo a {
       font-size: 1.8rem;
       font-weight: bold;
