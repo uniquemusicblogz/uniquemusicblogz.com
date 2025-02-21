@@ -1,0 +1,309 @@
+<!DOCTYPE html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="keywords" content="unique, uniquemusicblog.com, videos, unique music, zambian mp3, unique mobile" />
+  <title>Unique Music Blogz - Videos</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style>
+    :root {
+      --primary: #FF6B6B;
+      --bg: #1a1a1a;
+      --card-bg: #2d2d2d;
+      --text: #ffffff;
+    }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    .navbar {
+      background: var(--card-bg);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    #topnav {
+      background-color: orange;
+      border-radius: 5px;
+      padding: 10px;
+      margin: 20px auto;
+      width: 90%;
+      display: flex;
+      justify-content: space-around;
+    }
+    #topnav a {
+      color: black;
+      padding: 10px;
+      text-decoration: none;
+      transition: transform 0.3s;
+    }
+    #topnav a:hover {
+      color: #ff8c00;
+      transform: translateY(-2px);
+    }
+    .main-content {
+      flex: 1;
+      display: flex;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 95%;
+    }
+    .content {
+      flex: 3;
+    }
+    .sidebar {
+      flex: 1;
+      padding: 10px;
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .media-card {
+      background: var(--card-bg);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      margin: 10px 0;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+    .media-card:hover {
+      background: #3a3a3a;
+    }
+    .media-cover {
+      width: 120px;
+      height: 80px;
+      border-radius: 5px;
+      object-fit: cover;
+      margin-right: 1rem;
+      background-color: var(--bg);
+    }
+    .media-info {
+      flex: 1;
+    }
+    .media-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+    }
+    .media-artist {
+      color: #aaa;
+      font-size: 0.9rem;
+      margin-bottom: 0.3rem;
+    }
+    .player-controls {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--card-bg);
+      padding: 0.5rem 1rem;
+      box-shadow: 0 -2px 8px rgba(0, 0, 0, 0.5);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    .player-controls video {
+      width: 100%;
+      max-width: 800px;
+    }
+    footer {
+      background-color: #333;
+      color: white;
+      text-align: center;
+      padding: 20px;
+      width: 100%;
+      margin-top: auto;
+    }
+    .media-modal {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0,0,0,0.8);
+    }
+    .modal-content {
+      background-color: var(--card-bg);
+      margin: 10% auto;
+      padding: 20px;
+      border: 1px solid var(--primary);
+      width: 50%;
+      max-width: 500px;
+      border-radius: 8px;
+      color: var(--text);
+      text-align: center;
+    }
+    .close {
+      float: right;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    @media (max-width: 768px) {
+      .navbar {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <header>
+      <a href="index.html" class="logo-container">
+          <img src="unique logo.jpg" alt="Unique Music Blog Logo" class="logo">
+      </a>
+    </header>
+  </nav>
+  <nav id="topnav">
+      <a href="index.html"><i class="fas fa-home"></i> Home</a>
+      <a href="audio.html"><i class="fas fa-music"></i> Audios</a>
+      <a href="videos.html" class="active"><i class="fas fa-video"></i> Videos</a>
+      <a href="lyrics.html"><i class="fas fa-headphones"></i> Lyrics</a>
+      <a href="gospel.html"><i class="fas fa-church"></i> Gospel</a>
+      <a href="motivational.html"><i class="fas fa-comment-dots"></i> Quotes</a>
+  </nav>
+  
+  <section class="main-content">
+    <div class="content" id="video-container"></div>
+    <div class="sidebar">
+      <h4>Trending Videos</h4>
+      <ul id="trending-videos"></ul>
+      <h4>Most Searched Videos</h4>
+      <ul id="most-searched-videos"></ul>
+    </div>
+  </section>
+
+  <div id="video-modal" class="media-modal">
+    <div class="modal-content">
+      <span class="close" id="video-close">&times;</span>
+      <video id="video-player" controls style="width:100%; max-width:500px;"></video>
+    </div>
+  </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+          <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>
+        Copyright &copy; 2023 - <script>document.write(new Date().getFullYear())</script>
+        | All rights Reserved | <a style="color: orange;" href="index.html">Unique Music Blog</a> | Proudly designed by
+        <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a>
+      </p>
+    </div>
+  </footer>
+
+<script>
+  const videoData = [
+    {
+      title: "Music Video 1",
+      artist: "Artist 1",
+      cover: "cover1.jpg",
+      video: "video1.mp4"
+    },
+    {
+      title: "Music Video 2",
+      artist: "Artist 2",
+      cover: "cover2.jpg",
+      video: "video2.mp4"
+    },
+    {
+      title: "Music Video 3",
+      artist: "Artist 3",
+      cover: "cover3.jpg",
+      video: "video3.mp4"
+    },
+    // Add more video objects as needed
+  ];
+
+  function renderVideos(items) {
+    const container = document.getElementById('video-container');
+    container.innerHTML = items.map((item, index) => `
+      <div class="media-card" data-index="${index}" onclick="showVideoModal('${item.video}')">
+        <img src="${item.cover}" class="media-cover">
+        <div class="media-info">
+          <div class="media-title">${item.title}</div>
+          <div class="media-artist">${item.artist}</div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  function showVideoModal(videoSrc) {
+    const localPlayer = document.getElementById('video-player');
+    localPlayer.src = videoSrc;
+    document.getElementById('video-modal').style.display = "block";
+  }
+
+  function hideVideoModal() {
+    const localPlayer = document.getElementById('video-player');
+    localPlayer.pause();
+    localPlayer.src = '';
+    document.getElementById('video-modal').style.display = "none";
+  }
+
+  document.getElementById('video-close').addEventListener('click', hideVideoModal);
+
+  // Call to render videos
+  renderVideos(videoData);
+
+  // Example trending and most searched videos
+  const trendingVideos = videoData.slice(0, 3); // Example: Top 3 items
+  const mostSearchedVideos = videoData.slice(3, 6); // Example: Next 3 items
+
+  function renderSidebar() {
+    const trendingContainer = document.getElementById('trending-videos');
+    const searchedContainer = document.getElementById('most-searched-videos');
+
+    trendingContainer.innerHTML = trendingVideos.map(item => `
+      <li>
+        <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+        <a href="#">${item.title} - ${item.artist}</a>
+      </li>
+    `).join('');
+
+    searchedContainer.innerHTML = mostSearchedVideos.map(item => `
+      <li>
+        <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+        <a href="#">${item.title} - ${item.artist}</a>
+      </li>
+    `).join('');
+  }
+
+  renderSidebar();
+</script>
+</body>
+</html>
