@@ -503,6 +503,17 @@ footer {
   margin-right: 10px;
   vertical-align: middle;
 }
+    .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
     
   </style>
 </head>
@@ -527,7 +538,10 @@ footer {
     <h3>Search for your favorite music</h3>
     <div class="search-bar">
       <input type="text" placeholder="Search songs, artists..." id="search-input" />
-      <button id="search-btn"><i class="fas fa-search"></i></button>
+<button id="search-btn">
+  <i class="fas fa-search"></i>
+  <span class="sr-only">Search</span>
+</button>
     </div>
   </section>
 
