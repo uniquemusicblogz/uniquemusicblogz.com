@@ -648,7 +648,8 @@ audio::-webkit-media-controls-volume-slider {
     <div class="modal-content">
       <span class="close" id="video-close">&times;</span>
       <!-- In your video-modal div -->
-<video id="video-player" controls playsinline style="width:100%">
+<!-- Change video element to: -->
+<video id="video-player" controls style="width:100%; max-width:500px;">
   <source src="" type="video/mp4">
   Your browser does not support HTML5 video.
 </video>
@@ -687,14 +688,16 @@ audio::-webkit-media-controls-volume-slider {
   </footer>
 
   <script>
-    
+  // Add at top of script section
+const CORS_PROXY = "https://corsproxy.io/?";  
     const mediaData = [
       {
         title: "Crazy",
         artist: "Nasty C",
         cover: "b3.jpg", // Ensure the path is correct
         audio: "Nasty C - Crazy.mp3",
-        video: "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+        // Modify video paths to use proxy:
+       video: `${CORS_PROXY}https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Dax - To Be A Man.mp4`,
         duration: "02:38"
       },
       {
@@ -702,7 +705,7 @@ audio::-webkit-media-controls-volume-slider {
         artist: "Yo maps",
         cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp", // Ensure the path is correct
         audio: "Yo maps - Ngate ba Yaweh.mp3",
-        video: "",
+        video: `${CORS_PROXY}https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Dax - To Be A Man.mp4`,
         duration: "4:20"
       },
        {
@@ -710,7 +713,7 @@ audio::-webkit-media-controls-volume-slider {
     artist: "ALI GATIE",
     cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+3",
     audio: "Yo maps - Ngate ba Yaweh.mp3",
-    video: "https://github.com/uniquemusicblogz/uniquemusicblogz.com/blob/main/ali_gatie_light_my_world_official_lyric_video_h264_79129.mp4",
+    video: "https://github.com/uniquemusicblogz/uniquemusicblogz.com/main/ali_gatie_light_my_world_official_lyric_video_h264_79129.mp4",
     duration: "3:55"
   },
   {
@@ -985,29 +988,35 @@ audioPlayer.addEventListener('timeupdate', () => {
   }
 });
     // Add this video play handler
+// Replace your video play handler with this:
 document.getElementById('play-video-btn').addEventListener('click', async () => {
   if (!currentMediaItem?.video) return;
 
   const videoPlayer = document.getElementById('video-player');
   const source = videoPlayer.querySelector('source');
   
-  // Reset player
+  // Full reset
   videoPlayer.pause();
   source.src = currentMediaItem.video;
   videoPlayer.load();
 
   try {
-    await videoPlayer.play();
+    await new Promise((resolve, reject) => {
+      videoPlayer.addEventListener('loadeddata', resolve);
+      videoPlayer.addEventListener('error', reject);
+    });
+    
     hideSelectionModal();
-    showVideoModal();
+    document.getElementById('video-modal').style.display = "block";
+    await videoPlayer.play();
   } catch (error) {
     console.error('Video Error:', {
-      Code: videoPlayer.error?.code,
-      Message: videoPlayer.error?.message,
-      ReadyState: videoPlayer.readyState,
-      NetworkState: videoPlayer.networkState
+      code: videoPlayer.error?.code,
+      message: videoPlayer.error?.message,
+      src: source.src
     });
-    alert(`Video Error: ${videoPlayer.error?.message || 'Check browser console'}`);
+    alert(`Video Error: ${videoPlayer.error?.message || 'Check console'}`);
+    hideVideoModal();
   }
 });
 
