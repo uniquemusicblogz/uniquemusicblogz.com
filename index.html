@@ -207,7 +207,10 @@ footer {
   gap: 1rem;
   padding: 0 1rem;
 }
-
+.media-list {
+  min-height: 500px;
+  position: relative;
+}
 .media-card {
   background: var(--card-bg);
   border-radius: 8px;
@@ -600,6 +603,7 @@ footer {
   </footer>
 
   <script>
+    
     const mediaData = [
       {
         title: "Crazy",
@@ -817,10 +821,11 @@ function renderMedia(items) {
     card.addEventListener('click', () => {
       card.classList.add('loading');
       currentMediaItem = mediaData[idx];
-      showSelectionModal(); // Show the modal for options
+      showSelectionModal();
     });
   });
 }
+    
 
 function showSelectionModal() {
   document.getElementById('media-modal').style.display = "block";
@@ -848,23 +853,27 @@ document.getElementById('video-close').addEventListener('click', hideVideoModal)
 document.getElementById('modal-close').addEventListener('click', hideSelectionModal);
 
 // Audio play event
-audioPlayer.addEventListener('play', () => {
-  document.querySelector('.media-card.loading')?.classList.remove('loading');
-});
-
-// Play audio button
 document.getElementById('play-audio-btn').addEventListener('click', () => {
   if (currentMediaItem) {
     const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
-
-    // Show loading animation
     mediaCard.classList.add('loading');
-
-    audioPlayer.src = currentMediaItem.audio; // Ensure this path is correct
-    audioPlayer.load(); // Load the audio
-
     
+    audioPlayer.src = currentMediaItem.audio;
+    audioPlayer.load();
+    
+    audioPlayer.addEventListener('canplaythrough', () => {
+      mediaCard.classList.remove('loading');
+      audioPlayer.play();
+      hideSelectionModal();
+    }, { once: true });
+    
+    audioPlayer.addEventListener('error', () => {
+      mediaCard.classList.remove('loading');
+      alert('Error loading audio');
     });
+  }
+});
+
 
     
   }
