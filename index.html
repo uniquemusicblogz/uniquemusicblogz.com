@@ -985,26 +985,31 @@ audioPlayer.addEventListener('timeupdate', () => {
   }
 });
     // Add this video play handler
-document.getElementById('play-video-btn').addEventListener('click', () => {
-  if (currentMediaItem && currentMediaItem.video) {
-    const videoPlayer = document.getElementById('video-player');
-    videoPlayer.src = currentMediaItem.video;
-    
-    videoPlayer.addEventListener('error', () => {
-  alert('Error loading video - check file path/format');
-});
-    videoPlayer.load();
+document.getElementById('play-video-btn').addEventListener('click', async () => {
+  if (!currentMediaItem?.video) return;
+
+  const videoPlayer = document.getElementById('video-player');
+  const source = videoPlayer.querySelector('source');
+  
+  // Reset player
+  videoPlayer.pause();
+  source.src = currentMediaItem.video;
+  videoPlayer.load();
+
+  try {
+    await videoPlayer.play();
     hideSelectionModal();
     showVideoModal();
-    
-    videoPlayer.addEventListener('canplaythrough', () => {
-      videoPlayer.play();
-    }, { once: true });
-  } else {
-    alert('Video not available for this track');
+  } catch (error) {
+    console.error('Video Error:', {
+      Code: videoPlayer.error?.code,
+      Message: videoPlayer.error?.message,
+      ReadyState: videoPlayer.readyState,
+      NetworkState: videoPlayer.networkState
+    });
+    alert(`Video Error: ${videoPlayer.error?.message || 'Check browser console'}`);
   }
 });
-
 
 // <─ THIS CLOSING BRACKET WAS MISSING
 
