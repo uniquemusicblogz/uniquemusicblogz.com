@@ -945,9 +945,14 @@ document.getElementById('play-audio-btn').addEventListener('click', () => {
   }
 }); 
 audioPlayer.addEventListener('timeupdate', () => {
-  const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`)
-    .style.setProperty('--duration', `${audioPlayer.duration - audioPlayer.currentTime}s`);
+  if (currentMediaItem && !isNaN(audioPlayer.duration)) {
+    const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+    const card = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
+    
+    if (card) {
+      card.style.setProperty('--progress', `${progress}%`);
+    }
+  }
 });
 
 
