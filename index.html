@@ -863,13 +863,10 @@ document.getElementById('play-audio-btn').addEventListener('click', () => {
     audioPlayer.src = currentMediaItem.audio; // Ensure this path is correct
     audioPlayer.load(); // Load the audio
 
-    audioPlayer.play().catch(error => {
-      console.error('Error playing audio:', error);
-      alert('Unable to play audio. Please check your browser settings.');
+    
     });
 
-    // Hide modal after starting playback
-    hideSelectionModal();
+    
   }
 });
 
@@ -878,7 +875,8 @@ audioPlayer.addEventListener('canplaythrough', () => {
   const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
   mediaCard.classList.remove('loading'); // Hide loading animation
 });
-    
+  // Hide modal after starting playback
+    hideSelectionModal();  
   }
 });
 
