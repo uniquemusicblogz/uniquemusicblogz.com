@@ -470,7 +470,7 @@ footer {
   margin-right: 10px;
   vertical-align: middle;
 }
-    /* Additional styles omitted for brevity... */
+    
   </style>
 </head>
 <body>
@@ -829,7 +829,30 @@ footer {
         hideSelectionModal();
       }
     });
+  renderMedia(mediaData);
+const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
+const mostSearchedSongs = mediaData.slice(5, 10); // Example: Next 5 items
 
+function renderSidebar() {
+  const trendingContainer = document.getElementById('trending-songs');
+  const searchedContainer = document.getElementById('most-searched-songs');
+
+  trendingContainer.innerHTML = trendingSongs.map(item => `
+    <li>
+      <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+      <a href="#">${item.title} - ${item.artist}</a>
+    </li>
+  `).join('');
+
+  searchedContainer.innerHTML = mostSearchedSongs.map(item => `
+    <li>
+      <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+      <a href="#">${item.title} - ${item.artist}</a>
+    </li>
+  `).join('');
+}
+
+renderSidebar();
     renderMedia(mediaData);
   </script>
 </body>
