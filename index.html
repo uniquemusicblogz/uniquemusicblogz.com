@@ -861,26 +861,13 @@ document.getElementById('play-audio-btn').addEventListener('click', () => {
     audioPlayer.src = currentMediaItem.audio;
     audioPlayer.load();
     
-    audioPlayer.addEventListener('canplaythrough', () => {
-      mediaCard.classList.remove('loading');
-      audioPlayer.play();
-      hideSelectionModal();
-    }, { once: true });
-    
-    audioPlayer.addEventListener('error', () => {
-      mediaCard.classList.remove('loading');
-      alert('Error loading audio');
-    });
+  });
+}
+                                                           });
+                                                      
   
 
 
-  
-
-// Add an event listener to remove loading state when the audio is ready to play
-audioPlayer.addEventListener('canplaythrough', () => {
-  const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
-  mediaCard.classList.remove('loading'); // Hide loading animation
-});
   
 
 // Trending and most searched songs
