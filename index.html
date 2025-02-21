@@ -697,7 +697,7 @@ const CORS_PROXY = "https://corsproxy.io/?";
         cover: "b3.jpg", // Ensure the path is correct
         audio: "Nasty C - Crazy.mp3",
         // Modify video paths to use proxy:
-       video: `${CORS_PROXY}https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Dax - To Be A Man.mp4`,
+       video:"https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Dax%20-%20To%20Be%20A%20Man.mp4",
         duration: "02:38"
       },
       {
@@ -995,12 +995,16 @@ document.getElementById('play-video-btn').addEventListener('click', async () => 
   const videoPlayer = document.getElementById('video-player');
   const source = videoPlayer.querySelector('source');
   
-  // Full reset
-  videoPlayer.pause();
-  source.src = currentMediaItem.video;
-  videoPlayer.load();
+  // Show loading state
+  const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
+  mediaCard.classList.add('loading');
 
   try {
+    // Reset and load new source
+    videoPlayer.pause();
+    source.src = currentMediaItem.video;
+    videoPlayer.load();
+
     await new Promise((resolve, reject) => {
       videoPlayer.addEventListener('loadeddata', resolve);
       videoPlayer.addEventListener('error', reject);
@@ -1009,17 +1013,18 @@ document.getElementById('play-video-btn').addEventListener('click', async () => 
     hideSelectionModal();
     document.getElementById('video-modal').style.display = "block";
     await videoPlayer.play();
+    mediaCard.classList.remove('loading');
   } catch (error) {
+    mediaCard.classList.remove('loading');
     console.error('Video Error:', {
       code: videoPlayer.error?.code,
       message: videoPlayer.error?.message,
       src: source.src
     });
-    alert(`Video Error: ${videoPlayer.error?.message || 'Check console'}`);
+    alert(`Video Error: ${videoPlayer.error?.message || 'Check browser console'}`);
     hideVideoModal();
   }
 });
-
 // <─ THIS CLOSING BRACKET WAS MISSING
 
 
