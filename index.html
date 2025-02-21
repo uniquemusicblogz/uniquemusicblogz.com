@@ -942,9 +942,16 @@ function showVideoModal(videoSrc) {
 }
 
 function hideVideoModal() {
-  const localPlayer = document.getElementById('video-player');
-  localPlayer.pause();
-  localPlayer.src = '';
+  const videoPlayer = document.getElementById('video-player');
+  const source = videoPlayer.querySelector('source');
+  
+  // Properly reset video elements
+  videoPlayer.pause();
+  videoPlayer.currentTime = 0;
+  source.src = '';
+  videoPlayer.src = '';
+  videoPlayer.load();
+  
   document.getElementById('video-modal').style.display = "none";
 }
 
@@ -994,34 +1001,29 @@ document.getElementById('play-video-btn').addEventListener('click', async () => 
 
   const videoPlayer = document.getElementById('video-player');
   const source = videoPlayer.querySelector('source');
-  
-  // Show loading state
   const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
+
+  // Reset previous state
+  hideVideoModal();
   mediaCard.classList.add('loading');
 
   try {
-    // Reset and load new source
-    videoPlayer.pause();
+    // Set new source
     source.src = currentMediaItem.video;
     videoPlayer.load();
-
+    
     await new Promise((resolve, reject) => {
       videoPlayer.addEventListener('loadeddata', resolve);
       videoPlayer.addEventListener('error', reject);
     });
-    
-    hideSelectionModal();
+
     document.getElementById('video-modal').style.display = "block";
     await videoPlayer.play();
+    hideSelectionModal();
     mediaCard.classList.remove('loading');
   } catch (error) {
     mediaCard.classList.remove('loading');
-    console.error('Video Error:', {
-      code: videoPlayer.error?.code,
-      message: videoPlayer.error?.message,
-      src: source.src
-    });
-    alert(`Video Error: ${videoPlayer.error?.message || 'Check browser console'}`);
+    alert(`Video Error: ${videoPlayer.error?.message || 'Failed to load video'}`);
     hideVideoModal();
   }
 });
