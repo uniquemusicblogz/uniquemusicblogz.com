@@ -874,9 +874,7 @@ const videoPlayer = document.getElementById('video-player');
 
 function renderMedia(items) {
   const container = document.getElementById('media-container');
-  container.innerHTML = items.map((item, index) => `
-    // Update your renderMedia function template to:
-`
+  container.innerHTML = items.map((item, index) => 
 <div class="media-card" data-index="${index}">
   <div class="loading-spinner"></div>
   <img src="${item.cover}" class="media-cover" alt="${item.title} Cover">
