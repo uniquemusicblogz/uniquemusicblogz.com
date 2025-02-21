@@ -179,6 +179,25 @@ footer {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+    .media-card.loading {
+  opacity: 0.5; /* Dim the card */
+  pointer-events: none; /* Disable interactions */
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3; /* Light grey background */
+  border-top: 4px solid #3498db; /* Blue color for the spinner */
+  border-radius: 50%; /* Make it round */
+  width: 30px; /* Size of the spinner */
+  height: 30px; /* Size of the spinner */
+  animation: spin 1s linear infinite; /* Animation */
+  display: inline-block; /* Show inline */
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .media-list {
   max-width: 1200px;
@@ -778,70 +797,74 @@ footer {
     ];
 
     let currentMediaItem = null;
-    const audioPlayer = document.getElementById('audio-player');
-    const videoPlayer = document.getElementById('video-player');
+const audioPlayer = document.getElementById('audio-player');
+const videoPlayer = document.getElementById('video-player');
 
-    function renderMedia(items) {
-      const container = document.getElementById('media-container');
-      container.innerHTML = items.map((item, index) => `
-        <div class="media-card" data-index="${index}">
-          <img src="${item.cover}" class="media-cover" alt="${item.title} Cover">
-          <div class="media-info">
-            <div class="media-title">${item.title}</div>
-            <div class="media-artist">${item.artist}</div>
-            <div class="media-duration">${item.duration}</div>
-          </div>
-        </div>
-      `).join('');
-      
-      document.querySelectorAll('.media-card').forEach((card, idx) => {
-        card.addEventListener('click', () => {
-          card.classList.add('loading');
-          currentMediaItem = mediaData[idx];
-          showSelectionModal(); // Show the modal for options
-        });
-      });
-    }
+function renderMedia(items) {
+  const container = document.getElementById('media-container');
+  container.innerHTML = items.map((item, index) => `
+    <div class="media-card" data-index="${index}">
+      <img src="${item.cover}" class="media-cover" alt="${item.title} Cover">
+      <div class="media-info">
+        <div class="media-title">${item.title}</div>
+        <div class="media-artist">${item.artist}</div>
+        <div class="media-duration">${item.duration}</div>
+      </div>
+    </div>
+  `).join('');
 
-    function showSelectionModal() {
-      document.getElementById('media-modal').style.display = "block";
-    }
-
-    function hideSelectionModal() {
-      document.getElementById('media-modal').style.display = "none";
-    }
-
-    function showVideoModal(videoSrc) {
-      const localPlayer = document.getElementById('video-player');
-      localPlayer.src = videoSrc;
-      document.getElementById('video-modal').style.display = "block";
-    }
-
-    function hideVideoModal() {
-      const localPlayer = document.getElementById('video-player');
-      localPlayer.pause();
-      localPlayer.src = '';
-      document.getElementById('video-modal').style.display = "none";
-    }
-
-    document.getElementById('video-close').addEventListener('click', hideVideoModal);
-    document.getElementById('modal-close').addEventListener('click', hideSelectionModal);
-
-    audioPlayer.addEventListener('play', () => {
-      document.querySelector('.media-card.loading')?.classList.remove('loading');
+  document.querySelectorAll('.media-card').forEach((card, idx) => {
+    card.addEventListener('click', () => {
+      card.classList.add('loading');
+      currentMediaItem = mediaData[idx];
+      showSelectionModal(); // Show the modal for options
     });
+  });
+}
 
-    document.getElementById('play-audio-btn').addEventListener('click', () => {
-      if (currentMediaItem) {
-        audioPlayer.src = currentMediaItem.audio; // Ensure this path is correct
-        audioPlayer.play().catch(error => {
-          console.error('Error playing audio:', error);
-          alert('Unable to play audio. Please check your browser settings.');
-        });
-        hideSelectionModal();
-      }
+function showSelectionModal() {
+  document.getElementById('media-modal').style.display = "block";
+}
+
+function hideSelectionModal() {
+  document.getElementById('media-modal').style.display = "none";
+}
+
+function showVideoModal(videoSrc) {
+  const localPlayer = document.getElementById('video-player');
+  localPlayer.src = videoSrc;
+  document.getElementById('video-modal').style.display = "block";
+}
+
+function hideVideoModal() {
+  const localPlayer = document.getElementById('video-player');
+  localPlayer.pause();
+  localPlayer.src = '';
+  document.getElementById('video-modal').style.display = "none";
+}
+
+// Close modal event listeners
+document.getElementById('video-close').addEventListener('click', hideVideoModal);
+document.getElementById('modal-close').addEventListener('click', hideSelectionModal);
+
+// Audio play event
+audioPlayer.addEventListener('play', () => {
+  document.querySelector('.media-card.loading')?.classList.remove('loading');
+});
+
+// Play audio button
+document.getElementById('play-audio-btn').addEventListener('click', () => {
+  if (currentMediaItem) {
+    audioPlayer.src = currentMediaItem.audio; // Ensure this path is correct
+    audioPlayer.play().catch(error => {
+      console.error('Error playing audio:', error);
+      alert('Unable to play audio. Please check your browser settings.');
     });
-  renderMedia(mediaData);
+    hideSelectionModal();
+  }
+});
+
+// Trending and most searched songs
 const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
 const mostSearchedSongs = mediaData.slice(5, 10); // Example: Next 5 items
 
@@ -864,8 +887,9 @@ function renderSidebar() {
   `).join('');
 }
 
+// Initial render calls
 renderSidebar();
-    renderMedia(mediaData);
+renderMedia(mediaData);
   </script>
 </body>
 </html>
