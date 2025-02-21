@@ -506,22 +506,15 @@
 
   <div id="video-modal" class="media-modal">
     <div class="modal-content">
-      <span class="close" id="video-close">&times;</span>
-      <video id="video-player" controls style="width:100%; max-width:500px;"></video>
+        <span class="close" id="video-close">&times;</span>
+        <video id="video-player" controls style="width:100%; max-width:500px;"></video>
     </div>
   </div>
   <div id="video-modal" class="media-modal">
   <div class="modal-content">
     <span class="close" id="video-close">&times;</span>
     
-    <div>
-
-    
-    <!-- Existing Local Player -->
-    <video id="local-video-player" controls style="width:100%; max-width:500px;"></video>
-  </div>
-    </div>
-
+   
   <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-section">
@@ -786,35 +779,21 @@ document.querySelectorAll('.media-card').forEach((card, idx) => {
       document.getElementById('media-modal').style.display = "none";
     }
 
-    function showVideoModal(videoSrc) {
-  const youtubePlayer = document.getElementById('youtube-player');
-  const localPlayer = document.getElementById('local-video-player');
-
-  if(videoSrc.includes('youtube')) {
-    // Handle YouTube
-    youtubePlayer.style.display = 'block';
-    localPlayer.style.display = 'none';
-    youtubePlayer.src = videoSrc + '?autoplay=1';
-  } else {
-    // Handle Local Files
-    youtubePlayer.style.display = 'none';
-    localPlayer.style.display = 'block';
+   function showVideoModal(videoSrc) {
+    const localPlayer = document.getElementById('video-player');
     localPlayer.src = videoSrc;
-  }
-  
-  document.getElementById('video-modal').style.display = "block";
+    document.getElementById('video-modal').style.display = "block";
 }
 
 function hideVideoModal() {
-  const youtubePlayer = document.getElementById('youtube-player');
-  const localPlayer = document.getElementById('local-video-player');
-  
-  youtubePlayer.src = '';
-  localPlayer.pause();
-  localPlayer.src = '';
-  document.getElementById('video-modal').style.display = "none";
+    const localPlayer = document.getElementById('video-player');
+    localPlayer.pause();
+    localPlayer.src = '';
+    document.getElementById('video-modal').style.display = "none";
 }
 
+// Event listeners for closing the video modal
+document.getElementById('video-close').addEventListener('click', hideVideoModal);
     function clearLoading() {
       document.querySelector('.media-card.loading')?.classList.remove('loading');
     }
