@@ -37,9 +37,10 @@ body {
   border-radius: 5px;
   padding: 10px;
   margin: 20px auto;
-  width: 90%;
+  width: 100%;
   display: flex;
   justify-content: space-around;
+   flex-wrap: wrap; /* Allow items to wrap */
 }
 
 #topnav a {
@@ -47,6 +48,8 @@ body {
   padding: 10px;
   text-decoration: none;
   transition: transform 0.3s;
+   flex: 1 1 auto; /* Allow flexibility and wrapping */
+  text-align: center; /* Center the text */
 }
 
 #topnav a:hover {
@@ -400,6 +403,10 @@ footer {
   .navbar {
     flex-direction: column;
     text-align: center;
+     #topnav a {
+    font-size: 0.9rem; /* Adjust font size for smaller screens */
+    padding: 5px; /* Reduce padding for more space */
+  }
   }
   .hero h1 {
     font-size: 1.8rem;
