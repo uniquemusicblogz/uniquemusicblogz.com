@@ -895,7 +895,16 @@ function renderMedia(items) {
   });
 }
     
+// Add this code after your existing modal event listeners
+document.querySelectorAll('#media-modal button').forEach(button => {
+  button.addEventListener('click', hideSelectionModal);
+});
 
+// Or specifically for each button
+document.getElementById('play-audio-btn').addEventListener('click', hideSelectionModal);
+document.getElementById('download-audio-btn').addEventListener('click', hideSelectionModal);
+document.getElementById('play-video-btn').addEventListener('click', hideSelectionModal);
+document.getElementById('download-video-btn').addEventListener('click', hideSelectionModal);
 function showSelectionModal() {
   document.getElementById('media-modal').style.display = "block";
 }
