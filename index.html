@@ -899,11 +899,14 @@ function renderMedia(items) {
   `).join('');
 
   document.querySelectorAll('.media-card').forEach((card, idx) => {
-    card.addEventListener('click', () => {
-      card.classList.add('loading');
-      currentMediaItem = mediaData[idx];
-      showSelectionModal();
-    });
+   card.addEventListener('click', () => {
+  // Add this line to clear previous states
+  document.querySelectorAll('.media-card').forEach(c => c.classList.remove('loading'));
+  
+  card.classList.add('loading');
+  currentMediaItem = mediaData[idx];
+  showSelectionModal();
+});
   });
 }
     
@@ -947,7 +950,11 @@ document.getElementById('play-audio-btn').addEventListener('click', () => {
   if (currentMediaItem) {
     const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
     mediaCard.classList.add('loading');
-    
+   // Add these reset lines
+  audioPlayer.pause();
+  audioPlayer.src = '';
+  audioPlayer.load();
+ 
     audioPlayer.src = currentMediaItem.audio;
     audioPlayer.load();
     
