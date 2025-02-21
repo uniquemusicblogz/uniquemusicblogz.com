@@ -647,7 +647,10 @@ audio::-webkit-media-controls-volume-slider {
   <div id="video-modal" class="media-modal">
     <div class="modal-content">
       <span class="close" id="video-close">&times;</span>
-      <video id="video-player" controls style="width:100%; max-width:500px;"></video>
+      <!-- In your video-modal div -->
+<video id="video-player" controls autoplay style="width:100%; max-width:500px;">
+  Your browser does not support the video tag.
+</video>
     </div>
   </div>
 
@@ -985,6 +988,10 @@ document.getElementById('play-video-btn').addEventListener('click', () => {
   if (currentMediaItem && currentMediaItem.video) {
     const videoPlayer = document.getElementById('video-player');
     videoPlayer.src = currentMediaItem.video;
+    
+    videoPlayer.addEventListener('error', () => {
+  alert('Error loading video - check file path/format');
+});
     videoPlayer.load();
     hideSelectionModal();
     showVideoModal();
