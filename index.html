@@ -855,12 +855,30 @@ audioPlayer.addEventListener('play', () => {
 // Play audio button
 document.getElementById('play-audio-btn').addEventListener('click', () => {
   if (currentMediaItem) {
+    const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
+
+    // Show loading animation
+    mediaCard.classList.add('loading');
+
     audioPlayer.src = currentMediaItem.audio; // Ensure this path is correct
+    audioPlayer.load(); // Load the audio
+
     audioPlayer.play().catch(error => {
       console.error('Error playing audio:', error);
       alert('Unable to play audio. Please check your browser settings.');
     });
+
+    // Hide modal after starting playback
     hideSelectionModal();
+  }
+});
+
+// Add an event listener to remove loading state when the audio is ready to play
+audioPlayer.addEventListener('canplaythrough', () => {
+  const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
+  mediaCard.classList.remove('loading'); // Hide loading animation
+});
+    
   }
 });
 
