@@ -78,7 +78,15 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
+#video-modal {
+  display: none;
+}
 
+#video-modal[style*="display: block"] {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
 footer {
   background-color: #333;
   color: white;
@@ -959,6 +967,22 @@ audioPlayer.addEventListener('timeupdate', () => {
     if (card) {
       card.style.setProperty('--progress', `${progress}%`);
     }
+  }
+});
+    // Add this video play handler
+document.getElementById('play-video-btn').addEventListener('click', () => {
+  if (currentMediaItem && currentMediaItem.video) {
+    const videoPlayer = document.getElementById('video-player');
+    videoPlayer.src = currentMediaItem.video;
+    videoPlayer.load();
+    hideSelectionModal();
+    showVideoModal();
+    
+    videoPlayer.addEventListener('canplaythrough', () => {
+      videoPlayer.play();
+    }, { once: true });
+  } else {
+    alert('Video not available for this track');
   }
 });
 
