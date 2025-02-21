@@ -875,14 +875,19 @@ document.getElementById('play-audio-btn').addEventListener('click', () => {
     audioPlayer.src = currentMediaItem.audio;
     audioPlayer.load();
     
+    audioPlayer.addEventListener('canplaythrough', () => {
+      mediaCard.classList.remove('loading');
+      audioPlayer.play();
+      hideSelectionModal();
+    }, { once: true });
+    
+    audioPlayer.addEventListener('error', () => {
+      mediaCard.classList.remove('loading');
+      alert('Error loading audio');
+    });
+  }
+}); // <─ THIS CLOSING BRACKET WAS MISSING
 
-
-                                                           
-                                                      
-  
-
-
-  
 
 // Trending and most searched songs
 const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
