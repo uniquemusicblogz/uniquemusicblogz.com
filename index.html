@@ -797,7 +797,7 @@ footer {
     video: "song24.mp4",
     duration: "3:55"
   }
-      // Add more media items as needed...
+    
     ];
 
     let currentMediaItem = null;
@@ -871,23 +871,17 @@ document.getElementById('play-audio-btn').addEventListener('click', () => {
       mediaCard.classList.remove('loading');
       alert('Error loading audio');
     });
-  }
-});
+  
 
 
-    
-  }
-});
+  
 
 // Add an event listener to remove loading state when the audio is ready to play
 audioPlayer.addEventListener('canplaythrough', () => {
   const mediaCard = document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`);
   mediaCard.classList.remove('loading'); // Hide loading animation
 });
-  // Hide modal after starting playback
-    hideSelectionModal();  
-  }
-});
+  
 
 // Trending and most searched songs
 const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
