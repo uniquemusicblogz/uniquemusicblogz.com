@@ -185,18 +185,25 @@ footer {
 }
 
 .loading-spinner {
-  border: 4px solid #f3f3f3; /* Light grey background */
-  border-top: 4px solid #3498db; /* Blue color for the spinner */
-  border-radius: 50%; /* Make it round */
-  width: 30px; /* Size of the spinner */
-  height: 30px; /* Size of the spinner */
-  animation: spin 1s linear infinite; /* Animation */
-  display: inline-block; /* Show inline */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 40px;
+  height: 40px;
+  border: 4px solid var(--primary);
+  border-radius: 50%;
+  border-top-color: transparent;
+  animation: spin 0.8s linear infinite;
+  display: none;
+}
+
+.media-card.loading .loading-spinner {
+  display: block;
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .media-list {
@@ -223,6 +230,21 @@ footer {
 
 .media-card:hover {
   background: #3a3a3a;
+}
+    .media-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 3px;
+  background: var(--primary);
+  width: 0;
+  transition: width linear;
+}
+
+.media-card[data-playing="true"]::after {
+  width: 100%;
+  transition-duration: var(--duration);
 }
 
 .media-cover {
@@ -272,6 +294,38 @@ footer {
 .player-controls audio {
   width: 70%;
   max-width: 800px;
+}
+    /* Custom audio controls */
+audio {
+  width: 100%;
+  background: var(--card-bg);
+  border-radius: 8px;
+  padding: 10px;
+}
+
+audio::-webkit-media-controls-panel {
+  background: var(--card-bg);
+}
+
+audio::-webkit-media-controls-play-button {
+  background-color: var(--primary);
+  border-radius: 50%;
+}
+
+audio::-webkit-media-controls-timeline {
+  background-color: var(--primary);
+  border-radius: 5px;
+  margin: 0 10px;
+}
+
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display {
+  color: var(--text);
+}
+
+audio::-webkit-media-controls-mute-button,
+audio::-webkit-media-controls-volume-slider {
+  display: none;
 }
 
 .site-footer {
@@ -821,14 +875,17 @@ const videoPlayer = document.getElementById('video-player');
 function renderMedia(items) {
   const container = document.getElementById('media-container');
   container.innerHTML = items.map((item, index) => `
-    <div class="media-card" data-index="${index}">
-      <img src="${item.cover}" class="media-cover" alt="${item.title} Cover">
-      <div class="media-info">
-        <div class="media-title">${item.title}</div>
-        <div class="media-artist">${item.artist}</div>
-        <div class="media-duration">${item.duration}</div>
-      </div>
-    </div>
+    // Update your renderMedia function template to:
+`
+<div class="media-card" data-index="${index}">
+  <div class="loading-spinner"></div>
+  <img src="${item.cover}" class="media-cover" alt="${item.title} Cover">
+  <div class="media-info">
+    <div class="media-title">${item.title}</div>
+    <div class="media-artist">${item.artist}</div>
+    <div class="media-duration">${item.duration}</div>
+  </div>
+</div>
   `).join('');
 
   document.querySelectorAll('.media-card').forEach((card, idx) => {
@@ -886,7 +943,15 @@ document.getElementById('play-audio-btn').addEventListener('click', () => {
       alert('Error loading audio');
     });
   }
-}); // <─ THIS CLOSING BRACKET WAS MISSING
+}); 
+audioPlayer.addEventListener('timeupdate', () => {
+  const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
+  document.querySelector(`.media-card[data-index="${mediaData.indexOf(currentMediaItem)}"]`)
+    .style.setProperty('--duration', `${audioPlayer.duration - audioPlayer.currentTime}s`);
+});
+
+
+// <─ THIS CLOSING BRACKET WAS MISSING
 
 
 // Trending and most searched songs
