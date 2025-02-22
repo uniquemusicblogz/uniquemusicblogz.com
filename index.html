@@ -1,11 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="keywords" content="unique, uniquemusicblog.com, uniquemusicjams, latest unique music unique music, zambian mp3, unique mobile, uniquemusicblogz.com, nice songs, tubidy.net" />
   <title>uniquemusicblog.com</title>
-  <link rel="icon" href="7.ico" type="image/x-icon">
+<link rel="icon" href="7.ico" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
   <style>
     :root {
@@ -32,68 +31,80 @@
       justify-content: space-between;
       align-items: center;
     }
+
     #topnav {
-      background-color: orange;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 20px auto;
-      width: 90%;
-      display: flex;
-      justify-content: space-around;
-    }
-    #topnav a {
-      color: black;
-      padding: 10px;
-      text-decoration: none;
-      transition: transform 0.3s;
-    }
-    #topnav a:hover {
-      color: #ff8c00;
-      transform: translateY(-2px);
-    }
-    .main-content {
-      flex: 1;
-      display: flex;
-      gap: 20px;
-      padding: 20px;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 95%;
-    }
-    .content {
-      flex: 3;
-    }
-    .sidebar {
-      flex: 1;
-      padding: 10px;
-      background-color: var(--card-bg);
-      border-radius: 5px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-    footer {
-      background-color: #333;
-      color: white;
-      text-align: center;
-      padding: 20px;
-      width: 100%;
-      margin-top: auto;
-    }
-    .social-icons {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      margin-top: 10px;
-    }
-    .social-icons a {
-      color: white;
-      font-size: 24px;
-      transition: color 0.3s, transform 0.3s;
-    }
-    .social-icons a:hover {
-      color: #ff8c00;
-      transform: scale(1.2);
-    }
-    .logo {
+            background-color: orange;
+            border-radius: 5px;
+            padding: 10px;
+            margin: 20px auto;
+            width: 90%;
+            display: flex;
+            justify-content: space-around;
+        }
+
+        #topnav a {
+            color: black;
+            padding: 10px;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+
+        #topnav a:hover {
+            color: #ff8c00;
+            transform: translateY(-2px);
+        }
+
+        .main-content {
+            flex: 1;
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 95%;
+        }
+
+        .content {
+            flex: 3;
+        }
+
+        .sidebar {
+            flex: 1;
+            padding: 10px;
+            background-color: white;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+       
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            width: 100%;
+            margin-top: auto;
+        }
+
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .social-icons a {
+            color: white;
+            font-size: 24px;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-icons a:hover {
+            color: #ff8c00;
+            transform: scale(1.2);
+        }
+    .logo  {
       font-size: 1.8rem;
       font-weight: bold;
       color: var(--primary);
@@ -135,6 +146,28 @@
       cursor: pointer;
       color: #fff;
       font-size: 1rem;
+    }
+    .media-card.loading {
+      position: relative;
+      overflow: hidden;
+    }
+    .media-card.loading::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 50%;
+      background: linear-gradient(90deg, 
+        transparent 25%,
+        rgba(255,107,107,0.2) 50%,
+        transparent 75%
+      );
+      animation: loading 1.5s infinite;
+    }
+    @keyframes loading {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
     .media-list {
       max-width: 1200px;
@@ -341,70 +374,82 @@
         margin-bottom: 1rem;
       }
     }
-    .container {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px;
-    }
-    .media-list {
-      flex: 1;
-      margin-right: 20px;
-    }
-    .sidebar {
-      background: var(--card-bg);
-      color: var(--text);
-      padding: 1rem;
-      border-radius: 8px;
-      width: 300px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-    .sidebar h4 {
-      margin-bottom: 1rem;
-      color: var(--primary);
-    }
-    .sidebar ul {
-      list-style: none;
-      padding: 0;
-    }
-    .sidebar ul li {
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      font-size: 1rem;
-      color: var(--text);
-    }
-    .sidebar ul li a {
-      color: var(--text);
-      text-decoration: none;
-    }
-    .sidebar ul li a:hover {
-      color: var(--primary);
-    }
-    .sidebar-cover {
-      width: 50px;
-      height: 50px;
-      border-radius: 5px;
-      margin-right: 10px;
-    }
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px; /* Adjust as needed */
+}
+
+.media-list {
+  flex: 1; /* Takes available space */
+  margin-right: 20px; /* Space between media list and sidebar */
+}
+
+.sidebar {
+  background: var(--card-bg);
+  color: var(--text);
+  padding: 1rem;
+  border-radius: 8px;
+  width: 300px; /* Fixed width for sidebar */
+  height: auto; /* Allow height to adjust based on content */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.sidebar h4 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.sidebar ul {
+  list-style: none;
+  padding: 0;
+}
+
+.sidebar ul li {
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center; /* Align images and texts */
+  font-size: 1rem; /* Match media card text size */
+  color: var(--text); /* Match media card text color */
+}
+
+.sidebar ul li a {
+  color: var(--text); /* Match media card text color */
+  text-decoration: none; /* Remove underline */
+}
+
+.sidebar ul li a:hover {
+  color: var(--primary); /* Hover effect */
+}
+
+.sidebar-cover {
+  width: 50px;
+  height: 50px;
+  border-radius: 5px;
+  margin-right: 10px;
+  vertical-align: middle;
+}
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <header>
-      <a href="index.html" class="logo-container">
-        <img src="unique logo.jpg" alt="Unique Music Blog Logo" class="logo">
-      </a>
+ <nav class="navbar">
+<header>
+      
+        <a href="index.html" class="logo-container">
+            <img src="unique logo.jpg" alt="Unique Music Blog Logo" class="logo">
+        </a>
     </header>
-  </nav>
 
-  <nav id="topnav">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="video.html"><i class="fas fa-video"></i> Videos</a>
-    <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
-    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-    <a href="motivational.html" class="active"><i class="fas fa-comment-dots"></i> Quotes</a>
+ 
+    
   </nav>
-
+ <nav id="topnav">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="video.html"><i class="fas fa-video"></i> Videos</a>
+       <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
+        <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
+        <a href="motivational.html" class="active"><i class="fas fa-comment-dots"></i> Quotes</a>
+    </nav>
   <section class="hero">
     <h3>Search for your favorite music</h3>
     <div class="search-bar">
@@ -413,30 +458,35 @@
     </div>
   </section>
 
-  <div class="container">
-    <div class="media-list" id="media-container"></div>
-    <div class="sidebar">
-      <h4>Trending Songs</h4>
-      <ul id="trending-songs"></ul>
-      <h4>Most Searched Songs</h4>
-      <ul id="most-searched-songs"></ul>
-    </div>
-  </div>
+ <div class="container">
+  <div class="media-list" id="media-container"></div>
 
-  <div class="player-controls" id="player-controls">
-    <audio id="audio-player" controls></audio>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h4>Trending Songs</h4>
+    <ul id="trending-songs"></ul>
+    <h4>Most Searched Songs</h4>
+    <ul id="most-searched-songs"></ul>
   </div>
+</div>
 
-  <div id="media-modal" class="media-modal">
-    <div class="modal-content">
-      <span class="close" id="modal-close">&times;</span>
+<div class="player-controls" id="player-controls">
+  <audio id="audio-player" controls></audio>
+</div>
+
+  
+<div id="media-modal" class="media-modal">
+<div class="modal-content">
+<span class="close" id="modal-close">&times;</span>
+
       <h2>Select Media Type</h2>
       <div class="media-options">
         <div class="option">
           <h3>Audio</h3>
           <button id="play-audio-btn">Play Audio</button>
           <button id="download-audio-btn">Download Audio</button>
-        </div>
+        
+      
         <div class="option">
           <h3>Video</h3>
           <button id="play-video-btn">Play Video</button>
@@ -445,15 +495,20 @@
       </div>
     </div>
   </div>
+</div>
 
   <div id="video-modal" class="media-modal">
     <div class="modal-content">
-      <span class="close" id="video-close">&times;</span>
-      <video id="video-player" controls style="width:100%; max-width:500px;"></video>
+        <span class="close" id="video-close">&times;</span>
+        <video id="video-player" controls style="width:100%; max-width:500px;"></video>
     </div>
   </div>
-
-  <footer class="site-footer">
+  <div id="video-modal" class="media-modal">
+  <div class="modal-content">
+    <span class="close" id="video-close">&times;</span>
+  </div>
+  </div>
+ <footer class="site-footer">
     <div class="footer-content">
       <div class="footer-section">
         <h4>Follow Us</h4>
@@ -482,38 +537,208 @@
       </p>
     </div>
   </footer>
-
 <script>
     const mediaData = [
-      {
-        title: "Crazy",
-        artist: "Nasty C",
-        cover: "b3.jpg",
-        audio: "Nasty C - Crazy.mp3",
-        video: "Dax - To Be A Man.mp4",
-        duration: "02:38",
-        plays: 1500,
-        searches: 890
-      },
-      {
-        title: "Ngate ba yaweh",
-        artist: "Yo maps",
-        cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp",
-        audio: "Yo maps - Ngate ba Yaweh.mp3",
-        video: "",
-        duration: "4:20",
-        plays: 2300,
-        searches: 1200
-      }
-    ];
-
-    let currentMediaItem = null;
+  {
+    title: "Crazy",
+    artist: "Nasty C",
+    cover: "b3.jpg?200x200/FF6B6B/ffffff?text=Track+1",
+    audio: "Nasty C - Crazy.mp3",
+    video: "https://github.com/uniquemusicblogz/uniquemusicblogz.com/blob/main/Dax%20-%20To%20Be%20A%20Man.mp4",
+    duration: "02:38"
+  },
+  {
+    title: "Ngate ba yaweh",
+    artist: "Yo maps",
+    cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp?200x200/FF6B6B/ffffff?text=Track+2",
+    audio: "Yo maps - Ngate ba Yaweh.mp3",
+    video: "",
+    duration: "4:20"
+  },
+  {
+    title: "LIGHT MY WORLD",
+    artist: "ALI GATIE",
+    cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp?200x200/FF6B6B/ffffff?text=Track+3",
+    audio: "Yo maps - Ngate ba Yaweh.mp3",
+    video: "ali_gatie_light_my_world_official_lyric_video_h264_79129.mp4",
+    duration: "3:55"
+  },
+  {
+    title: "EMO LOVE",
+    artist: "YOUNG BOY NBA",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+4",
+    audio: "song4.mp3",
+    video: "NBA EMO LOVE.mp4",
+    duration: "5:10"
+  },
+  {
+    title: "To Be A Man",
+    artist: "Dax",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+5",
+    audio: "song5.mp3",
+    video: "Dax - To Be A Man.mp4",
+    duration: "3:30"
+  },
+  {
+    title: "Bupilo",
+    artist: "Simumba J",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+6",
+    audio: "song6.mp3",
+    video: "song6.mp4",
+    duration: "4:45"
+  },
+  {
+    title: "Space Journey",
+    artist: "Cosmic Sound",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+7",
+    audio: "song7.mp3",
+    video: "song7.mp4",
+    duration: "6:15"
+  },
+  {
+    title: "Jazz Night",
+    artist: "Smooth Cats",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+8",
+    audio: "song8.mp3",
+    video: "song8.mp4",
+    duration: "4:00"
+  },
+  {
+    title: "Rock Anthem",
+    artist: "Guitar Heroes",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+9",
+    audio: "song9.mp3",
+    video: "song9.mp4",
+    duration: "3:50"
+  },
+  {
+    title: "Classic Vibes",
+    artist: "Piano Masters",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+10",
+    audio: "song10.mp3",
+    video: "song10.mp4",
+    duration: "5:25"
+  },
+  {
+    title: "Urban Flow",
+    artist: "HipHop Nation",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+11",
+    audio: "song11.mp3",
+    video: "song11.mp4",
+    duration: "3:15"
+  },
+  {
+    title: "Country Roads",
+    artist: "Southern Band",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+12",
+    audio: "song12.mp3",
+    video: "song12.mp4",
+    duration: "4:10"
+  },
+  {
+    title: "Electronic Pulse",
+    artist: "Synth Wave",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+13",
+    audio: "song13.mp3",
+    video: "song13.mp4",
+    duration: "3:55"
+  },
+  {
+    title: "Romantic Evening",
+    artist: "Love Strings",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+14",
+    audio: "song14.mp3",
+    video: "song14.mp4",
+    duration: "4:30"
+  },
+  {
+    title: "Meditation Zone",
+    artist: "Zen Garden",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+15",
+    audio: "song15.mp3",
+    video: "song15.mp4",
+    duration: "7:00"
+  },
+  {
+    title: "Party Starter",
+    artist: "DJ Max",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+16",
+    audio: "song16.mp3",
+    video: "song16.mp4",
+    duration: "3:20"
+  },
+  {
+    title: "Blues Night",
+    artist: "Moody Cats",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+17",
+    audio: "song17.mp3",
+    video: "song17.mp4",
+    duration: "4:15"
+  },
+  {
+    title: "Reggae Sun",
+    artist: "Island Beats",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+18",
+    audio: "song18.mp3",
+    video: "song18.mp4",
+    duration: "3:50"
+  },
+  {
+    title: "Metal Storm",
+    artist: "Thunder Band",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+19",
+    audio: "song19.mp3",
+    video: "song19.mp4",
+    duration: "4:05"
+  },
+  {
+    title: "Pop Magic",
+    artist: "Star Singer",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+20",
+    audio: "song20.mp3",
+    video: "song20.mp4",
+    duration: "3:35"
+  },
+  {
+    title: "Soul Food",
+    artist: "Groove Masters",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+21",
+    audio: "song21.mp3",
+    video: "song21.mp4",
+    duration: "4:25"
+  },
+  {
+    title: "Funky Beats",
+    artist: "Disco King",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+22",
+    audio: "song22.mp3",
+    video: "song22.mp4",
+    duration: "3:45"
+  },
+  {
+    title: "R&B Nights",
+    artist: "Velvet Voice",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+23",
+    audio: "song23.mp3",
+    video: "song23.mp4",
+    duration: "4:10"
+  },
+  {
+    title: "Drifta Trek",
+    artist: "New song",
+    cover: "a11.jpg?200x200/FF6B6B/ffffff?text=Track+24",
+    audio: "song24.mp3",
+    video: "song24.mp4",
+    duration: "3:55"
+  }
+];
+ let currentMediaItem = null;
     const audioPlayer = document.getElementById('audio-player');
     const videoPlayer = document.getElementById('video-player');
 
-    function renderMedia() {
+    function renderMedia(items) {
       const container = document.getElementById('media-container');
-      container.innerHTML = mediaData.map((item, index) => `
+      container.innerHTML = items.map((item, index) => `
         <div class="media-card" data-index="${index}">
           <img src="${item.cover}" class="media-cover">
           <div class="media-info">
@@ -523,59 +748,143 @@
           </div>
         </div>
       `).join('');
-
-      document.querySelectorAll('.media-card').forEach((card, index) => {
-        card.addEventListener('click', () => {
-          currentMediaItem = mediaData[index];
-          document.getElementById('media-modal').style.display = "block";
-        });
-      });
+document.querySelectorAll('.media-card').forEach((card, idx) => {
+  card.addEventListener('click', () => {
+    card.classList.add('loading');
+    currentMediaItem = mediaData[idx];
+    showSelectionModal(); // This will show the modal for options like download or play
+  });
+});
     }
 
-    // Audio/Video Player Controls
-    document.getElementById('play-audio-btn').addEventListener('click', () => {
-      audioPlayer.src = currentMediaItem.audio;
-      audioPlayer.play();
+    function showSelectionModal() {
+      document.getElementById('media-modal').style.display = "block";
+    }
+
+    function hideSelectionModal() {
       document.getElementById('media-modal').style.display = "none";
+    }
+
+   function showVideoModal(videoSrc) {
+    const localPlayer = document.getElementById('video-player');
+    localPlayer.src = videoSrc;
+    document.getElementById('video-modal').style.display = "block";
+}
+
+function hideVideoModal() {
+    const localPlayer = document.getElementById('video-player');
+    localPlayer.pause();
+    localPlayer.src = '';
+    document.getElementById('video-modal').style.display = "none";
+}
+
+// Event listeners for closing the video modal
+document.getElementById('video-close').addEventListener('click', hideVideoModal);
+    function clearLoading() {
+      document.querySelector('.media-card.loading')?.classList.remove('loading');
+    }
+
+    document.getElementById('modal-close').addEventListener('click', hideSelectionModal);
+    document.getElementById('video-close').addEventListener('click', hideVideoModal);
+
+    audioPlayer.addEventListener('play', clearLoading);
+    videoPlayer.addEventListener('play', clearLoading);
+    audioPlayer.addEventListener('error', clearLoading);
+    videoPlayer.addEventListener('error', clearLoading);
+
+  document.getElementById('play-audio-btn').addEventListener('click', () => {
+  if (currentMediaItem) {
+    audioPlayer.src = currentMediaItem.audio; // Ensure this path is correct
+    audioPlayer.play().catch(error => {
+      console.error('Error playing audio:', error);
+      alert('Unable to play audio. Please check your browser settings.');
+    });
+    hideSelectionModal();
+  }
+});
+  
+
+    document.getElementById('download-audio-btn').addEventListener('click', () => {
+      if (currentMediaItem) {
+        const link = document.createElement('a');
+        link.href = currentMediaItem.audio;
+        link.download = currentMediaItem.audio;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        hideSelectionModal();
+      }
     });
 
     document.getElementById('play-video-btn').addEventListener('click', () => {
-      videoPlayer.src = currentMediaItem.video;
-      document.getElementById('video-modal').style.display = "block";
-      videoPlayer.play();
-      document.getElementById('media-modal').style.display = "none";
-    });
-
-    // Download Handlers
-    document.getElementById('download-audio-btn').addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.href = currentMediaItem.audio;
-      link.download = `${currentMediaItem.title}.mp3`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      if (currentMediaItem) {
+        hideSelectionModal();
+        showVideoModal(currentMediaItem.video);
+      }
     });
 
     document.getElementById('download-video-btn').addEventListener('click', () => {
-      const link = document.createElement('a');
-      link.href = currentMediaItem.video;
-      link.download = `${currentMediaItem.title}.mp4`;
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      if (currentMediaItem) {
+        const link = document.createElement('a');
+        link.href = currentMediaItem.video;
+        link.download = currentMediaItem.video;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        hideSelectionModal();
+      }
     });
 
-    // Close Modals
-    document.querySelectorAll('.close').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.media-modal').forEach(modal => {
-          modal.style.display = "none";
-        });
-      });
+    document.getElementById('search-input').addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      const filtered = mediaData.filter(item =>
+        item.title.toLowerCase().includes(searchTerm) ||
+        item.artist.toLowerCase().includes(searchTerm)
+      );
+      renderMedia(filtered);
     });
 
-    // Initial Render
-    renderMedia();
-</script>
+    document.getElementById('newsletter-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const formData = new FormData(e.target);
+      fetch(e.target.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      }).then(response => {
+        if (response.ok) {
+          e.target.reset();
+          alert('Subscription successful!');
+        }
+      }).catch(error => alert('Error: ' + error));
+    });
+
+    renderMedia(mediaData);
+const trendingSongs = mediaData.slice(0, 5); // Example: Top 5 items
+const mostSearchedSongs = mediaData.slice(5, 10); // Example: Next 5 items
+
+function renderSidebar() {
+  const trendingContainer = document.getElementById('trending-songs');
+  const searchedContainer = document.getElementById('most-searched-songs');
+
+  trendingContainer.innerHTML = trendingSongs.map(item => `
+    <li>
+      <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+      <a href="#">${item.title} - ${item.artist}</a>
+    </li>
+  `).join('');
+
+  searchedContainer.innerHTML = mostSearchedSongs.map(item => `
+    <li>
+      <img src="${item.cover}" alt="${item.title}" class="sidebar-cover">
+      <a href="#">${item.title} - ${item.artist}</a>
+    </li>
+  `).join('');
+}
+
+renderSidebar();
+  </script>
+  <script type="text/javascript" src="https://cdn.livetrafficfeed.com/static/v5/live.js?bc=ffffff&tc=000000&brd1=2853a8&lnk=135d9e&hc=ffffff&hfc=2853a8&nc=19ff19&vv=330&tft=10&ro=1&tz=Africa%2FLusaka&res=1"></script>
+  <noscript id="LTF_live_website_visitor"><a href="http://livetrafficfeed.com">Website Counter</a></noscript>
 </body>
 </html>
