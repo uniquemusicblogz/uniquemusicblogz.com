@@ -22,6 +22,9 @@
       background: var(--bg);
       color: var(--text);
       line-height: 1.6;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
     .navbar {
       background: var(--card-bg);
@@ -56,6 +59,7 @@
       display: flex;
       justify-content: space-between;
       margin: 20px;
+      flex: 1;
     }
     .media-list {
       flex: 1;
@@ -142,6 +146,63 @@
       gap: 10px;
       justify-content: center;
     }
+    .site-footer {
+      background: var(--card-bg);
+      color: var(--text);
+      padding: 2rem 1rem;
+      margin-top: auto;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .footer-section {
+      flex: 1;
+      min-width: 250px;
+      padding: 1rem;
+    }
+    .footer-section h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+    }
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: var(--text);
+      font-size: 1.5rem;
+      transition: color 0.3s;
+    }
+    .social-links a:hover {
+      color: var(--primary);
+      transform: scale(1.2);
+    }
+    .footer-links {
+      list-style: none;
+      padding: 0;
+    }
+    .footer-links li {
+      margin-bottom: 0.5rem;
+    }
+    .footer-links a {
+      color: var(--text);
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
     @media (max-width: 768px) {
       .container {
         flex-direction: column;
@@ -156,6 +217,9 @@
       }
       .modal-content {
         width: 90%;
+      }
+      .footer-content {
+        flex-direction: column;
       }
     }
   </style>
@@ -186,6 +250,36 @@
       <ul id="most-searched-songs"></ul>
     </div>
   </div>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <div class="social-links">
+          <h4>Follow Us</h4>
+          <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/"><i class="fab fa-facebook"></i></a>
+          <a href="#"><i class="fab fa-twitter"></i></a>
+          <a href="#"><i class="fab fa-instagram"></i></a>
+          <a href="#"><i class="fab fa-youtube"></i></a>
+        </div>
+      </div>
+      <div class="footer-section">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+          <li><a href="privacy.html">Privacy Policy</a></li>
+          <li><a href="terms.html">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>
+        Copyright &copy; 2023 - <script>document.write(new Date().getFullYear())</script>
+        | All rights Reserved | <a style="color: orange;" href="index.html">Unique Music Blog</a> | Proudly designed by
+        <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a>
+      </p>
+    </div>
+  </footer>
 
   <div class="player-controls">
     <audio id="audio-player" controls style="width:100%"></audio>
