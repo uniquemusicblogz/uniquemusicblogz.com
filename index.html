@@ -583,6 +583,63 @@ audio::-webkit-media-controls-volume-slider {
   white-space: nowrap;
   border: 0;
 }
+    /* Add these styles to your existing CSS */
+.share-dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: var(--card-bg);
+  padding: 20px;
+  border-radius: 8px;
+  z-index: 3000;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.share-dialog h3 {
+  margin-bottom: 1rem;
+  color: var(--primary);
+}
+
+.share-options {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.share-platform {
+  background: var(--bg);
+  border: 1px solid #444;
+  color: var(--text);
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.share-platform:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+}
+
+.share-platform i {
+  font-size: 1.2rem;
+}
+
+/* Add a backdrop overlay */
+.share-dialog::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  z-index: -1;
+}
     
   </style>
 </head>
@@ -637,11 +694,19 @@ audio::-webkit-media-controls-volume-slider {
           <h3>Audio</h3>
           <button id="play-audio-btn">Play Audio</button>
           <button id="download-audio-btn">Download Audio</button>
+            <!-- Add share button -->
+    <button id="share-audio-btn" class="share-btn">
+      <i class="fas fa-share"></i> Share
+    </button>
         </div>
         <div class="option">
           <h3>Video</h3>
           <button id="play-video-btn">Play Video</button>
           <button id="download-video-btn">Download Video</button>
+           <!-- Add share button -->
+    <button id="share-video-btn" class="share-btn">
+      <i class="fas fa-share"></i> Share
+    </button>
         </div>
       </div>
     </div>
@@ -691,6 +756,69 @@ audio::-webkit-media-controls-volume-slider {
   </footer>
 
   <script defer>
+    // Add these constants at the top
+const SHARE_ICONS = {
+  facebook: '<i class="fab fa-facebook"></i>',
+  twitter: '<i class="fab fa-twitter"></i>',
+  whatsapp: '<i class="fab fa-whatsapp"></i>',
+  // Add more platforms as needed
+};
+
+// Add this function to handle sharing
+function shareMedia(type) {
+  if (!currentMediaItem) return;
+
+  const shareData = {
+    title: `${currentMediaItem.title} - ${currentMediaItem.artist}`,
+    text: `Check out this ${type} on Unique Music Blog!`,
+    url: window.location.href
+  };
+
+  // Create custom share dialog
+  const shareDialog = document.createElement('div');
+  shareDialog.className = 'share-dialog';
+  shareDialog.innerHTML = `
+    <h3>Share via</h3>
+    <div class="share-options">
+      ${Object.entries(SHARE_ICONS).map(([platform, icon]) => `
+        <button class="share-platform" data-platform="${platform}">
+          ${icon} ${platform.charAt(0).toUpperCase() + platform.slice(1)}
+        </button>
+      `).join('')}
+    </div>
+  `;
+
+  // Add click handlers for each platform
+  shareDialog.querySelectorAll('.share-platform').forEach(button => {
+    button.addEventListener('click', () => {
+      const platform = button.dataset.platform;
+      let shareUrl;
+      
+      switch(platform) {
+        case 'facebook':
+          shareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareData.url)}`;
+          break;
+        case 'twitter':
+          shareUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareData.text)}&url=${encodeURIComponent(shareData.url)}`;
+          break;
+        case 'whatsapp':
+          shareUrl = `https://api.whatsapp.com/send?text=${encodeURIComponent(shareData.text + ' ' + shareData.url)}`;
+          break;
+      }
+
+      window.open(shareUrl, '_blank', 'width=600,height=400');
+      shareDialog.remove();
+    });
+  });
+
+  // Show the custom share dialog
+  document.body.appendChild(shareDialog);
+}
+
+// Add event listeners for share buttons
+document.getElementById('share-audio-btn').addEventListener('click', () => shareMedia('audio'));
+document.getElementById('share-video-btn').addEventListener('click', () => shareMedia('video'));
+    
   // Add at top of script section
   
     const mediaData = [
