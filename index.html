@@ -1188,7 +1188,16 @@ function renderSidebar() {
 // Initial render calls
 renderSidebar();
 renderMedia(mediaData);
-  
+  // Add these error listeners at the bottom of your script
+audioPlayer.addEventListener('error', (e) => {
+  console.error('Audio error:', audioPlayer.error);
+  alert('Error playing audio: ' + audioPlayer.error.message);
+});
+
+videoPlayer.addEventListener('error', (e) => {
+  console.error('Video error:', videoPlayer.error);
+  alert('Error playing video: ' + videoPlayer.error.message);
+});
   </script>
 </body>
 </html>
