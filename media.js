@@ -13,6 +13,48 @@ cover: "a11.jpg",
 audio: "Yo Maps - Ngate ba Yaweh.mp3",
 biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
 },
+    {
+title: "Fat Juicy & Wet",
+artist: "Sexyy Red & Bruno Mars",
+cover: "a11.jpg",
+audio: "Sexyy Red - Fat Juicy & Wet.mp3",
+biography: "Sexyy Red and Bruno Mars team up for *Fat Juicy & Wet*, a bold and infectious hit that’s taking over playlists."
+},
+{
+title: "Venus",
+artist: "Faceless ft. Serøtonin",
+cover: "a11.jpg",
+audio: "Faceless - Venus.mp3",
+biography: "Faceless and Serøtonin’s *Venus* is a viral sensation, blending Afrobeats with electronic vibes for a unique sound."
+},
+{
+title: "Mario Kart",
+artist: "Seyi Vibez",
+cover: "a11.jpg",
+audio: "Seyi Vibez - Mario Kart.mp3",
+biography: "Seyi Vibez’s *Mario Kart* is a standout Afrobeats track, bringing high-energy beats and catchy melodies."
+},
+{
+title: "MMS",
+artist: "Asake & Wizkid",
+cover: "a11.jpg",
+audio: "Asake - MMS.mp3",
+biography: "Asake and Wizkid’s *MMS* is a reflective Afrobeats hit, blending smooth vocals with deep storytelling."
+},
+{
+title: "Baby (Is it a Crime)",
+artist: "Rema",
+cover: "a11.jpg",
+audio: "Rema - Baby.mp3",
+biography: "Rema’s *Baby (Is it a Crime)* showcases his versatility, mixing Afrobeats with a nostalgic touch."
+},
+{
+title: "Laho",
+artist: "Shallipopi",
+cover: "a11.jpg",
+audio: "Shallipopi - Laho.mp3",
+biography: "Shallipopi’s *Laho* is a chart-topping Afrobeats hit, making waves across Africa and beyond."
+},
 {
 title: "Anxiety",
 artist: "Doechii",
@@ -187,8 +229,14 @@ artist: "Lady Gaga",
 cover: "a11.jpg",
 audio: "Lady Gaga - Abracadabra.mp3",
 biography: "Lady Gaga’s *Abracadabra* is a magical pop hit that’s captivating audiences everywhere."
+},
+    {
+title: "Someday",
+artist: "Someday",
+cover: "a11.jpg",
+audio: "Jucy Yung - Someday.mp3",
+biography: "Jucy Yung’s *Someday* is a magical pop hit that’s captivating audiences everywhere."
 }
-
 
 
     // Add more artists as needed
