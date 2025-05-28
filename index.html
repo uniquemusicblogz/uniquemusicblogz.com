@@ -1,216 +1,175 @@
 <!DOCTYPE html lang="en">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="keywords" content="unique, uniquemusicblog.com, uniquemusicjams, latest unique music, zambian mp3" />
-  <title>uniquemusicblog.com</title>
-  <link rel="icon" href="7.ico" type="image/x-icon">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <style>
-    :root {
-      --primary: #FF6B6B;
-      --bg: #1a1a1a;
-      --card-bg: #2d2d2d;
-      --text: #ffffff;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      font-family: 'Segoe UI', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-    .navbar {
-      background: var(--card-bg);
-      padding: 1rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-    #topnav {
-      background-color: orange;
-      border-radius: 5px;
-      padding: 10px;
-      margin: 20px auto;
-      width: 100%;
-      display: flex;
-      justify-content: space-around;
-      flex-wrap: wrap;
-    }
-    #topnav a {
-      color: black;
-      padding: 10px;
-      text-decoration: none;
-      transition: transform 0.3s;
-      flex: 1 1 auto;
-      text-align: center;
-    }
-    #topnav a:hover {
-      color: #ff8c00;
-      transform: translateY(-2px);
-    }
-    .container {
-      display: flex;
-      justify-content: space-between;
-      margin: 20px;
-    }
-    .media-list {
-      flex: 1;
-      margin-right: 20px;
-    }
-    .media-card {
-      background: var(--card-bg);
-      border-radius: 8px;
-      display: flex;
-      align-items: center;
-      padding: 1rem;
-      cursor: pointer;
-      transition: background 0.3s;
-    }
-    .media-card:hover {
-      background: #3a3a3a;
-    }
-    .media-cover {
-      width: 80px;
-      height: 80px;
-      border-radius: 5px;
-      object-fit: cover;
-      margin-right: 1rem;
-    }
-    .media-info {
-      flex: 1;
-    }
-    .media-title {
-      font-size: 1.2rem;
-      font-weight: bold;
-    }
-    .media-artist {
-      color: #aaa;
-      font-size: 0.9rem;
-    }
-    .media-duration {
-      font-size: 0.8rem;
-      color: #ccc;
-    }
-    .site-footer {
-      background: var(--card-bg);
-      color: var(--text);
-      padding: 2rem 1rem;
-      margin-top: 3rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.1);
-      text-align: center;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unique Music Blog - Artists</title>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        /* CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Open Sans', sans-serif; background: #1a1a1a; color: #ffffff; line-height: 1.6; }
+
+        /* Navbar */
+        .navbar { background: #000; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo a { font-size: 1.8rem; font-weight: 700; color: #FF6B6B; text-decoration: none; }
+        .nav-menu { list-style: none; display: flex; }
+        .nav-menu li { margin-left: 1.5rem; }
+        .nav-menu li a { color: #ffffff; text-decoration: none; font-weight: 600; transition: color 0.3s; }
+        .nav-menu li a:hover { color: #FF6B6B; }
+
+        /* Hero Section */
+        .hero { text-align: center; padding: 2rem 1rem; background: #000; }
+        .hero h1 { font-size: 2rem; margin-bottom: 1.5rem; color: #FF6B6B; }
+        .search-bar { max-width: 600px; margin: 0 auto; display: flex; border: 1px solid #444; border-radius: 30px; overflow: hidden; background: #1a1a1a; }
+        .search-bar input { flex: 1; padding: 0.8rem 1rem; border: none; outline: none; background: transparent; color: #ffffff; font-size: 1rem; }
+        .search-bar button { background: #FF6B6B; border: none; padding: 0 1rem; cursor: pointer; color: #fff; font-size: 1rem; }
+
+        /* Media List */
+        .media-list { max-width: 1200px; margin: 2rem auto; display: flex; flex-wrap: wrap; gap: 1rem; }
+        .media-card { background: #2d2d2d; border-radius: 8px; display: flex; align-items: center; padding: 1rem; transition: background 0.3s; cursor: pointer; }
+        .media-card:hover { background: #3a3a3a; }
+        .media-cover { width: 80px; height: 80px; border-radius: 5px; object-fit: cover; margin-right: 1rem; }
+        .media-info { flex: 1; }
+        .media-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
+        .media-artist { color: #aaa; font-size: 0.9rem; margin-bottom: 0.3rem; }
+
+        /* Artist Details */
+        .artist-details { padding: 20px; background: #2d2d2d; border-radius: 8px; margin: 20px; }
+        .artist-cover { width: 150px; border-radius: 8px; margin-bottom: 15px; }
+        .download-btn { background: #FF6B6B; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
+        .download-btn:hover { background: #ff8c00; }
+        .biography { margin-top: 20px; font-size: 1rem; color: #ccc; }
+
+        /* Footer */
+        .site-footer { background: #2d2d2d; color: #ffffff; padding: 2rem 1rem; margin-top: 3rem; border-top: 1px solid rgba(255,255,255,0.1); }
+        .footer-content { max-width: 1200px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
+        .footer-section { flex: 1; min-width: 250px; padding: 1rem; }
+        .footer-section h4 { color: #FF6B6B; margin-bottom: 1rem; }
+        .social-links { display: flex; gap: 1rem; }
+        .social-links a { color: #ffffff; font-size: 1.5rem; transition: color 0.3s; }
+        .social-links a:hover { color: #FF6B6B; }
+        .footer-links { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 0.5rem; }
+        .footer-links a { color: #ffffff; text-decoration: none; }
+        .footer-links a:hover { color: #FF6B6B; }
+    </style>
 </head>
 <body>
-  <nav class="navbar">
-    <header>
-      <a href="index.html" class="logo-container">
-        <img src="unique logo.jpg" alt="Unique Music Blog Logo" class="logo">
-      </a>
-    </header>
-  </nav>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo"><a href="index.html">UniqueMusic</a></div>
+        <ul class="nav-menu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="privacy.html">Privacy</a></li>
+            <li><a href="terms.html">Terms</a></li>
+        </ul>
+    </nav>
 
-  <nav id="topnav">
-    <a href="index.html"><i class="fas fa-home"></i> Home</a>
-    <a href="video.html"><i class="fas fa-video"></i> Videos</a>
-    <a href="contact.html"><i class="fas fa-envelope"></i> Contact Us</a>
-    <a href="privacy.html"><i class="fas fa-shield-alt"></i> Privacy Policy</a>
-    <a href="motivational.html" class="active"><i class="fas fa-comment-dots"></i> Quotes</a>
-  </nav>
-
-  <section class="hero">
-    <h3>Search for your favorite music</h3>
-    <div class="search-bar">
-      <input type="text" placeholder="Search songs, artists..." id="search-input" />
-      <button id="search-btn">
-        <i class="fas fa-search"></i>
-        <span class="sr-only">Search</span>
-      </button>
-    </div>
-  </section>
-
-  <div class="container">
-    <div class="media-list" id="media-container"></div>
-  </div>
-
-  <footer class="site-footer">
-    <div class="footer-content">
-      <div class="footer-section">
-        <div class="social-links">
-          <h4>Follow Us</h4> <br>
-          <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/"><i class="fab fa-facebook"></i></a>
-          <a href="#"><i class="fab fa-twitter"></i></a>
-          <a href="#"><i class="fab fa-instagram"></i></a>
-          <a href="#"><i class="fab fa-youtube"></i></a>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Search for your favorite music</h1>
+        <div class="search-bar">
+            <input type="text" placeholder="Search songs, artists..." id="search-input">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
         </div>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>
-        Copyright &copy; 2023 - <script>document.write(new Date().getFullYear())</script>
-        | All rights Reserved | <a style="color: orange;" href="index.html">Unique Music Blog</a> | Proudly designed by
-        <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a>
-      </p>
-    </div>
-  </footer>
+    </section>
 
-  <script>
-    const mediaData = [
-      {
-        title: "Crazy",
-        artist: "Nasty C",
-        cover: "b3.jpg",
-        audio: "Nasty C - Crazy.mp3",
-        video: "Dax - To Be A Man.mp4",
-        duration: "02:38"
-      },
-      {
-        title: "Ngate ba yaweh",
-        artist: "Yo maps",
-        cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp",
-        audio: "Yo maps - Ngate ba Yaweh.mp3",
-        video: "Dax - To Be A Man.mp4",
-        duration: "4:20"
-      }
-    ];
+    <!-- Media List -->
+    <div class="media-list" id="media-container">
+        <!-- Media items will be rendered by JavaScript -->
+    </div>
 
-    function renderMedia(items) {
-      const container = document.getElementById('media-container');
-      container.innerHTML = items.map((item, index) => `
-        <div class="media-card" onclick="redirectToArtist(${index})"> 
-          <img src="${item.cover}" class="media-cover" alt="${item.title} Cover">
-          <div class="media-info">
-            <div class="media-title">${item.title}</div>
-            <div class="media-artist">${item.artist}</div>
-            <div class="media-duration">${item.duration}</div>
-          </div>
+    <!-- Artist Details Section -->
+    <div class="artist-details" id="artist-details" style="display:none;">
+        <!-- Artist content will be dynamically populated here -->
+    </div>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
+            </div>
         </div>
-      `).join('');
-    }
+        <div class="footer-bottom">
+            <p>
+                Copyright &copy; <script>document.write(new Date().getFullYear())</script> | All rights Reserved | <a style="color: orange;" href="index.html">Unique Music Blog</a> | Proudly designed by <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a>
+            </p>
+        </div>
+    </footer>
 
-    function redirectToArtist(index) {
-      const artist = mediaData[index];
-      const artistPage = `
-        <h1>${artist.title} - ${artist.artist}</h1>
-        <img src="${artist.cover}" alt="${artist.title} Cover" style="width:100px;">
-        <audio controls>
-          <source src="${artist.audio}" type="audio/mpeg">
-          Your browser does not support the audio element.
-        </audio>
-        <br>
-        <button onclick="window.location.href='${artist.audio}'">Download</button>
-        <p>Biography: ${artist.artist} is a talented musician known for their hit songs.</p>
-      `;
-      document.body.innerHTML = artistPage;
-    }
+    <script>
+        const mediaData = [
+            {
+                title: "Crazy",
+                artist: "Nasty C",
+                cover: "b3.jpg",
+                audio: "Nasty C - Crazy.mp3",
+                biography: "Nasty C is a talented South African rapper known for his unique sound and powerful lyrics."
+            },
+            {
+                title: "Ngate ba yaweh",
+                artist: "Yo maps",
+                cover: "Yo-Maps-Nga-Te-Ba-Yahweh.webp",
+                audio: "Yo maps - Ngate ba Yaweh.mp3",
+                biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
+            }
+            // Add more artists as needed
+        ];
 
-    // Initial render call
-    renderMedia(mediaData);
-  </script>
+        function renderMedia(items) {
+            const container = document.getElementById('media-container');
+            container.innerHTML = items.map((item, index) => `
+                <div class="media-card" onclick="showArtist(${index})">
+                    <img src="${item.cover}" class="media-cover" alt="${item.title} Cover">
+                    <div class="media-info">
+                        <div class="media-title">${item.title}</div>
+                        <div class="media-artist">${item.artist}</div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function showArtist(index) {
+            const artist = mediaData[index];
+            const artistDetails = `
+                <h1>${artist.title} - ${artist.artist}</h1>
+                <img src="${artist.cover}" alt="${artist.title} Cover" class="artist-cover">
+                <audio controls>
+                    <source src="${artist.audio}" type="audio/mpeg">
+                    Your browser does not support the audio element.
+                </audio>
+                <button class="download-btn" onclick="window.location.href='${artist.audio}'">Download</button>
+                <div class="biography">
+                    <strong>Biography:</strong> ${artist.biography}
+                </div>
+            `;
+            document.getElementById('artist-details').innerHTML = artistDetails;
+            document.getElementById('artist-details').style.display = 'block';
+            document.getElementById('media-container').style.display = 'none';
+        }
+
+        // Initial render call
+        renderMedia(mediaData);
+    </script>
 </body>
 </html>
