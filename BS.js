@@ -1,4 +1,6 @@
-const mediaData = [
+
+     
+     const mediaData = [
     {
         title: "Crazy",
         artist: "Nasty C",
@@ -137,4 +139,4 @@ document.getElementById('search-input').addEventListener('input', function(e) {
 });
 
 // Initial render call
-renderMedia(mediaData);
+renderMedia(mediaData);    
