@@ -241,7 +241,25 @@ biography: "Jucy Yung’s *Someday* is a magical pop hit that’s captivating au
 
     // Add more artists as needed
 ];
+function shareSong(title, audio) {
+    const shareText = `Check out this song: ${title}\nListen here: ${audio}`;
+    const encodedText = encodeURIComponent(shareText);
+    
+    const shareUrl = `https://github.com/uniquemusicblogz/uniquemusicblogz.com/raw/main/.github/${encodeURIComponent(title)}.mp3`;
 
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${shareUrl}`;
+    const twitterShareUrl = `https://twitter.com/intent/tweet?text=${encodedText}&url=${shareUrl}`;
+    const linkedinShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${shareUrl}`;
+
+    const shareWindow = window.open('', '_blank');
+    shareWindow.document.write(`
+        <h3>Share this song:</h3>
+        <a href="${facebookShareUrl}" target="_blank">Facebook</a><br>
+        <a href="${twitterShareUrl}" target="_blank">Twitter</a><br>
+        <a href="${linkedinShareUrl}" target="_blank">LinkedIn</a><br>
+        <button onclick="window.close()">Close</button>
+    `);
+}
 const itemsPerPage = 12; // Number of artists per page
 let currentPage = 1;
 let filteredData = mediaData; // Data to be displayed
