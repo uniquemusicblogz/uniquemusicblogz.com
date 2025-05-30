@@ -3,7 +3,7 @@ const mediaData = [
         title: "Crazy",
         artist: "Nasty C",
         cover: "a11.jpg",
-        audio: "https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Nasty%20C%20-%20Crazy.mp3",
+        audio: "https://1drv.ms/u/s!As7pfGgoR8lSgmI1LiyCzesw0w2c?e=E5slW3", // OneDrive link,
         biography: "Nasty C is a talented South African rapper known for his unique sound and powerful lyrics."
     },
     {
