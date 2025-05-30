@@ -1,18 +1,18 @@
 const mediaData = [
-    {
-        title: "Crazy",
+     title: "Crazy",
         artist: "Nasty C",
         cover: "a11.jpg",
-        audio: "https://1drv.ms/u/s!As7pfGgoR8lSgmI1LiyCzesw0w2c?e=E5slW3", // OneDrive link,
+        audio: "https://1drv.ms/u/s!As7pfGgoR8lSgmI1LiyCzesw0w2c?e=E5slW3", // OneDrive link
         biography: "Nasty C is a talented South African rapper known for his unique sound and powerful lyrics."
     },
     {
-        title: "Abracadabra",
-        artist: "Lady Gaga",
+        title: "Mr and Mrs",
+        artist: "Yo Maps",
         cover: "a11.jpg",
-        audio: "Lady Gaga - Abracadabra.mp3",
-        biography: "Lady Gaga’s *Abracadabra* is a magical pop hit that’s captivating audiences everywhere."
+        audio: "https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Yo%20Maps%20-%20Ngate%20ba%20Yaweh.mp3",
+        biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
     }
+    // Add other artists here
     // Add other artists here using raw GitHub URLs
 ];
 
