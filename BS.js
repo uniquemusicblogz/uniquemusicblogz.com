@@ -260,6 +260,33 @@ function showArtist(artist) {
         <div class="biography">
             <strong>Biography:</strong> ${artist.biography}
         </div>
+function shareOnFacebook(title, artist, image, url) {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}`;
+    window.open(facebookUrl, '_blank');
+}
+
+function shareOnTwitter(title, artist, url) {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title + " by " + artist)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank');
+}
+
+function shareOnWhatsApp(title, url) {
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Listen to " + title + " here: " + url)}`;
+    window.open(whatsappUrl, '_blank');
+}
+
+         <!-- Social Media Share Buttons -->
+        <div class="share-buttons">
+            <button onclick="shareOnFacebook('${artist.title}', '${artist.artist}', '${artist.cover}', '${window.location.href}')">
+                Share on Facebook
+            </button>
+            <button onclick="shareOnTwitter('${artist.title}', '${artist.artist}', '${window.location.href}')">
+                Share on Twitter
+            </button>
+            <button onclick="shareOnWhatsApp('${artist.title}', '${window.location.href}')">
+                Share on WhatsApp
+            </button>
+        </div>
         <button class="back-btn" onclick="goBack()">Back to List</button>
     `;
 
