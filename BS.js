@@ -249,67 +249,74 @@ function changePage(page) {
 }
 
 function showArtist(artist) {
-    document.getElementById('artist-details').innerHTML = `
-        <h1>${artist.title} - ${artist.artist}</h1>
-        <img src="${artist.cover}" alt="${artist.title} Cover" class="artist-cover">
-        <audio controls>
-            <source src="${artist.audio}" type="audio/mpeg">
-            Your browser does not support the audio element.
-        </audio>
-        <button class="download-btn" onclick="window.location.href='${artist.audio}'">Download</button>
-        <div class="biography">
-            <strong>Biography:</strong> ${artist.biography}
-        </div>
-        <div class="share-buttons">
-            <button onclick="shareOnFacebook('${artist.title}', '${artist.artist}', '${window.location.href}')">
-                Share on Facebook
-            </button>
-            <button onclick="shareOnTwitter('${artist.title}', '${artist.artist}', '${window.location.href}')">
-                Share on Twitter
-            </button>
-            <button onclick="shareOnWhatsApp('${artist.title}', '${window.location.href}')">
-                Share on WhatsApp
-            </button>
-        </div>
-        <button class="back-btn" onclick="goBack()">Back to List</button>
-    `;
+    const artistDetails = document.getElementById('artist-details');
+    artistDetails.innerHTML = ""; // Clear previous content
+
+    // Create elements
+    const titleElement = document.createElement("h1");
+    titleElement.textContent = `${artist.title} - ${artist.artist}`;
+
+    const coverElement = document.createElement("img");
+    coverElement.src = artist.cover;
+    coverElement.alt = `${artist.title} Cover`;
+    coverElement.classList.add("artist-cover");
+
+    const audioElement = document.createElement("audio");
+    audioElement.controls = true;
+    const sourceElement = document.createElement("source");
+    sourceElement.src = artist.audio;
+    sourceElement.type = "audio/mpeg";
+    audioElement.appendChild(sourceElement);
+
+    const downloadButton = document.createElement("button");
+    downloadButton.classList.add("download-btn");
+    downloadButton.textContent = "Download";
+    downloadButton.onclick = () => window.location.href = artist.audio;
+
+    const biographyElement = document.createElement("div");
+    biographyElement.classList.add("biography");
+    biographyElement.innerHTML = `<strong>Biography:</strong> ${artist.biography}`;
+
+    // Create share buttons
+    const shareContainer = document.createElement("div");
+    shareContainer.classList.add("share-buttons");
+
+    const shareFacebook = document.createElement("button");
+    shareFacebook.textContent = "Share on Facebook";
+    shareFacebook.onclick = () => shareOnFacebook(artist.title, artist.artist, window.location.href);
+
+    const shareTwitter = document.createElement("button");
+    shareTwitter.textContent = "Share on Twitter";
+    shareTwitter.onclick = () => shareOnTwitter(artist.title, artist.artist, window.location.href);
+
+    const shareWhatsApp = document.createElement("button");
+    shareWhatsApp.textContent = "Share on WhatsApp";
+    shareWhatsApp.onclick = () => shareOnWhatsApp(artist.title, window.location.href);
+
+    shareContainer.appendChild(shareFacebook);
+    shareContainer.appendChild(shareTwitter);
+    shareContainer.appendChild(shareWhatsApp);
+
+    // Create back button
+    const backButton = document.createElement("button");
+    backButton.classList.add("back-btn");
+    backButton.textContent = "Back to List";
+    backButton.onclick = goBack;
+
+    // Append elements
+    artistDetails.appendChild(titleElement);
+    artistDetails.appendChild(coverElement);
+    artistDetails.appendChild(audioElement);
+    artistDetails.appendChild(downloadButton);
+    artistDetails.appendChild(biographyElement);
+    artistDetails.appendChild(shareContainer);
+    artistDetails.appendChild(backButton);
 
     document.getElementById('artist-details').style.display = 'block';
     document.getElementById('media-container').style.display = 'none';
 }
 
-// Move share functions **OUTSIDE** `showArtist()`
-function shareOnFacebook(title, artist, url) {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}`;
-    window.open(facebookUrl, '_blank');
-}
-
-function shareOnTwitter(title, artist, url) {
-    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title + " by " + artist)}&url=${encodeURIComponent(url)}`;
-    window.open(twitterUrl, '_blank');
-}
-
-function shareOnWhatsApp(title, url) {
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Listen to " + title + " here: " + url)}`;
-    window.open(whatsappUrl, '_blank');
-}
-
-
-         <!-- Social Media Share Buttons -->
-        <div class="share-buttons">
-            <button onclick="shareOnFacebook('${artist.title}', '${artist.artist}', '${artist.cover}', '${window.location.href}')">
-                Share on Facebook
-            </button>
-            <button onclick="shareOnTwitter('${artist.title}', '${artist.artist}', '${window.location.href}')">
-                Share on Twitter
-            </button>
-            <button onclick="shareOnWhatsApp('${artist.title}', '${window.location.href}')">
-                Share on WhatsApp
-            </button>
-        </div>
-        <button class="back-btn" onclick="goBack()">Back to List</button>
-    `;
-
+      
     document.getElementById('artist-details').style.display = 'block';
     document.getElementById('media-container').style.display = 'none';
 
