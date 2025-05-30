@@ -241,6 +241,7 @@ function renderPaginationControls(totalItems) {
         nextButton.onclick = () => changePage(currentPage + 1);
         pagination.appendChild(nextButton);
     }
+}
 
 
 function changePage(page) {
