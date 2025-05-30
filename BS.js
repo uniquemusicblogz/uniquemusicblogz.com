@@ -260,13 +260,9 @@ function showArtist(artist) {
         <div class="biography">
             <strong>Biography:</strong> ${artist.biography}
         </div>
-function shareOnFacebook(title, artist, image, url) {
-   const facebookUrl = "https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}";
-window.open(facebookUrl, '_blank');
-    console.log(facebookUrl); // Check the final generated URL
-window.open(facebookUrl, '_blank');
-
-
+function shareOnFacebook(title, artist, url) {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}`;
+    window.open(facebookUrl, '_blank');
 }
 
 function shareOnTwitter(title, artist, url) {
@@ -278,6 +274,7 @@ function shareOnWhatsApp(title, url) {
     const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Listen to " + title + " here: " + url)}`;
     window.open(whatsappUrl, '_blank');
 }
+
 
          <!-- Social Media Share Buttons -->
         <div class="share-buttons">
