@@ -1,19 +1,20 @@
 const mediaData = [
-{
-title: "Crazy",
-artist: "Nasty C",
-cover: "a11.jpg",
-audio: "Nasty C - Crazy.mp3",
-biography: "Nasty C is a talented South African rapper known for his unique sound and powerful lyrics."
-},
-{
-title: "Mr and Mrs",
-artist: "Yo Maps",
-cover: "a11.jpg",
-audio: "Yo Maps - Ngate ba Yaweh.mp3",
-biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
-},
-{
+    {
+        title: "Crazy",
+        artist: "Nasty C",
+        cover: "a11.jpg",
+        audio: "https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Nasty%20C%20-%20Crazy.mp3",
+        biography: "Nasty C is a talented South African rapper known for his unique sound and powerful lyrics."
+    },
+    {
+        title: "Mr and Mrs",
+        artist: "Yo Maps",
+        cover: "a11.jpg",
+        audio: "https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Yo%20Maps%20-%20Ngate%20ba%20Yaweh.mp3",
+
+        biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
+    },
+    {
 title: "Anxiety",
 artist: "Doechii",
 cover: "a11.jpg",
@@ -189,15 +190,12 @@ audio: "Lady Gaga - Abracadabra.mp3",
 biography: "Lady Gaga’s *Abracadabra* is a magical pop hit that’s captivating audiences everywhere."
 }
 
-
-
-
-    // Add more artists as needed
+    // Add other artists here using raw GitHub URLs
 ];
 
-const itemsPerPage = 12; // Number of artists per page
+const itemsPerPage = 12;
 let currentPage = 1;
-let filteredData = mediaData; // Data to be displayed
+let filteredData = mediaData;
 
 function renderMedia(items) {
     const container = document.getElementById('media-container');
@@ -251,7 +249,7 @@ function changePage(page) {
 }
 
 function showArtist(artist) {
-    const artistDetails = `
+    document.getElementById('artist-details').innerHTML = `
         <h1>${artist.title} - ${artist.artist}</h1>
         <img src="${artist.cover}" alt="${artist.title} Cover" class="artist-cover">
         <audio controls>
@@ -262,20 +260,30 @@ function showArtist(artist) {
         <div class="biography">
             <strong>Biography:</strong> ${artist.biography}
         </div>
+        <button class="back-btn" onclick="goBack()">Back to List</button>
     `;
-    document.getElementById('artist-details').innerHTML = artistDetails;
+
     document.getElementById('artist-details').style.display = 'block';
     document.getElementById('media-container').style.display = 'none';
+
+    // Update Open Graph Meta Tags Dynamically
+    document.querySelector('meta[property="og:title"]').setAttribute("content", `${artist.title} - ${artist.artist}`);
+    document.querySelector('meta[property="og:image"]').setAttribute("content", artist.cover);
+    document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
 }
 
-// Search functionality
+function goBack() {
+    document.getElementById('artist-details').style.display = 'none';
+    document.getElementById('media-container').style.display = 'block';
+}
+
 document.getElementById('search-input').addEventListener('input', function(e) {
-    const searchTerm = e.target.value.toLowerCase().replace(/\s+/g, ''); // Normalize input
-    filteredData = mediaData.filter(item => 
-        item.title.toLowerCase().replace(/\s+/g, '').includes(searchTerm) || 
+    const searchTerm = e.target.value.toLowerCase().replace(/\s+/g, '');
+    filteredData = mediaData.filter(item =>
+        item.title.toLowerCase().replace(/\s+/g, '').includes(searchTerm) ||
         item.artist.toLowerCase().replace(/\s+/g, '').includes(searchTerm)
     );
-    currentPage = 1; // Reset to first page on search
+    currentPage = 1;
     renderMedia(filteredData);
 });
 
