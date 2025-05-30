@@ -324,12 +324,7 @@ function showArtist(artist) {
     document.querySelector('meta[property="og:title"]').setAttribute("content", `${artist.title} - ${artist.artist}`);
     document.querySelector('meta[property="og:image"]').setAttribute("content", artist.cover);
     document.querySelector('meta[property="og:url"]').setAttribute("content", window.location.href);
-}
 
-function goBack() {
-    document.getElementById('artist-details').style.display = 'none';
-    document.getElementById('media-container').style.display = 'block';
-}
 
 document.getElementById('search-input').addEventListener('input', function(e) {
     const searchTerm = e.target.value.toLowerCase().replace(/\s+/g, '');
