@@ -4,7 +4,7 @@ const mediaData = [
         artist: "Nasty C",
         cover: "a11.jpg",
         // Use your OneDrive direct link here (modified from your embed link)
-        audio: "https://1drv.ms/u/s!As7pfGgoR8lSgmIVVglgR1bkBWUz?download=1",
+        audio: "Nasty C - Crazy.mp3",
         biography: "Nasty C is a talented South African rapper known for his unique sound and powerful lyrics."
     },
     {
