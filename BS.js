@@ -260,7 +260,29 @@ function showArtist(artist) {
         <div class="biography">
             <strong>Biography:</strong> ${artist.biography}
         </div>
+        <div class="share-buttons">
+            <button onclick="shareOnFacebook('${artist.title}', '${artist.artist}', '${window.location.href}')">
+                Share on Facebook
+            </button>
+            <button onclick="shareOnTwitter('${artist.title}', '${artist.artist}', '${window.location.href}')">
+                Share on Twitter
+            </button>
+            <button onclick="shareOnWhatsApp('${artist.title}', '${window.location.href}')">
+                Share on WhatsApp
+            </button>
+        </div>
+        <button class="back-btn" onclick="goBack()">Back to List</button>
+    `;
 
+    document.getElementById('artist-details').style.display = 'block';
+    document.getElementById('media-container').style.display = 'none';
+}
+
+// Move share functions **OUTSIDE** `showArtist()`
+function shareOnFacebook(title, artist, url) {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}`;
+    window.open(facebookUrl, '_blank');
+}
 
 function shareOnTwitter(title, artist, url) {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title + " by " + artist)}&url=${encodeURIComponent(url)}`;
