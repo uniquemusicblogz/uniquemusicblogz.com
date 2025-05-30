@@ -260,10 +260,7 @@ function showArtist(artist) {
         <div class="biography">
             <strong>Biography:</strong> ${artist.biography}
         </div>
-function shareOnFacebook(title, artist, url) {
-    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}`;
-    window.open(facebookUrl, '_blank');
-}
+
 
 function shareOnTwitter(title, artist, url) {
     const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title + " by " + artist)}&url=${encodeURIComponent(url)}`;
