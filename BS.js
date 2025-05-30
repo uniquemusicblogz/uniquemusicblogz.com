@@ -75,15 +75,17 @@ function showArtist(artist) {
     const artistDetails = document.getElementById('artist-details');
     artistDetails.innerHTML = ''; // Clear previous content
 
-    // Create elements
+    // Create title element
     const titleElement = document.createElement("h1");
     titleElement.textContent = `${artist.title} - ${artist.artist}`;
 
+    // Create cover image element
     const coverElement = document.createElement("img");
     coverElement.src = artist.cover;
     coverElement.alt = `${artist.title} Cover`;
     coverElement.classList.add("artist-cover");
 
+    // Create audio element
     const audioElement = document.createElement("audio");
     audioElement.controls = true;
     const sourceElement = document.createElement("source");
@@ -91,11 +93,13 @@ function showArtist(artist) {
     sourceElement.type = "audio/mpeg";
     audioElement.appendChild(sourceElement);
 
+    // Create download button
     const downloadButton = document.createElement("button");
     downloadButton.classList.add("download-btn");
     downloadButton.textContent = "Download";
     downloadButton.onclick = () => window.location.href = artist.audio;
 
+    // Create biography element
     const biographyElement = document.createElement("div");
     biographyElement.classList.add("biography");
     biographyElement.innerHTML = `<strong>Biography:</strong> ${artist.biography}`;
@@ -126,7 +130,7 @@ function showArtist(artist) {
     backButton.textContent = "Back to List";
     backButton.onclick = goBack;
 
-    // Append elements
+    // Append all elements to the artist details container
     artistDetails.appendChild(titleElement);
     artistDetails.appendChild(coverElement);
     artistDetails.appendChild(audioElement);
@@ -143,9 +147,15 @@ function showArtist(artist) {
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogImage = document.querySelector('meta[property="og:image"]');
     const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogTitle) { ogTitle.setAttribute("content", `${artist.title} - ${artist.artist}`); }
-    if (ogImage) { ogImage.setAttribute("content", artist.cover); }
-    if (ogUrl) { ogUrl.setAttribute("content", window.location.href); }
+    if (ogTitle) {
+        ogTitle.setAttribute("content", `${artist.title} - ${artist.artist}`);
+    }
+    if (ogImage) {
+        ogImage.setAttribute("content", artist.cover);
+    }
+    if (ogUrl) {
+        ogUrl.setAttribute("content", window.location.href);
+    }
 }
 
 function goBack() {
