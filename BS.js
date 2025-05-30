@@ -75,17 +75,15 @@ function showArtist(artist) {
     const artistDetails = document.getElementById('artist-details');
     artistDetails.innerHTML = ''; // Clear previous content
 
-    // Create title element
+    // Create elements
     const titleElement = document.createElement("h1");
     titleElement.textContent = `${artist.title} - ${artist.artist}`;
 
-    // Create cover image element
     const coverElement = document.createElement("img");
     coverElement.src = artist.cover;
     coverElement.alt = `${artist.title} Cover`;
     coverElement.classList.add("artist-cover");
 
-    // Create audio element
     const audioElement = document.createElement("audio");
     audioElement.controls = true;
     const sourceElement = document.createElement("source");
@@ -93,13 +91,11 @@ function showArtist(artist) {
     sourceElement.type = "audio/mpeg";
     audioElement.appendChild(sourceElement);
 
-    // Create download button
     const downloadButton = document.createElement("button");
     downloadButton.classList.add("download-btn");
     downloadButton.textContent = "Download";
     downloadButton.onclick = () => window.location.href = artist.audio;
 
-    // Create biography element
     const biographyElement = document.createElement("div");
     biographyElement.classList.add("biography");
     biographyElement.innerHTML = `<strong>Biography:</strong> ${artist.biography}`;
@@ -130,7 +126,7 @@ function showArtist(artist) {
     backButton.textContent = "Back to List";
     backButton.onclick = goBack;
 
-    // Append all elements to the artist details container
+    // Append elements
     artistDetails.appendChild(titleElement);
     artistDetails.appendChild(coverElement);
     artistDetails.appendChild(audioElement);
@@ -139,28 +135,38 @@ function showArtist(artist) {
     artistDetails.appendChild(shareContainer);
     artistDetails.appendChild(backButton);
 
-    // Show the artist-details section and hide the media container
+    // Show artist details and hide media container
     artistDetails.style.display = 'block';
     document.getElementById('media-container').style.display = 'none';
 
-    // Update Open Graph Meta Tags Dynamically (if present in your HTML)
+    // Update Open Graph Meta Tags dynamically (if present)
     const ogTitle = document.querySelector('meta[property="og:title"]');
     const ogImage = document.querySelector('meta[property="og:image"]');
     const ogUrl = document.querySelector('meta[property="og:url"]');
-    if (ogTitle) {
-        ogTitle.setAttribute("content", `${artist.title} - ${artist.artist}`);
-    }
-    if (ogImage) {
-        ogImage.setAttribute("content", artist.cover);
-    }
-    if (ogUrl) {
-        ogUrl.setAttribute("content", window.location.href);
-    }
+    if (ogTitle) { ogTitle.setAttribute("content", `${artist.title} - ${artist.artist}`); }
+    if (ogImage) { ogImage.setAttribute("content", artist.cover); }
+    if (ogUrl) { ogUrl.setAttribute("content", window.location.href); }
 }
 
 function goBack() {
     document.getElementById('artist-details').style.display = 'none';
     document.getElementById('media-container').style.display = 'block';
+}
+
+// Share functions
+function shareOnFacebook(title, artist, url) {
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}`;
+    window.open(facebookUrl, '_blank');
+}
+
+function shareOnTwitter(title, artist, url) {
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(title + " by " + artist)}&url=${encodeURIComponent(url)}`;
+    window.open(twitterUrl, '_blank');
+}
+
+function shareOnWhatsApp(title, url) {
+    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent("Listen to " + title + " here: " + url)}`;
+    window.open(whatsappUrl, '_blank');
 }
 
 document.getElementById('search-input').addEventListener('input', function(e) {
