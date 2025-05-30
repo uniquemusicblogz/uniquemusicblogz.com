@@ -263,6 +263,9 @@ function showArtist(artist) {
 function shareOnFacebook(title, artist, image, url) {
    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}&title=${encodeURIComponent(title)}&quote=${encodeURIComponent(artist)}`;
 window.open(facebookUrl, '_blank');
+    console.log(facebookUrl); // Check the final generated URL
+window.open(facebookUrl, '_blank');
+
 
 }
 
