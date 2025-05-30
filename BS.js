@@ -188,8 +188,8 @@ artist: "Lady Gaga",
 cover: "a11.jpg",
 audio: "Lady Gaga - Abracadabra.mp3",
 biography: "Lady Gaga’s *Abracadabra* is a magical pop hit that’s captivating audiences everywhere."
-}
-];
+},
+
 
 {
 title: "Fat Juicy & Wet",
@@ -235,7 +235,7 @@ biography: "Shallipopi’s *Laho* is a chart-topping Afrobeats hit, making waves
 }
 
 
-
+];
 const itemsPerPage = 12;
 let currentPage = 1;
 let filteredData = mediaData;
