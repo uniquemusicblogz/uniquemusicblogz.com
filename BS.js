@@ -1,11 +1,11 @@
 
       const mediaData = [
 {
-title: "Crazy",
-artist: "Nasty C",
+title: "Nipase Mutima (Prod. Michael)",
+artist: "Jona D ft Iveno",
 cover: "a11.jpg",
-audio: "Nasty C - Crazy.mp3",
-biography: "Nasty C is a talented South African rapper known for his unique sound and powerful lyrics."
+audio: "Jona D ft Iveno - Nipase Mutima.mp3",
+biography: "Jona D is a talented Zambian singer known for his unique sound and powerful lyrics."
 },
 {
 title: "Mr and Mrs",
