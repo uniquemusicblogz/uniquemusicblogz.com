@@ -1,15 +1,15 @@
 
       const mediaData = [
 {
-title: "Nipase Mutima (Prod. Michael)",
-artist: "Jona D ft Iveno",
+title: "NIPASEKO MUTIMA (PROD. MICHAEL)",
+artist: "JONA D FT IVENO",
 cover: "a11.jpg",
 audio: "JONA D FT IVENO - NIPASEKO MUTIMA (PROD. MICHAEL).mp3",
 biography: "Jona D is a talented Zambian singer known for his unique sound and powerful lyrics."
 },
 {
-title: "Mr and Mrs",
-artist: "Yo Maps",
+title: "VIBES",
+artist: "JUCY YUNG",
 cover: "a11.jpg",
 audio: "Yo Maps - Ngate ba Yaweh.mp3",
 biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
