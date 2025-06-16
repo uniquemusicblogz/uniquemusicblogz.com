@@ -11,7 +11,7 @@ biography: "Jona D is a talented Zambian singer known for his unique sound and p
 title: "VIBES",
 artist: "JUCY YUNG",
 cover: "a11.jpg",
-audio: "Yo Maps - Ngate ba Yaweh.mp3",
+audio: "Yo maps - Ngate ba Yaweh.mp3",
 biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
 },
 {
