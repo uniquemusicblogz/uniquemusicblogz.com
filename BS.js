@@ -12,7 +12,7 @@ title: "Someday",
 artist: "Jucy Yung",
 cover: "a11.jpg",
 audio: "Jucy Yung - Someday.mp3",
-biography: "Brian Simumba is a popular Zambian musician celebrated for his catchy tunes and engaging performances. He realeased this catchy jam in 2022."
+biography: "Jucy Yung is a popular Zambian musician celebrated for his catchy tunes and engaging performances. He realeased this catchy jam in 2022."
 },
 {
 title: "Anxiety",
