@@ -1,11 +1,11 @@
 # Unique Music Blog
 
-![GitHub](https://img.shields.io/github/license/yourusername/uniquemusicblogz.com)
-![GitHub Pages](https://img.shields.io/github/deployments/yourusername/uniquemusicblogz.com/github-pages)
+![GitHub](https://img.shields.io/github/license/uniquemusicblogz.com/uniquemusicblogz.com)
+![GitHub Pages](https://img.shields.io/github/deployments/uniquemusicblogz.com/uniquemusicblogz.com/github-pages)
 
 A modern music streaming and download platform featuring Zambian and international artists. Built with pure HTML, CSS, and JavaScript, hosted on GitHub Pages.
 
-[Live Demo](https://yourusername.github.io/uniquemusicblogz.com/) | [Report Bug](https://github.com/yourusername/uniquemusicblogz.com/issues)
+[Live Demo](https://uniquemusicblogz.com.github.io/uniquemusicblogz.com/) | [Report Bug](https://github.com/uniquemusicblogz.com/uniquemusicblogz.com/issues)
 
 ## 🎯 Features
 
