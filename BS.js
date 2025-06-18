@@ -11,8 +11,8 @@ biography: "Jona D is a talented Zambian singer known for his unique sound and p
 title: "Someday",
 artist: "Brian Simumba",
 cover: "a11.jpg",
-audio: "Yo maps - Ngate ba Yaweh.mp3",
-biography: "Yo Maps is a popular Zambian musician celebrated for his catchy tunes and engaging performances."
+audio: "Jucy - Someday.mp3",
+biography: "Brian Simumba is a popular Zambian musician celebrated for his catchy tunes and engaging performances. He realeased this catchy jam in 2022."
 },
 {
 title: "Anxiety",
@@ -39,7 +39,7 @@ biography: "Dynamic duo Chanda Na Kay return with *Akabwali*, an upbeat track ce
 title: "TaTaTa",
 artist: "Burna Boy ft. Travis Scott",
 cover: "a11.jpg",
-audio: "Burna Boy - TaTaTa.mp3",
+audio: "Burna Boy ft Travis Scott - TaTaTa.mp3",
 biography: "Burna Boy teams up with Travis Scott for *TaTaTa*, a fusion of Afrobeats and hip-hop that’s dominating the charts."
 },
 {
