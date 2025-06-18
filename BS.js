@@ -1,7 +1,7 @@
 
       const mediaData = [
 {
-title: "Nipaseko Mutima (PROD. MICHAEL)",
+title: "Nipaseko Mutima (Prod. Michael)",
 artist: "Jona D Ft Iveno",
 cover: "a11.jpg",
 audio: "Jona D Ft Iveno - Nipaseko Mutima.mp3",
@@ -9,9 +9,9 @@ biography: "Jona D is a talented Zambian singer known for his unique sound and p
 },
 {
 title: "Someday",
-artist: "Brian Simumba",
+artist: "Jucy Yung",
 cover: "a11.jpg",
-audio: "Jucy - Someday.mp3",
+audio: "Jucy Yung - Someday.mp3",
 biography: "Brian Simumba is a popular Zambian musician celebrated for his catchy tunes and engaging performances. He realeased this catchy jam in 2022."
 },
 {
