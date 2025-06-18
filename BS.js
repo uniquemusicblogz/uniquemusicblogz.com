@@ -5,7 +5,7 @@ title: "Nipaseko Mutima (Prod. Michael)",
 artist: "Jona D Ft Iveno",
 cover: "a11.jpg",
 audio: "Jona D Ft Iveno - Nipaseko Mutima.mp3",
-biography: "Jona D is a talented Zambian singer known for his unique sound and powerful lyrics."
+biography: "Jona is a talented Zambian singer known for his unique sound and powerful lyrics."
 },
 {
 title: "Someday",
