@@ -1,263 +1,574 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unique Music Blog - Best Music World Wide</title>
-   <!-- Open Graph (OG) Meta Tags -->
-<meta property="og:title" content="Unique Music Blog - Discover Global Hits">
-<meta property="og:description" content="Explore the best music worldwide and stream directly from Unique Music Blog!">
-<meta property="og:image" content="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Unique.png">
-<meta property="og:url" content="https://uniquemusicblogz.github.io/"> <!-- Update this to your actual GitHub Pages link -->
-<meta property="og:type" content="music.playlist">
-<meta property="og:site_name" content="Unique Music Blog, unique music blog, uniquemusicblog, zeduniquemusic">
-<meta property="og:locale" content="en_US">
-
-<!-- Twitter Card (for better Twitter previews) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Unique Music Blog - Discover Global Hits">
-<meta name="twitter:description" content="Explore the best music worldwide and stream directly from Unique Music Blog!">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Unique.png">
-<meta name="twitter:url" content="https://uniquemusicblogz.github.io/">
-
-<!-- Stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-   
+    <title>Westside Music Blog | Demo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900;display=swap" rel="stylesheet">
+    <!-- Load Font Awesome for Social Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
     <style>
-        /* CSS Reset */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; background: #1a1a1a; color: #ffffff; line-height: 1.6; }
-
-        /* Navbar */
-        .navbar {
-            background: #000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
         }
-        .logo {
-            flex: 1; /* Adjusts logo position */
+        .view {
+            display: none;
         }
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            margin-left: auto; /* Pushes nav items to the right */
+        .view.active {
+            display: block;
         }
-        .nav-menu li {
-            margin-left: 1.5rem; /* Space between items */
+        .nav-link.active {
+            color: #EF4444;
+            border-bottom: 2px solid #EF4444;
         }
-        .nav-menu li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
+        .content-card {
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            cursor: pointer;
         }
-        .nav-menu li a:hover {
-            color: #FF6B6B;
+        .content-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
         }
-
-        /* Hero Section */
-        .hero { text-align: center; padding: 2rem 1rem; background: #000; }
-        .hero h1 { font-size: 2rem; margin-bottom: 1.5rem; color: #FF6B6B; }
-        .search-bar { max-width: 600px; margin: 0 auto; display: flex; border: 1px solid #444; border-radius: 30px; overflow: hidden; background: #1a1a1a; }
-        .search-bar input { flex: 1; padding: 0.8rem 1rem; border: none; outline: none; background: transparent; color: #ffffff; font-size: 1rem; }
-        .search-bar button { background: #FF6B6B; border: none; padding: 0 1rem; cursor: pointer; color: #fff; font-size: 1rem; }
-
-        /* Media List */
-        .media-list { max-width: 1200px; margin: 2rem auto; display: flex; flex-wrap: wrap; gap: 1rem; }
-        .media-card { background: #2d2d2d; border-radius: 8px; display: flex; align-items: center; padding: 1rem; transition: background 0.3s; cursor: pointer; flex: 1 1 calc(33.333% - 1rem); }
-        .media-card:hover { background: #3a3a3a; }
-        .media-cover { width: 80px; height: 80px; border-radius: 5px; object-fit: cover; margin-right: 1rem; }
-        .media-info { flex: 1; }
-        .media-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .media-artist { color: #aaa; font-size: 0.9rem; margin-bottom: 0.3rem; }
-
-
-        .media-info button {
-    background-color: #FF6B6B; /* Button color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    padding: 5px 10px; /* Padding */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    margin-top: 5px; /* Space above the button */
-    transition: background 0.3s; /* Smooth background transition */
-}
-
-.media-info button:hover {
-    background-color: #ff4d4d; /* Darker shade on hover */
-}
-.share-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.share-buttons button {
-    background-color: #FF6B6B;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.share-buttons button:hover {
-    background-color: #ff4d4d;
-}
-
-        /* Pagination */
-        .pagination { text-align: center; margin: 20px 0; }
-        .pagination button { background: #FF6B6B; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin: 0 5px; }
-        .pagination button:disabled { background: #444; cursor: not-allowed; }
-
-        /* Artist Details */
-        .artist-details { padding: 20px; background: #2d2d2d; border-radius: 8px; margin: 20px; }
-        .artist-cover { width: 150px; border-radius: 8px; margin-bottom: 15px; }
-        .download-btn { background: #FF6B6B; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
-        .download-btn:hover { background: #ff8c00; }
-        .biography { margin-top: 20px; font-size: 1rem; color: #ccc; }
-
-        /* Footer */
-      .site-footer {
-    background: #2d2d2d;
-    color: #ffffff;
-    padding: 2rem 1rem;
-    margin-top: 3rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center; /* Center-aligns footer sections */
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-    text-align: center; /* Center-aligns text within each section */
-}
-
-.footer-section h4 {
-    color: #FF6B6B;
-    margin-bottom: 1rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center; /* Center-aligns social links */
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    color: #FF6B6B;
-}
-
-.footer-bottom {
-    text-align: center; /* Center-aligns the copyright text */
-    margin-top: 1rem;
-}
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .media-card { flex: 1 1 calc(50% - 1rem); } /* 2 cards per row on smaller screens */
+        .social-btn {
+            @apply inline-flex items-center justify-center p-3 rounded-full text-white transition-colors shadow-md;
+            width: 48px;
+            height: 48px;
         }
-        @media (max-width: 480px) {
-            .media-card { flex: 1 1 100%; } /* 1 card per row on mobile */
-            .navbar { flex-direction: column; text-align: center; }
-            .nav-menu { flex-direction: column; justify-content: center; margin-top: 1rem; }
-            .nav-menu li { margin: 0.5rem; }
-            .hero h1 { font-size: 1.6rem; }
+        .social-btn:hover {
+            opacity: 0.8;
         }
     </style>
 </head>
-<body>
-    
-   <!-- Navbar -->
-   <nav class="navbar">
-        <div class="logo"><a href="index.html"><strong> <b style="color:orange;">UniqueMusic</b></strong></a></div>
-        <ul class="nav-menu">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about us.html">About</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="privacy.html">Privacy</a></li>
-            <li><a href="terms.html">Terms</a></li>
-        </ul>
-    </nav>
+<body class="min-h-screen flex flex-col">
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <h1>Search for your favorite music</h1>
-        <div class="search-bar">
-            <input type="text" placeholder="Search songs, artists..." id="search-input">
-            <button id="search-btn"><i class="fas fa-search"></i></button>
-        </div>
-    </section>
+    <header class="sticky top-0 z-50 bg-gray-900 shadow-lg">
+        <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <!-- Updated to use hash routing -->
+                    <a href="#/" class="text-3xl font-black text-red-500 nav-link" data-view="home-view">WESTSIDE</a>
+                </div>
+                <div class="hidden md:block">
+                    <div class="ml-10 flex items-baseline space-x-4">
+                        <a href="#/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="home-view">Home</a>
+                        <a href="#/reviews/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="reviews-view">Reviews</a>
+                        <a href="#/interviews/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="interviews-view">Interviews</a>
+                        <a href="#/downloads/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="downloads-view">Downloads</a>
+                        <a href="#/about/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="about-view">About</a>
+                    </div>
+                </div>
+                <div class="-mr-2 flex md:hidden">
+                    <button type="button" id="mobile-menu-button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
+                        <span class="sr-only">Open main menu</span>
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </nav>
 
-    <!-- Media List -->
-    <div class="media-list" id="media-container"></div>
-
-    <!-- Pagination Controls -->
-    <div class="pagination" id="pagination-controls"></div>
-
-    <!-- Artist Details Section -->
-    <div class="artist-details" id="artist-details" style="display:none;"></div>
-
-    
-
-    <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+        <div class="md:hidden hidden" id="mobile-menu">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="home-view">Home</a>
+                <a href="#/reviews/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="reviews-view">Reviews</a>
+                <a href="#/interviews/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="interviews-view">Interviews</a>
+                <a href="#/downloads/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="downloads-view">Downloads</a>
+                <a href="#/about/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="about-view">About</a>
             </div>
         </div>
-        <div class="footer-section" style="text-align: center;">
-            <h4>Quick Links</h4>
-            <ul class="footer-links" style="list-style: none; padding: 0; text-align: center;">
-                <li><a href="about us.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 w-full flex-grow">
+        <div class="flex flex-col md:flex-row-reverse gap-8">
+            
+            <aside class="w-full md:w-1/4 space-y-8 md:sticky md:top-24 h-full">
+                <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Search</h3>
+                    <input type="search" id="search-bar" placeholder="Filter content..." class="w-full px-3 py-2 bg-gray-700 text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                </div>
+
+                <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Top Categories</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#/reviews/" class="nav-link hover:text-red-500 transition-colors" data-view="reviews-view">Album Reviews</a></li>
+                        <li><a href="#/interviews/" class="nav-link hover:text-red-500 transition-colors" data-view="interviews-view">Interviews</a></li>
+                        <li><a href="#/downloads/" class="nav-link hover:text-red-500 transition-colors" data-view="downloads-view">Free Downloads</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <main class="w-full md:w-3/4 space-y-8">
+                
+                <div id="home-view" class="view space-y-8">
+                    <h2 class="text-3xl font-bold mb-1">Latest & Featured</h2>
+                    <p class="text-gray-400 mb-4">The newest music and the stories behind the artists.</p>
+                    <div id="home-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    </div>
+                </div>
+
+                <div id="reviews-view" class="view space-y-8">
+                    <h2 class="text-3xl font-bold mb-1">Album Reviews</h2>
+                    <p class="text-gray-400 mb-4">In-depth analysis of the latest releases. We listen so you know what's essential viewing.</p>
+                    <div id="reviews-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    </div>
+                </div>
+                
+                <div id="interviews-view" class="view space-y-8">
+                    <h2 class="text-3xl font-bold mb-1">Interviews</h2>
+                    <p class="text-gray-400 mb-4">Conversations with the artists shaping the sound of today. Get the inside story straight from the source.</p>
+                    <div id="interviews-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    </div>
+                </div>
+
+                <div id="downloads-view" class="view space-y-8">
+                    <h2 class="text-3xl font-bold mb-1">Free MP3 Downloads</h2>
+                    <p class="text-gray-400 mb-4">New music from the hottest local and international talent, available for free download.</p>
+                    <div id="downloads-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    </div>
+                </div>
+
+                <div id="about-view" class="view space-y-4">
+                    <h2 class="text-3xl font-bold mb-4">About Westside</h2>
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg space-y-4 text-gray-300 leading-relaxed">
+                        <p>Welcome to Westside Music Blog, your new home for music discovery. We are a passionate collective of writers, musicians, and fans dedicated to uncovering the best new music and sharing the stories behind it.</p>
+                        <p>Our mission is simple: to champion the artists we believe in. Whether it's through an in-depth album review, an exclusive interview, or a free song download, we strive to provide thoughtful, engaging, and authentic content.</p>
+                    </div>
+                </div>
+
+                <div id="detail-view" class="view space-y-6">
+                    <button id="back-button" class="inline-flex items-center px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-colors shadow-lg">
+                        &larr; Back
+                    </button>
+                    <div id="content-display-container" class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
+                        
+                    </div>
+                </div>
+
+            </main>
         </div>
     </div>
-    <div class="footer-bottom">
-        <p style="text-align: center;">
-            Copyright &copy; <script>document.write(new Date().getFullYear())</script> | All rights Reserved | 
-            <a style="color: orange;" href="index.html">Unique Music Blog</a> | 
-            Proudly designed by <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a>
-        </p>
-    </div>
-</footer>
- <script src="BS.js"></script> <!-- Link your JavaScript file -->   
+
+    <footer class="bg-gray-900 text-gray-500 py-8 mt-12 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <p>&copy; 2025 Westside Music Blog. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        const BASE_URL = window.location.origin; // Represents the site's base domain
+        
+        const contentData = [
+            {
+                id: 101,
+                type: 'song',
+                title: 'Snoop Jay ft. Jah Boy - Come Over (MP3 Download)',
+                slug: 'snoop-jay-ft-jah-boy-come-over-mp3-download',
+                artist: 'Snoop Jay',
+                category: 'DOWNLOADS',
+                date: 'Nov 15, 2025',
+                excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now.',
+                imageUrl: 'https://placehold.co/600x300/222/ef4444?text=SNOOP+JAY+COME+OVER',
+                downloadLink: 'https://example.com/downloads/come_over.mp3', 
+                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', // Placeholder audio link
+                artistBio: 'Snoop Jay is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements, creating a unique and irresistible sound. His recent work focuses on international collaborations, pushing the boundaries of the genre.'
+            },
+            {
+                id: 102,
+                type: 'song',
+                title: 'DJ Ken - City Vibes',
+                slug: 'dj-ken-city-vibes-mp3-download',
+                artist: 'DJ Ken',
+                category: 'DOWNLOADS',
+                date: 'Nov 12, 2025',
+                excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
+                imageUrl: 'https://placehold.co/600x300/222/ef4444?text=DJ+KEN+CITY+VIBES',
+                downloadLink: 'https://example.com/downloads/city_vibes.mp3',
+                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+                artistBio: 'DJ Ken is a veteran producer and mixer based in Accra. His signature sound is heavily influenced by 90s West Coast hip-hop and contemporary Ghanaian highlife, making him a fixture in the local club scene and a master of the beat drop.'
+            },
+            {
+                id: 103,
+                type: 'song',
+                title: 'Snoop Jay - Sunset',
+                slug: 'snoop-jay-sunset-mp3-download',
+                artist: 'Snoop Jay',
+                category: 'DOWNLOADS',
+                date: 'Oct 28, 2025',
+                excerpt: 'A chill, soulful track that showcases Snoop Jay\'s vocal range.',
+                imageUrl: 'https://placehold.co/600x300/222/ef4444?text=SNOOP+JAY+SUNSET',
+                downloadLink: 'https://example.com/downloads/sunset.mp3',
+                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
+                artistBio: 'Snoop Jay is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements, creating a unique and irresistible sound. His recent work focuses on international collaborations, pushing the boundaries of the genre.'
+            },
+            {
+                id: 1,
+                type: 'article',
+                title: 'Chasing Echoes: An Interview with The Vinyl Kids',
+                slug: 'interview-vinyl-kids-static-dreams',
+                category: 'INTERVIEWS',
+                date: 'Nov 14, 2025',
+                excerpt: 'We sat down with the breakout indie band to discuss their whirlwind year, creative process, and what comes next...',
+                content: `
+                    <p>It's not every day a band emerges with a sound that feels both timeless and entirely new. The Vinyl Kids have done just that. We sat down with lead singer Alex Chen to discuss their whirlwind year.</p>
+                    <p><strong>Westside:</strong> Alex, thanks for joining us. Your debut album, "Static Dreams," has been on repeat in our office. What was the recording process like?</p>
+                    <p><strong>Alex:</strong> Thanks for having me! It was chaos, in the best way. We locked ourselves in a cabin upstate for a month with vintage gear and just... played. We wanted to capture that live energy, the imperfections. We're tired of music that sounds like it was made by a computer. We wanted to make something human.</p>
+                `,
+                imageUrl: 'https://placehold.co/600x300/1a1a1a/ef4444?text=The+Vinyl+Kids'
+            },
+            {
+                id: 2,
+                type: 'article',
+                title: 'Review: Florence + The Machine - "Celestial Ground"',
+                slug: 'review-florence-and-the-machine-celestial-ground',
+                category: 'REVIEWS',
+                date: 'Nov 12, 2025',
+                excerpt: 'Florence Welch returns with a sprawling, ambitious, and deeply personal album that reaches for the stars.',
+                content: `
+                    <p>Florence Welch has never been one for subtlety. On "Celestial Ground," her fifth studio album, she leans into her maximalist tendencies more than ever. The result is a sprawling, ambitious, and breathtaking collection of songs that feel less like pop music and more like hymns for a new age.</p>
+                    <p>The album is a journey through grief, renewal, and cosmic wonder. It's not a perfect album—it can be overwhelming at times—but it's a powerful statement from an artist at the peak of her powers.</p>
+                `,
+                imageUrl: 'https://placehold.co/600x300/1a1a1a/ef4444?text=Celestial+Ground'
+            },
+        ];
+
+        const navLinks = document.querySelectorAll('.nav-link');
+        const views = document.querySelectorAll('.view');
+        const searchBar = document.getElementById('search-bar');
+        const backButton = document.getElementById('back-button');
+        const contentDisplayContainer = document.getElementById('content-display-container');
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuIcons = mobileMenuButton.querySelectorAll('svg');
+
+        let currentView = 'home-view';
+        let lastView = 'home-view';
+
+        function getPathForView(viewId) {
+            switch (viewId) {
+                case 'home-view': return '/';
+                case 'reviews-view': return '/reviews/';
+                case 'interviews-view': return '/interviews/';
+                case 'downloads-view': return '/downloads/';
+                case 'about-view': return '/about/';
+                default: return '/';
+            }
+        }
+
+        function showView(viewId, pushHistory = true) {
+            if (viewId !== 'detail-view') {
+                currentView = viewId;
+                lastView = viewId;
+                if (pushHistory) {
+                    const path = getPathForView(viewId);
+                    // FIX: Use window.location.hash instead of history.pushState
+                    window.location.hash = path; 
+                }
+            } 
+            
+            views.forEach(view => { view.classList.remove('active'); });
+            document.getElementById(viewId).classList.add('active');
+
+            document.querySelectorAll('.nav-link[data-view]').forEach(link => {
+                if (link.dataset.view === currentView) {
+                    link.classList.add('active');
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+
+            if (mobileMenu.classList.contains('hidden') === false) {
+                mobileMenu.classList.add('hidden');
+                mobileMenuIcons[0].classList.remove('hidden');
+                mobileMenuIcons[1].classList.add('hidden');
+            }
+            
+            window.scrollTo(0, 0);
+        }
+
+        function createContentCard(item) {
+            return `
+                <div class="content-card bg-gray-800 rounded-lg shadow-lg overflow-hidden" data-content-id="${item.id}">
+                    <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-48 object-cover">
+                    <div class="p-5">
+                        <span class="text-red-500 text-xs font-semibold">${item.category}</span>
+                        <h3 class="text-xl font-bold mt-1 mb-2">${item.title}</h3>
+                        <p class="text-gray-400 text-sm">${item.excerpt}</p>
+                    </div>
+                </div>
+            `;
+        }
+        
+        function renderArticles(items, containerId) {
+            const container = document.getElementById(containerId);
+            container.innerHTML = items.map(createContentCard).join('');
+        }
+
+        function renderAllContent() {
+            const homeContent = contentData.slice(0, 4);
+            const reviewsContent = contentData.filter(i => i.category === 'REVIEWS');
+            const interviewsContent = contentData.filter(i => i.category === 'INTERVIEWS');
+            const downloadsContent = contentData.filter(i => i.category === 'DOWNLOADS');
+
+            renderArticles(homeContent, 'home-content-grid');
+            renderArticles(reviewsContent, 'reviews-content-grid');
+            renderArticles(interviewsContent, 'interviews-content-grid');
+            renderArticles(downloadsContent, 'downloads-content-grid');
+
+            document.querySelectorAll('.content-card').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    handleContentClick(parseInt(card.dataset.contentId));
+                });
+            });
+        }
+        
+        function getRelatedSongs(artistName, currentId) {
+            return contentData
+                .filter(item => item.type === 'song' && item.artist === artistName && item.id !== currentId)
+                .map(item => {
+                    // Use a hash link for related songs
+                    const hashPath = `#/downloads/${item.slug}/`;
+                    return `
+                        <li>
+                            <a href="${hashPath}" data-content-id="${item.id}" class="related-song-link text-gray-300 hover:text-red-500 transition-colors">
+                                <span class="font-semibold">${item.title.replace('(MP3 Download)', '').trim()}</span>
+                            </a>
+                        </li>
+                    `;
+                }).join('');
+        }
+
+        function generateSocialShareButtons(url, title) {
+            const encodedUrl = encodeURIComponent(url);
+            const encodedTitle = encodeURIComponent(title);
+            
+            return `
+                <div class="flex flex-wrap gap-4 mt-6">
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" class="social-btn bg-blue-700" title="Share on Facebook">
+                        <i class="fab fa-facebook-f text-xl"></i>
+                    </a>
+                    <!-- X (Twitter) -->
+                    <a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" class="social-btn bg-gray-900" title="Share on X (Twitter)">
+                        <i class="fab fa-x-twitter text-xl"></i>
+                    </a>
+                    <!-- WhatsApp -->
+                    <a href="https://wa.me/?text=${encodedTitle}%20${encodedUrl}" target="_blank" class="social-btn bg-green-500" title="Share on WhatsApp">
+                        <i class="fab fa-whatsapp text-xl"></i>
+                    </a>
+                    <!-- LinkedIn (Placeholder for 'many more') -->
+                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}" target="_blank" class="social-btn bg-blue-500" title="Share on LinkedIn">
+                        <i class="fab fa-linkedin-in text-xl"></i>
+                    </a>
+                </div>
+            `;
+        }
+
+        function renderArticleDetail(item) {
+            backButton.textContent = '← Back to articles';
+            return `
+                <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-96 object-cover">
+                <div class="p-6 md:p-10">
+                    <span class="text-red-500 text-sm font-semibold">${item.category}</span>
+                    <h1 class="text-4xl font-black mt-2 mb-4">${item.title}</h1>
+                    <p class="text-gray-400 mb-6">Published ${item.date}</p>
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
+                        ${item.content}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderSongDetail(item) {
+            backButton.textContent = '← Back to Downloads';
+            const relatedSongsHtml = getRelatedSongs(item.artist, item.id);
+            const songName = item.title.split('-')[1].trim().replace('(MP3 Download)', '').trim();
+            const fileName = `${item.artist.replace(/\s/g, '_')}_${songName.replace(/\s/g, '_')}.mp3`;
+            const shareUrl = window.location.href; // Now includes the hash
+            const shareTitle = `Listen & Download: ${item.title}`;
+
+            return `
+                <div class="grid grid-cols-1 lg:grid-cols-3">
+                    <div class="lg:col-span-2 p-6 md:p-10">
+                        <span class="text-red-500 text-sm font-semibold">${item.category} | ${item.artist}</span>
+                        <h1 class="text-4xl font-black mt-2 mb-4">${item.title}</h1>
+                        <p class="text-gray-400 mb-6">Uploaded ${item.date}</p>
+                        
+                        <!-- Audio Player -->
+                        <div class="bg-gray-700 p-4 rounded-lg shadow-inner mb-6">
+                            <h2 class="text-xl font-semibold mb-3">Listen to "${songName}"</h2>
+                            <audio controls class="w-full rounded-lg">
+                                <source src="${item.audioUrl}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>
+                            <p class="text-gray-400 text-xs mt-2">Note: This is a demo track for preview purposes.</p>
+                        </div>
+
+                        <!-- Download Section -->
+                        <div class="bg-red-500 text-gray-900 p-6 rounded-lg shadow-2xl mb-8">
+                            <h2 class="text-2xl font-bold mb-3">Download Now!</h2>
+                            <p class="mb-4 text-gray-800">Click the button below to get the free high-quality MP3 file of "${songName}".</p>
+                            <a href="${item.downloadLink}" download="${fileName}" class="inline-block px-6 py-3 bg-gray-900 text-white font-extrabold rounded-lg hover:bg-gray-700 transition-colors uppercase tracking-wider">
+                                Download MP3
+                            </a>
+                        </div>
+                        
+                        <!-- Social Share -->
+                        <h2 class="text-xl font-bold mt-8 mb-4">Share This Track</h2>
+                        ${generateSocialShareButtons(shareUrl, shareTitle)}
+
+                        <!-- Artist Background -->
+                        <h2 class="text-3xl font-bold mt-8 mb-4 border-b border-gray-700 pb-2">Artist Background: ${item.artist}</h2>
+                        <p class="text-gray-300 leading-relaxed">${item.artistBio}</p>
+                    </div>
+
+                    <div class="lg:col-span-1 bg-gray-700 p-6 md:p-10 lg:p-6 space-y-6">
+                        <img src="${item.imageUrl}" alt="${item.title}" class="w-full object-cover rounded-lg shadow-lg">
+
+                        <!-- Other Songs -->
+                        <h3 class="text-2xl font-bold mb-4 border-b border-gray-600 pb-2">More by ${item.artist}</h3>
+                        ${relatedSongsHtml.length > 0 ? `<ul class="space-y-3">${relatedSongsHtml}</ul>` : `<p class="text-gray-400">No other songs by this artist found yet.</p>`}
+                    </div>
+                </div>
+            `;
+        }
+
+        function handleContentClick(contentId, pushHistory = true) {
+            const item = contentData.find(i => i.id === contentId);
+            if (!item) return;
+
+            contentDisplayContainer.innerHTML = '';
+            
+            let path = '/';
+            if (item.type === 'song') {
+                path = `/downloads/${item.slug}/`;
+                contentDisplayContainer.innerHTML = renderSongDetail(item);
+            } else {
+                path = `/article/${item.slug || item.id}/`;
+                contentDisplayContainer.innerHTML = renderArticleDetail(item);
+            }
+
+            if (pushHistory) {
+                // FIX: Use window.location.hash instead of history.pushState
+                const hashPath = '#' + path;
+                window.location.hash = hashPath;
+            }
+            
+            // Do not push history here, as it's handled above
+            showView('detail-view', false); 
+
+            if (item.type === 'song') {
+                document.querySelectorAll('.related-song-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        // Clicking a related song link sets the hash, which triggers routeToPath/handleContentClick
+                        window.location.hash = link.getAttribute('href'); 
+                    });
+                });
+            }
+        }
+
+        function filterContent() {
+            const searchTerm = searchBar.value.toLowerCase();
+            const activeGridId = currentView.replace('-view', '-content-grid');
+            const activeCards = document.querySelectorAll(`#${activeGridId} .content-card`);
+            
+            activeCards.forEach(card => {
+                const item = contentData.find(i => i.id === parseInt(card.dataset.contentId));
+                if (!item) return;
+                
+                const searchableText = `${item.title} ${item.excerpt} ${item.artist || ''} ${item.category}`.toLowerCase();
+
+                if (searchableText.includes(searchTerm)) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- Routing and Initialization ---
+        
+        function routeToPath(fullHash) {
+            // Remove the leading '#'
+            const path = fullHash.startsWith('#') ? fullHash.substring(1) : fullHash; 
+            
+            // Clean the path parts
+            const parts = path.split('/').filter(p => p);
+            
+            if (parts.length === 0 || path === '/') {
+                showView('home-view', false);
+            } else if (parts[0] === 'downloads' && parts.length > 1) {
+                const slug = parts[1];
+                const song = contentData.find(i => i.slug === slug && i.type === 'song');
+                if (song) {
+                    handleContentClick(song.id, false); // URL already set by hashchange
+                } else {
+                    showView('downloads-view', false);
+                }
+            } else if (parts[0] === 'article' && parts.length > 1) {
+                 const slugOrId = parts[1];
+                 const article = contentData.find(i => i.slug === slugOrId || i.id === parseInt(slugOrId));
+                 if (article) {
+                     handleContentClick(article.id, false);
+                 } else {
+                    showView('home-view', false);
+                 }
+            } else {
+                // Determine view from the first path part, e.g., 'reviews' -> 'reviews-view'
+                const viewId = parts[0] + '-view';
+                if (document.getElementById(viewId)) {
+                     showView(viewId, false);
+                } else {
+                    // Default to home if route is unknown
+                    showView('home-view', false);
+                }
+            }
+        }
+
+        // FIX: Replaced window.onpopstate with hashchange listener for Hash Routing
+        window.addEventListener('hashchange', () => {
+            routeToPath(window.location.hash);
+        });
+
+        // --- Event Listeners and Startup ---
+
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Setting the hash triggers the hashchange event and routes the application
+                window.location.hash = link.getAttribute('href');
+                searchBar.value = ''; 
+                filterContent();
+            });
+        });
+
+        backButton.addEventListener('click', () => {
+            history.back(); // Use history.back() for proper navigation flow
+        });
+
+        searchBar.addEventListener('keyup', filterContent);
+        
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            mobileMenuIcons[0].classList.toggle('hidden');
+            mobileMenuIcons[1].classList.toggle('hidden');
+        });
+
+        // Initial application setup
+        window.onload = function() {
+            renderAllContent();
+            // Route based on the initial URL HASH
+            routeToPath(window.location.hash);
+        }
+    </script>
 </body>
 </html>
-
