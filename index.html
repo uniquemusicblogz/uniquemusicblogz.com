@@ -1,203 +1,44 @@
-<!DOCTYPE html lang="en">
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Unique Music Blog - Best Music World Wide</title>
-   <!-- Open Graph (OG) Meta Tags -->
-<meta property="og:title" content="Unique Music Blog - Discover Global Hits">
-<meta property="og:description" content="Explore the best music worldwide and stream directly from Unique Music Blog!">
-<meta property="og:image" content="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Unique.png">
-<meta property="og:url" content="https://uniquemusicblogz.github.io/"> <!-- Update this to your actual GitHub Pages link -->
-<meta property="og:type" content="music.playlist">
-<meta property="og:site_name" content="Unique Music Blog, unique music blog, uniquemusicblog, zeduniquemusic">
-<meta property="og:locale" content="en_US">
+    
+    <!-- Open Graph (OG) Meta Tags -->
+    <meta property="og:title" content="Unique Music Blog - Discover Global Hits">
+    <meta property="og:description" content="Explore the best music worldwide and stream directly from Unique Music Blog!">
+    <meta property="og:image" content="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Unique.png">
+    <!-- 
+      Note: I've updated this URL based on your GitHub repo name. 
+      If your GitHub Pages site is different, you can change this.
+    -->
+    <meta property="og:url" content="https://uniquemusicblogz.github.io/uniquemusicblogz.com/"> 
+    <meta property="og:type" content="music.playlist">
+    <meta property="og:site_name" content="Unique Music Blog">
+    <meta property="og:locale" content="en_US">
 
-<!-- Twitter Card (for better Twitter previews) -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Unique Music Blog - Discover Global Hits">
-<meta name="twitter:description" content="Explore the best music worldwide and stream directly from Unique Music Blog!">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Unique.png">
-<meta name="twitter:url" content="https://uniquemusicblogz.github.io/">
+    <!-- Twitter Card (for better Twitter previews) -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Unique Music Blog - Discover Global Hits">
+    <meta name="twitter:description" content="Explore the best music worldwide and stream directly from Unique Music Blog!">
+    <meta name="twitter:image" content="https://raw.githubusercontent.com/uniquemusicblogz/uniquemusicblogz.com/main/Unique.png">
+    <!-- Note: Also updated this URL -->
+    <meta name="twitter:url" content="https://uniquemusicblogz.github.io/uniquemusicblogz.com/">
 
-<!-- Stylesheets -->
+    <!-- Stylesheets -->
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-   
-    <style>
-        /* CSS Reset */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Open Sans', sans-serif; background: #1a1a1a; color: #ffffff; line-height: 1.6; }
-
-        /* Navbar */
-        .navbar {
-            background: #000;
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-        .logo {
-            flex: 1; /* Adjusts logo position */
-        }
-        .nav-menu {
-            list-style: none;
-            display: flex;
-            margin-left: auto; /* Pushes nav items to the right */
-        }
-        .nav-menu li {
-            margin-left: 1.5rem; /* Space between items */
-        }
-        .nav-menu li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 600;
-            transition: color 0.3s;
-        }
-        .nav-menu li a:hover {
-            color: #FF6B6B;
-        }
-
-        /* Hero Section */
-        .hero { text-align: center; padding: 2rem 1rem; background: #000; }
-        .hero h1 { font-size: 2rem; margin-bottom: 1.5rem; color: #FF6B6B; }
-        .search-bar { max-width: 600px; margin: 0 auto; display: flex; border: 1px solid #444; border-radius: 30px; overflow: hidden; background: #1a1a1a; }
-        .search-bar input { flex: 1; padding: 0.8rem 1rem; border: none; outline: none; background: transparent; color: #ffffff; font-size: 1rem; }
-        .search-bar button { background: #FF6B6B; border: none; padding: 0 1rem; cursor: pointer; color: #fff; font-size: 1rem; }
-
-        /* Media List */
-        .media-list { max-width: 1200px; margin: 2rem auto; display: flex; flex-wrap: wrap; gap: 1rem; }
-        .media-card { background: #2d2d2d; border-radius: 8px; display: flex; align-items: center; padding: 1rem; transition: background 0.3s; cursor: pointer; flex: 1 1 calc(33.333% - 1rem); }
-        .media-card:hover { background: #3a3a3a; }
-        .media-cover { width: 80px; height: 80px; border-radius: 5px; object-fit: cover; margin-right: 1rem; }
-        .media-info { flex: 1; }
-        .media-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; }
-        .media-artist { color: #aaa; font-size: 0.9rem; margin-bottom: 0.3rem; }
-
-
-        .media-info button {
-    background-color: #FF6B6B; /* Button color */
-    color: white; /* Text color */
-    border: none; /* No border */
-    padding: 5px 10px; /* Padding */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
-    margin-top: 5px; /* Space above the button */
-    transition: background 0.3s; /* Smooth background transition */
-}
-
-.media-info button:hover {
-    background-color: #ff4d4d; /* Darker shade on hover */
-}
-.share-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 15px;
-}
-
-.share-buttons button {
-    background-color: #FF6B6B;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-.share-buttons button:hover {
-    background-color: #ff4d4d;
-}
-
-        /* Pagination */
-        .pagination { text-align: center; margin: 20px 0; }
-        .pagination button { background: #FF6B6B; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin: 0 5px; }
-        .pagination button:disabled { background: #444; cursor: not-allowed; }
-
-        /* Artist Details */
-        .artist-details { padding: 20px; background: #2d2d2d; border-radius: 8px; margin: 20px; }
-        .artist-cover { width: 150px; border-radius: 8px; margin-bottom: 15px; }
-        .download-btn { background: #FF6B6B; color: #fff; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
-        .download-btn:hover { background: #ff8c00; }
-        .biography { margin-top: 20px; font-size: 1rem; color: #ccc; }
-
-        /* Footer */
-      .site-footer {
-    background: #2d2d2d;
-    color: #ffffff;
-    padding: 2rem 1rem;
-    margin-top: 3rem;
-    border-top: 1px solid rgba(255,255,255,0.1);
-}
-
-.footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-    justify-content: center; /* Center-aligns footer sections */
-}
-
-.footer-section {
-    flex: 1;
-    min-width: 250px;
-    text-align: center; /* Center-aligns text within each section */
-}
-
-.footer-section h4 {
-    color: #FF6B6B;
-    margin-bottom: 1rem;
-}
-
-.social-links {
-    display: flex;
-    gap: 1rem;
-    justify-content: center; /* Center-aligns social links */
-}
-
-.footer-links {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-links li {
-    margin-bottom: 0.5rem;
-}
-
-.footer-links a {
-    color: #ffffff;
-    text-decoration: none;
-}
-
-.footer-links a:hover {
-    color: #FF6B6B;
-}
-
-.footer-bottom {
-    text-align: center; /* Center-aligns the copyright text */
-    margin-top: 1rem;
-}
-        /* Responsive Styles */
-        @media (max-width: 768px) {
-            .media-card { flex: 1 1 calc(50% - 1rem); } /* 2 cards per row on smaller screens */
-        }
-        @media (max-width: 480px) {
-            .media-card { flex: 1 1 100%; } /* 1 card per row on mobile */
-            .navbar { flex-direction: column; text-align: center; }
-            .nav-menu { flex-direction: column; justify-content: center; margin-top: 1rem; }
-            .nav-menu li { margin: 0.5rem; }
-            .hero h1 { font-size: 1.6rem; }
-        }
-    </style>
+    
+    <!-- Your Custom Stylesheet -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
-   <!-- Navbar -->
-   <nav class="navbar">
-        <div class="logo"><a href="index.html"><strong> <b style="color:orange;">UniqueMusic</b></strong></a></div>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <!-- Simplified logo for easier styling -->
+        <div class="logo"><a href="index.html">Unique<span>Music</span></a></div>
         <ul class="nav-menu">
             <li><a href="index.html">Home</a></li>
             <li><a href="about us.html">About</a></li>
@@ -222,42 +63,44 @@
     <!-- Pagination Controls -->
     <div class="pagination" id="pagination-controls"></div>
 
-    <!-- Artist Details Section -->
-    <div class="artist-details" id="artist-details" style="display:none;"></div>
+    <!-- Artist Details Section (hidden by default) -->
+    <div class="artist-details" id="artist-details"></div>
 
     
-
     <!-- Footer -->
-  <footer class="site-footer">
-    <div class="footer-content">
-        <div class="footer-section">
-            <h4>Follow Us</h4>
-            <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-youtube"></i></a>
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>Follow Us</h4>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            <!-- Removed inline styles, as they are in style.css now -->
+            <div class="footer-section footer-quick-links">
+                <h4>Quick Links</h4>
+                <ul class="footer-links">
+                    <li><a href="about us.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                </ul>
             </div>
         </div>
-        <div class="footer-section" style="text-align: center;">
-            <h4>Quick Links</h4>
-            <ul class="footer-links" style="list-style: none; padding: 0; text-align: center;">
-                <li><a href="about us.html">About Us</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="privacy.html">Privacy Policy</a></li>
-                <li><a href="terms.html">Terms of Service</a></li>
-            </ul>
+        <!-- Removed inline styles, as they are in style.css now -->
+        <div class="footer-bottom">
+            <p>
+                Copyright &copy; <script>document.write(new Date().getFullYear())</script> | All rights Reserved | 
+                <a href="index.html" class="footer-site-link">Unique Music Blog</a> | 
+                Proudly designed by <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" rel="noopener noreferrer" class="footer-designer-link">Brian Simumba</a>
+            </p>
         </div>
-    </div>
-    <div class="footer-bottom">
-        <p style="text-align: center;">
-            Copyright &copy; <script>document.write(new Date().getFullYear())</script> | All rights Reserved | 
-            <a style="color: orange;" href="index.html">Unique Music Blog</a> | 
-            Proudly designed by <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" target="_blank" style="color: aqua;">Brian Simumba</a>
-        </p>
-    </div>
-</footer>
- <script src="BS.js"></script> <!-- Link your JavaScript file -->   
+    </footer>
+
+    <!-- Your JavaScript file -->
+    <script src="BS.js"></script> 
 </body>
 </html>
-
