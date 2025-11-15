@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Unique Music Blog | Best Zambian Music</title>
+    <title>Unique Music Blog | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900;display=swap" rel="stylesheet">
     <!-- Load Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
+    <!-- Dynamic SEO/Open Graph Meta Tags - Will be updated by JavaScript -->
+    <meta property="og:title" content="Unique Music Blog">
+    <meta property="og:description" content="The best new music, interviews, reviews, and free downloads.">
+    <meta property="og:image" content="https://placehold.co/1200x630/222/ef4444?text=Unique+Music+Blog">
+    <meta property="og:url" content="https://example.com">
+    <meta property="og:type" content="website">
+
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -49,14 +56,16 @@
         <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-16">
                 <div class="flex-shrink-0">
-                    <!-- Updated to use hash routing -->
-                    <a href="#/" class="text-3xl font-black text-red-500 nav-link" data-view="home-view">UNIQUE MUSIC BLOG</a>
+                    <a href="#/" class="text-xl sm:text-2xl font-black text-white nav-link tracking-wide" data-view="home-view">
+                        <span class="text-red-500">Unique</span> Music Blog
+                    </a>
                 </div>
                 <div class="hidden md:block">
                     <div class="ml-10 flex items-baseline space-x-4">
                         <a href="#/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="home-view">Home</a>
                         <a href="#/reviews/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="reviews-view">Reviews</a>
                         <a href="#/interviews/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="interviews-view">Interviews</a>
+                        <a href="#/videos/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="videos-view">Videos</a>
                         <a href="#/downloads/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="downloads-view">Downloads</a>
                         <a href="#/about/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="about-view">About</a>
                     </div>
@@ -80,6 +89,7 @@
                 <a href="#/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="home-view">Home</a>
                 <a href="#/reviews/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="reviews-view">Reviews</a>
                 <a href="#/interviews/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="interviews-view">Interviews</a>
+                <a href="#/videos/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="videos-view">Videos</a>
                 <a href="#/downloads/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="downloads-view">Downloads</a>
                 <a href="#/about/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="about-view">About</a>
             </div>
@@ -91,8 +101,8 @@
             
             <aside class="w-full md:w-1/4 space-y-8 md:sticky md:top-24 h-full">
                 <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
-                    <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Search</h3>
-                    <input type="search" id="search-bar" placeholder="Filter content..." class="w-full px-3 py-2 bg-gray-700 text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Search Site</h3>
+                    <input type="search" id="search-bar" placeholder="Search across all content..." class="w-full px-3 py-2 bg-gray-700 text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
                 </div>
 
                 <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
@@ -100,6 +110,7 @@
                     <ul class="space-y-3">
                         <li><a href="#/reviews/" class="nav-link hover:text-red-500 transition-colors" data-view="reviews-view">Album Reviews</a></li>
                         <li><a href="#/interviews/" class="nav-link hover:text-red-500 transition-colors" data-view="interviews-view">Interviews</a></li>
+                        <li><a href="#/videos/" class="nav-link hover:text-red-500 transition-colors" data-view="videos-view">Videos</a></li>
                         <li><a href="#/downloads/" class="nav-link hover:text-red-500 transition-colors" data-view="downloads-view">Free Downloads</a></li>
                     </ul>
                 </div>
@@ -127,6 +138,13 @@
                     <div id="interviews-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
                     </div>
                 </div>
+                
+                <div id="videos-view" class="view space-y-8">
+                    <h2 class="text-3xl font-bold mb-1">Music Videos & Live Footage</h2>
+                    <p class="text-gray-400 mb-4">Watch the latest official music videos and exclusive live performance footage.</p>
+                    <div id="videos-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    </div>
+                </div>
 
                 <div id="downloads-view" class="view space-y-8">
                     <h2 class="text-3xl font-bold mb-1">Free MP3 Downloads</h2>
@@ -135,10 +153,20 @@
                     </div>
                 </div>
 
+                <!-- Search Results View -->
+                <div id="search-results-view" class="view space-y-8">
+                    <h2 class="text-3xl font-bold mb-1">Search Results for: "<span id="search-query-display" class="text-red-500"></span>"</h2>
+                    <p id="search-count-display" class="text-gray-400 mb-4"></p>
+                    <div id="search-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Filtered cards will be rendered here -->
+                    </div>
+                </div>
+                <!-- END: Search Results View -->
+
                 <div id="about-view" class="view space-y-4">
-                    <h2 class="text-3xl font-bold mb-4">About Westside</h2>
+                    <h2 class="text-3xl font-bold mb-4">About Unique Music Blog</h2>
                     <div class="bg-gray-800 p-6 rounded-lg shadow-lg space-y-4 text-gray-300 leading-relaxed">
-                        <p>Welcome to Westside Music Blog, your new home for music discovery. We are a passionate collective of writers, musicians, and fans dedicated to uncovering the best new music and sharing the stories behind it.</p>
+                        <p>Welcome to Unique Music Blog, your new home for music discovery. We are a passionate collective of writers, musicians, and fans dedicated to uncovering the best new music and sharing the stories behind it.</p>
                         <p>Our mission is simple: to champion the artists we believe in. Whether it's through an in-depth album review, an exclusive interview, or a free song download, we strive to provide thoughtful, engaging, and authentic content.</p>
                     </div>
                 </div>
@@ -163,9 +191,8 @@
     </footer>
 
     <script>
-        const BASE_URL = window.location.origin; // Represents the site's base domain
-        
         const contentData = [
+            // --- Song Content ---
             {
                 id: 101,
                 type: 'song',
@@ -175,10 +202,9 @@
                 category: 'DOWNLOADS',
                 date: 'Nov 15, 2025',
                 excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now.',
-                // Changed to Picsum for better placeholder images
                 imageUrl: 'https://picsum.photos/seed/snoopjay1/600/300', 
                 downloadLink: 'https://example.com/downloads/come_over.mp3', 
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', // Placeholder audio link
+                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3', 
                 artistBio: 'Snoop Jay is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements, creating a unique and irresistible sound. His recent work focuses on international collaborations, pushing the boundaries of the genre.'
             },
             {
@@ -190,27 +216,12 @@
                 category: 'DOWNLOADS',
                 date: 'Nov 12, 2025',
                 excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
-                // Changed to Picsum for better placeholder images
                 imageUrl: 'https://picsum.photos/seed/djken/600/300',
                 downloadLink: 'https://example.com/downloads/city_vibes.mp3',
                 audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
                 artistBio: 'DJ Ken is a veteran producer and mixer based in Accra. His signature sound is heavily influenced by 90s West Coast hip-hop and contemporary Ghanaian highlife, making him a fixture in the local club scene and a master of the beat drop.'
             },
-            {
-                id: 103,
-                type: 'song',
-                title: 'Snoop Jay - Sunset',
-                slug: 'snoop-jay-sunset-mp3-download',
-                artist: 'Snoop Jay',
-                category: 'DOWNLOADS',
-                date: 'Oct 28, 2025',
-                excerpt: 'A chill, soulful track that showcases Snoop Jay\'s vocal range.',
-                // Changed to Picsum for better placeholder images
-                imageUrl: 'https://picsum.photos/seed/snoopjay2/600/300',
-                downloadLink: 'https://example.com/downloads/sunset.mp3',
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3',
-                artistBio: 'Snoop Jay is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements, creating a unique and irresistible sound. His recent work focuses on international collaborations, pushing the boundaries of the genre.'
-            },
+            // --- Article/Review Content ---
             {
                 id: 1,
                 type: 'article',
@@ -219,13 +230,12 @@
                 category: 'INTERVIEWS',
                 date: 'Nov 14, 2025',
                 excerpt: 'We sat down with the breakout indie band to discuss their whirlwind year, creative process, and what comes next...',
-                // Changed to Picsum for better placeholder images
-                imageUrl: 'https://picsum.photos/seed/vinylkids/600/300',
                 content: `
                     <p>It's not every day a band emerges with a sound that feels both timeless and entirely new. The Vinyl Kids have done just that. We sat down with lead singer Alex Chen to discuss their whirlwind year.</p>
-                    <p><strong>Westside:</strong> Alex, thanks for joining us. Your debut album, "Static Dreams," has been on repeat in our office. What was the recording process like?</p>
+                    <p><strong>Unique Music Blog:</strong> Alex, thanks for joining us. Your debut album, "Static Dreams," has been on repeat in our office. What was the recording process like?</p>
                     <p><strong>Alex:</strong> Thanks for having me! It was chaos, in the best way. We locked ourselves in a cabin upstate for a month with vintage gear and just... played. We wanted to capture that live energy, the imperfections. We're tired of music that sounds like it was made by a computer. We wanted to make something human.</p>
                 `,
+                imageUrl: 'https://picsum.photos/seed/vinylkids/600/300',
             },
             {
                 id: 2,
@@ -235,13 +245,38 @@
                 category: 'REVIEWS',
                 date: 'Nov 12, 2025',
                 excerpt: 'Florence Welch returns with a sprawling, ambitious, and deeply personal album that reaches for the stars.',
-                // Changed to Picsum for better placeholder images
-                imageUrl: 'https://picsum.photos/seed/florence/600/300',
                 content: `
                     <p>Florence Welch has never been one for subtlety. On "Celestial Ground," her fifth studio album, she leans into her maximalist tendencies more than ever. The result is a sprawling, ambitious, and breathtaking collection of songs that feel less like pop music and more like hymns for a new age.</p>
                     <p>The album is a journey through grief, renewal, and cosmic wonder. It's not a perfect album—it can be overwhelming at times—but it's a powerful statement from an artist at the peak of her powers.</p>
                 `,
+                imageUrl: 'https://picsum.photos/seed/florence/600/300',
             },
+            // --- Video Content ---
+            {
+                id: 3,
+                type: 'video',
+                title: 'Visualizer: Neon City Remix by Astra',
+                slug: 'visualizer-neon-city-remix-astra',
+                category: 'VIDEOS',
+                date: 'Nov 10, 2025',
+                excerpt: 'An immersive visual journey accompanying the latest synthwave remix.',
+                imageUrl: 'https://picsum.photos/seed/visualizer/600/300', 
+                videoUrl: 'https://www.youtube.com/embed/S_T1x11f62s', 
+                content: '<p>Astra\'s new remix of "Neon City" demands a visual experience, and this 4K visualizer delivers. It perfectly captures the cyberpunk aesthetic of the track, blending retro visuals with modern, pulsing beats.</p>',
+            },
+            {
+                id: 4,
+                type: 'video',
+                title: 'The Vinyl Kids Live in London (Full Concert)',
+                slug: 'vinyl-kids-live-london-full-concert',
+                category: 'VIDEOS',
+                date: 'Oct 30, 2025',
+                excerpt: 'Watch the full, electric performance from The Vinyl Kids\' sold-out show at the Apollo.',
+                imageUrl: 'https://picsum.photos/seed/vinylkidslive/600/300', 
+                videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', 
+                content: '<p>Experience the raw energy of The Vinyl Kids live on stage. This recording captures their best moments and incredible audience interaction, a must-watch for any serious fan.</p>',
+            },
+            
         ];
 
         const navLinks = document.querySelectorAll('.nav-link');
@@ -253,14 +288,58 @@
         const mobileMenu = document.getElementById('mobile-menu');
         const mobileMenuIcons = mobileMenuButton.querySelectorAll('svg');
 
-        let currentView = 'home-view';
-        let lastView = 'home-view';
+        let currentView = 'home-view'; // The view currently displayed
+        let lastPrimaryView = 'home-view'; // The last non-detail/non-search view
+
+        // --- SEO / Metadata Functions (NEW) ---
+        
+        const DEFAULT_TITLE = "Unique Music Blog | Home of Music Discovery";
+        const DEFAULT_DESCRIPTION = "The best new music, interviews, reviews, and free downloads.";
+        const DEFAULT_IMAGE = "https://placehold.co/1200x630/222/ef4444?text=Unique+Music+Blog";
+
+        function setMetadata(title, description, imageUrl, url) {
+            document.title = title;
+
+            // Function to find or create a meta tag
+            const updateMeta = (property, content, nameAttr = false) => {
+                const selector = nameAttr ? `meta[name="${property}"]` : `meta[property="${property}"]`;
+                let meta = document.head.querySelector(selector);
+                if (!meta) {
+                    meta = document.createElement('meta');
+                    if (nameAttr) {
+                        meta.setAttribute('name', property);
+                    } else {
+                        meta.setAttribute('property', property);
+                    }
+                    document.head.appendChild(meta);
+                }
+                meta.setAttribute('content', content);
+            };
+
+            updateMeta('og:title', title);
+            updateMeta('og:description', description);
+            updateMeta('og:image', imageUrl);
+            updateMeta('og:url', url);
+            updateMeta('og:type', url.includes('/article/') || url.includes('/downloads/') || url.includes('/videos/') ? 'article' : 'website');
+
+            // Optionally, update standard SEO tags (though OG is often enough)
+            updateMeta('description', description, true);
+        }
+
+        // Resets metadata to default values
+        function resetMetadata() {
+            const url = window.location.origin + window.location.pathname; // Base URL
+            setMetadata(DEFAULT_TITLE, DEFAULT_DESCRIPTION, DEFAULT_IMAGE, url);
+        }
+
+        // --- View & Routing Logic ---
 
         function getPathForView(viewId) {
             switch (viewId) {
                 case 'home-view': return '/';
                 case 'reviews-view': return '/reviews/';
                 case 'interviews-view': return '/interviews/';
+                case 'videos-view': return '/videos/';
                 case 'downloads-view': return '/downloads/';
                 case 'about-view': return '/about/';
                 default: return '/';
@@ -268,27 +347,39 @@
         }
 
         function showView(viewId, pushHistory = true) {
-            if (viewId !== 'detail-view') {
+            // Update lastPrimaryView only if navigating to a main section
+            if (['home-view', 'reviews-view', 'interviews-view', 'videos-view', 'downloads-view', 'about-view'].includes(viewId)) {
+                lastPrimaryView = viewId;
                 currentView = viewId;
-                lastView = viewId;
-                if (pushHistory) {
-                    const path = getPathForView(viewId);
-                    // FIX: Use window.location.hash instead of history.pushState
-                    window.location.hash = path; 
-                }
-            } 
+                resetMetadata(); // Reset metadata for primary views
+            } else if (viewId === 'search-results-view' || viewId === 'detail-view') {
+                currentView = viewId;
+            }
             
             views.forEach(view => { view.classList.remove('active'); });
             document.getElementById(viewId).classList.add('active');
 
+            // Update active navigation link styling
             document.querySelectorAll('.nav-link[data-view]').forEach(link => {
-                if (link.dataset.view === currentView) {
+                // Check if the link's data-view matches the current or last primary view
+                const matchesCurrentView = link.dataset.view === currentView;
+                const matchesLastPrimary = link.dataset.view === lastPrimaryView;
+
+                // Only style the active link if we are in a primary view or a detail view that originated from that link
+                if (matchesCurrentView || matchesLastPrimary && (currentView !== 'detail-view' && currentView !== 'search-results-view')) {
+                     link.classList.add('active');
+                } else if (currentView === 'detail-view' && link.dataset.view === lastPrimaryView) {
+                    // Keep the primary category link highlighted when viewing a detail from it
                     link.classList.add('active');
+                } else if (currentView === 'search-results-view' && link.dataset.view === lastPrimaryView) {
+                    // Keep the primary category link highlighted when searching from it
+                     link.classList.add('active');
                 } else {
                     link.classList.remove('active');
                 }
             });
 
+            // Close mobile menu if open
             if (mobileMenu.classList.contains('hidden') === false) {
                 mobileMenu.classList.add('hidden');
                 mobileMenuIcons[0].classList.remove('hidden');
@@ -300,10 +391,13 @@
 
         function createContentCard(item) {
             return `
-                <div class="content-card bg-gray-800 rounded-lg shadow-lg overflow-hidden" data-content-id="${item.id}">
+                <div class="content-card bg-gray-800 rounded-lg shadow-lg overflow-hidden relative" data-content-id="${item.id}">
+                    <!-- Added Video Icon Overlay -->
+                    ${item.type === 'video' ? '<div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30"><i class="fas fa-play text-white text-5xl opacity-80"></i></div>' : ''}
+
                     <!-- Added onerror for robust image loading -->
                     <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-48 object-cover" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/600x300/222/ef4444?text=IMAGE+ERROR';">
+                        onerror="this.onerror=null; this.src='https://placehold.co/600x300/222/ef4444?text=${item.category}+IMAGE+ERROR';">
                     <div class="p-5">
                         <span class="text-red-500 text-xs font-semibold">${item.category}</span>
                         <h3 class="text-xl font-bold mt-1 mb-2">${item.title}</h3>
@@ -319,16 +413,20 @@
         }
 
         function renderAllContent() {
+            // Render content for all primary category grids
             const homeContent = contentData.slice(0, 4);
             const reviewsContent = contentData.filter(i => i.category === 'REVIEWS');
             const interviewsContent = contentData.filter(i => i.category === 'INTERVIEWS');
+            const videosContent = contentData.filter(i => i.category === 'VIDEOS');
             const downloadsContent = contentData.filter(i => i.category === 'DOWNLOADS');
 
             renderArticles(homeContent, 'home-content-grid');
             renderArticles(reviewsContent, 'reviews-content-grid');
             renderArticles(interviewsContent, 'interviews-content-grid');
+            renderArticles(videosContent, 'videos-content-grid');
             renderArticles(downloadsContent, 'downloads-content-grid');
 
+            // Attach click listeners to all cards
             document.querySelectorAll('.content-card').forEach(card => {
                 card.addEventListener('click', (e) => {
                     e.preventDefault();
@@ -341,7 +439,6 @@
             return contentData
                 .filter(item => item.type === 'song' && item.artist === artistName && item.id !== currentId)
                 .map(item => {
-                    // Use a hash link for related songs
                     const hashPath = `#/downloads/${item.slug}/`;
                     return `
                         <li>
@@ -381,8 +478,18 @@
 
         function renderArticleDetail(item) {
             backButton.textContent = '← Back to articles';
+            const shareUrl = window.location.href; 
+            const shareTitle = `Article: ${item.title}`;
+
+            // SET METADATA
+            setMetadata(
+                `${item.title} | Unique Music Blog`,
+                item.excerpt,
+                item.imageUrl,
+                shareUrl
+            );
+
             return `
-                <!-- Added onerror for robust image loading -->
                 <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-96 object-cover" 
                     onerror="this.onerror=null; this.src='https://placehold.co/960x384/222/ef4444?text=IMAGE+ERROR';" />
                 <div class="p-6 md:p-10">
@@ -392,6 +499,54 @@
                     <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
                         ${item.content}
                     </div>
+                    
+                    <!-- Social Share -->
+                    <h2 class="text-xl font-bold mt-8 mb-4 border-t border-gray-700 pt-4">Share This Article</h2>
+                    ${generateSocialShareButtons(shareUrl, shareTitle)}
+                </div>
+            `;
+        }
+        
+        function renderVideoDetail(item) {
+            backButton.textContent = '← Back to Videos';
+            const shareUrl = window.location.href; 
+            const shareTitle = `Video: ${item.title}`;
+
+            // SET METADATA
+            setMetadata(
+                `${item.title} | Videos | Unique Music Blog`,
+                item.excerpt,
+                item.imageUrl,
+                shareUrl
+            );
+
+            return `
+                <div class="p-6 md:p-10">
+                    <span class="text-red-500 text-sm font-semibold">${item.category}</span>
+                    <h1 class="text-4xl font-black mt-2 mb-4">${item.title}</h1>
+                    <p class="text-gray-400 mb-6">Published ${item.date}</p>
+                    
+                    <!-- Embedded Video Player (Responsive 16:9 aspect ratio) -->
+                    <div class="relative overflow-hidden w-full mb-6 rounded-lg shadow-2xl" style="padding-top: 56.25%;">
+                        <iframe 
+                            class="absolute top-0 left-0 w-full h-full" 
+                            src="${item.videoUrl}" 
+                            title="Embedded Video Player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen
+                            loading="lazy">
+                        </iframe>
+                    </div>
+
+                    <!-- Content/Description -->
+                    <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
+                        ${item.content}
+                    </div>
+                    
+                    <!-- Social Share -->
+                    <h2 class="text-xl font-bold mt-8 mb-4 border-t border-gray-700 pt-4">Share This Video</h2>
+                    ${generateSocialShareButtons(shareUrl, shareTitle)}
                 </div>
             `;
         }
@@ -401,8 +556,16 @@
             const relatedSongsHtml = getRelatedSongs(item.artist, item.id);
             const songName = item.title.split('-')[1].trim().replace('(MP3 Download)', '').trim();
             const fileName = `${item.artist.replace(/\s/g, '_')}_${songName.replace(/\s/g, '_')}.mp3`;
-            const shareUrl = window.location.href; // Now includes the hash
+            const shareUrl = window.location.href; 
             const shareTitle = `Listen & Download: ${item.title}`;
+
+            // SET METADATA
+            setMetadata(
+                `${item.title} | Free Download | Unique Music Blog`,
+                item.excerpt,
+                item.imageUrl,
+                shareUrl
+            );
 
             return `
                 <div class="grid grid-cols-1 lg:grid-cols-3">
@@ -458,72 +621,118 @@
 
             contentDisplayContainer.innerHTML = '';
             
-            let path = '/';
-            if (item.type === 'song') {
+            let path = '';
+
+            if (item.type === 'video') {
+                path = `/videos/${item.slug}/`;
+                contentDisplayContainer.innerHTML = renderVideoDetail(item);
+            } else if (item.type === 'song') {
                 path = `/downloads/${item.slug}/`;
                 contentDisplayContainer.innerHTML = renderSongDetail(item);
-            } else {
+            } else { // Article
                 path = `/article/${item.slug || item.id}/`;
                 contentDisplayContainer.innerHTML = renderArticleDetail(item);
             }
 
             if (pushHistory) {
-                // FIX: Use window.location.hash instead of history.pushState
                 const hashPath = '#' + path;
                 window.location.hash = hashPath;
             }
             
-            // Do not push history here, as it's handled above
             showView('detail-view', false); 
 
             if (item.type === 'song') {
                 document.querySelectorAll('.related-song-link').forEach(link => {
                     link.addEventListener('click', (e) => {
                         e.preventDefault();
-                        // Clicking a related song link sets the hash, which triggers routeToPath/handleContentClick
                         window.location.hash = link.getAttribute('href'); 
                     });
                 });
             }
         }
 
-        function filterContent() {
-            const searchTerm = searchBar.value.toLowerCase();
-            const activeGridId = currentView.replace('-view', '-content-grid');
-            const activeCards = document.querySelectorAll(`#${activeGridId} .content-card`);
-            
-            activeCards.forEach(card => {
-                const item = contentData.find(i => i.id === parseInt(card.dataset.contentId));
-                if (!item) return;
-                
-                const searchableText = `${item.title} ${item.excerpt} ${item.artist || ''} ${item.category}`.toLowerCase();
+        // Global Search Handler
+        function handleSearch(searchTerm) {
+            const trimmedTerm = searchTerm.toLowerCase().trim();
 
-                if (searchableText.includes(searchTerm)) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
+            if (trimmedTerm === '') {
+                // If search bar is empty, return to the last known primary view
+                window.location.hash = getPathForView(lastPrimaryView);
+                resetMetadata(); // Reset metadata
+                return;
+            }
+            
+            // 1. Global filter across all contentData
+            const results = contentData.filter(item => {
+                const searchableText = `${item.title} ${item.excerpt} ${item.artist || ''} ${item.category} ${item.content || ''}`.toLowerCase();
+                return searchableText.includes(trimmedTerm);
             });
+
+            // 2. Update the URL hash to reflect the search query
+            if (window.location.hash !== `#/search/${encodeURIComponent(trimmedTerm)}`) {
+                 window.location.hash = `#/search/${encodeURIComponent(trimmedTerm)}`;
+            }
+            
+            // 3. Display results in the dedicated search view
+            const resultsContainer = document.getElementById('search-content-grid');
+            const queryDisplay = document.getElementById('search-query-display');
+            const countDisplay = document.getElementById('search-count-display');
+            
+            queryDisplay.textContent = trimmedTerm;
+            countDisplay.textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found across all content.`;
+            
+            if (results.length > 0) {
+                resultsContainer.innerHTML = results.map(createContentCard).join('');
+                // Re-attach listeners to the dynamically created cards
+                document.querySelectorAll('#search-content-grid .content-card').forEach(card => {
+                    card.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        handleContentClick(parseInt(card.dataset.contentId));
+                    });
+                });
+            } else {
+                resultsContainer.innerHTML = '<div class="md:col-span-2 text-center py-10 text-gray-400 text-lg bg-gray-700 rounded-lg">Sorry, no content matched your search query. Try another term.</div>';
+            }
+            
+            showView('search-results-view', false); 
+            
+            // SET METADATA for search results page
+            setMetadata(
+                `Search Results for "${trimmedTerm}" | Unique Music Blog`,
+                `Found ${results.length} articles, videos, and songs matching the query: "${trimmedTerm}".`,
+                DEFAULT_IMAGE,
+                window.location.href
+            );
         }
 
         // --- Routing and Initialization ---
         
         function routeToPath(fullHash) {
-            // Remove the leading '#'
             const path = fullHash.startsWith('#') ? fullHash.substring(1) : fullHash; 
-            
-            // Clean the path parts
             const parts = path.split('/').filter(p => p);
             
             if (parts.length === 0 || path === '/') {
+                searchBar.value = ''; 
                 showView('home-view', false);
+            } else if (parts[0] === 'search' && parts.length > 1) { 
+                const searchTerm = decodeURIComponent(parts[1]);
+                searchBar.value = searchTerm;
+                handleSearch(searchTerm);
             } else if (parts[0] === 'downloads' && parts.length > 1) {
                 const slug = parts[1];
                 const song = contentData.find(i => i.slug === slug && i.type === 'song');
                 if (song) {
-                    handleContentClick(song.id, false); // URL already set by hashchange
+                    handleContentClick(song.id, false);
                 } else {
                     showView('downloads-view', false);
+                }
+            } else if (parts[0] === 'videos' && parts.length > 1) { 
+                const slug = parts[1];
+                const video = contentData.find(i => i.slug === slug && i.type === 'video');
+                if (video) {
+                    handleContentClick(video.id, false);
+                } else {
+                    showView('videos-view', false);
                 }
             } else if (parts[0] === 'article' && parts.length > 1) {
                  const slugOrId = parts[1];
@@ -534,18 +743,16 @@
                     showView('home-view', false);
                  }
             } else {
-                // Determine view from the first path part, e.g., 'reviews' -> 'reviews-view'
                 const viewId = parts[0] + '-view';
                 if (document.getElementById(viewId)) {
-                     showView(viewId, false);
+                    searchBar.value = ''; 
+                    showView(viewId, false);
                 } else {
-                    // Default to home if route is unknown
                     showView('home-view', false);
                 }
             }
         }
 
-        // FIX: Replaced window.onpopstate with hashchange listener for Hash Routing
         window.addEventListener('hashchange', () => {
             routeToPath(window.location.hash);
         });
@@ -555,18 +762,23 @@
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
                 e.preventDefault();
-                // Setting the hash triggers the hashchange event and routes the application
-                window.location.hash = link.getAttribute('href');
+                const hash = link.getAttribute('href');
+                window.location.hash = hash;
                 searchBar.value = ''; 
-                filterContent();
             });
         });
 
         backButton.addEventListener('click', () => {
-            history.back(); // Use history.back() for proper navigation flow
+            history.back(); 
         });
 
-        searchBar.addEventListener('keyup', filterContent);
+        searchBar.addEventListener('keyup', (e) => {
+            const searchTerm = searchBar.value.trim();
+            // Trigger search display on Enter key, or if the term is non-empty and long enough (for speed), or if it's cleared.
+            if (e.key === 'Enter' || searchTerm.length > 2 || searchTerm.length === 0) {
+                handleSearch(searchTerm);
+            }
+        });
         
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
@@ -577,8 +789,9 @@
         // Initial application setup
         window.onload = function() {
             renderAllContent();
-            // Route based on the initial URL HASH
-            routeToPath(window.location.hash);
+            // Ensure initial metadata is set before routing
+            resetMetadata(); 
+            routeToPath(window.location.hash || '#/');
         }
     </script>
 </body>
