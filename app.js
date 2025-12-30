@@ -17,15 +17,15 @@ const contentData = [
     {
         id: 102,
         type: 'song',
-        title: 'DJ Ken - City Vibes',
-        slug: 'dj-ken-city-vibes-mp3-download',
-        artist: 'DJ Ken',
+        title: 'Jona D ft Iveno - Nipaseko Mutima',
+        slug: 'jona-d-ft-Iveno-Nipaseko-Mutima-mp3-download',
+        artist: 'Jona D',
         category: 'DOWNLOADS',
         date: 'Nov 12, 2025',
         excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
         imageUrl: 'https://picsum.photos/seed/djken/600/300',
-        downloadLink: '#',
-        audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+        downloadLink: 'https://github.com/uniquemusicblogz/uniquemusicblogz.github.io/blob/main/Jona%20D%20Ft%20Iveno%20-%20Nipaseko%20Mutima.mp3',
+        audioUrl: 'https://github.com/uniquemusicblogz/uniquemusicblogz.github.io/blob/main/Jona%20D%20Ft%20Iveno%20-%20Nipaseko%20Mutima.mp3',
         artistBio: 'DJ Ken is a veteran producer and mixer based in Accra. His signature sound is heavily influenced by 90s West Coast hip-hop.'
     },
     {
