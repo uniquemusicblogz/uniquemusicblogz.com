@@ -1,11 +1,27 @@
-/* Custom Refinements for Unique Music Blog */
-
+/* --- Base Styles & Layout --- */
 body {
+    font-family: 'Inter', sans-serif;
+    background-color: #121212;
+    color: #e0e0e0;
     scrollbar-gutter: stable;
 }
 
+.view {
+    display: none;
+}
+
+.view.active {
+    display: block;
+}
+
+.nav-link.active {
+    color: #EF4444;
+}
+
+/* --- Content Cards --- */
 .content-card {
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
 }
 
 .content-card:hover {
@@ -13,6 +29,7 @@ body {
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
 }
 
+/* --- Navigation & Links --- */
 .nav-link {
     position: relative;
     transition: color 0.3s ease;
@@ -33,8 +50,43 @@ body {
     width: 100%;
 }
 
+/* --- Buttons --- */
+.social-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.75rem;
+    border-radius: 9999px;
+    color: white;
+    transition: all 150ms cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    width: 48px;
+    height: 48px;
+}
+
+.social-btn:hover {
+    opacity: 0.8;
+    transform: scale(1.1);
+}
+
+/* --- Utilities --- */
 .bg-gray-750 {
     background-color: #2a3441;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1f2937;
+}
+::-webkit-scrollbar-thumb {
+    background: #4b5563;
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #6b7280;
 }
 
 /* Prose overrides for dark mode */
