@@ -4,6 +4,7 @@ body {
     background-color: #121212;
     color: #e0e0e0;
     scrollbar-gutter: stable;
+    overflow-x: hidden; /* Prevent horizontal scroll on small devices */
 }
 
 .view {
@@ -12,6 +13,12 @@ body {
 
 .view.active {
     display: block;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
 .nav-link.active {
