@@ -419,17 +419,6 @@ searchIconBtn.addEventListener('click', () => {
     if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
 });
 
-// --- Newsletter ---
-newsletterBtn.addEventListener('click', () => {
-    const input = newsletterBtn.previousElementSibling;
-    if (input.value.trim() !== '') {
-        alert(`Thanks for subscribing with ${input.value}! You'll hear from us soon.`);
-        input.value = '';
-    } else {
-        alert('Please enter a valid email address.');
-    }
-});
-
 // --- Footer Socials ---
 footerSocialLinks.forEach(link => {
     link.addEventListener('click', (e) => {
