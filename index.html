@@ -6,17 +6,8 @@
     <title>Unique Music Blog | Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900;display=swap" rel="stylesheet">
-    <!-- Load Font Awesome for Social Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
-    <!-- Dynamic SEO/Open Graph Meta Tags - Will be updated by JavaScript -->
-    <meta property="og:title" content="Unique Music Blog">
-    <meta property="og:description" content="The best new music, albums, and free downloads.">
-    <meta property="og:image" content="https://placehold.co/1200x630/222/ef4444?text=Unique+Music+Blog">
-    <meta property="og:url" content="https://example.com">
-    <meta property="og:type" content="website">
-
-<script type="application/ld+json">
+    <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "Blog",
@@ -46,8 +37,6 @@
   ]
 }
 </script>
-
-    
     <style>
         body {
             font-family: 'Inter', sans-serif;
@@ -73,12 +62,35 @@
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3), 0 4px 6px -2px rgba(0, 0, 0, 0.15);
         }
         .social-btn {
-            @apply inline-flex items-center justify-center p-3 rounded-full text-white transition-colors shadow-md;
+            display: inline-flex;
+            items-center: center;
+            justify-content: center;
+            padding: 0.75rem;
+            border-radius: 9999px;
+            color: white;
+            transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 150ms;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             width: 48px;
             height: 48px;
         }
         .social-btn:hover {
             opacity: 0.8;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #1f2937;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #4b5563;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
         }
     </style>
 </head>
@@ -98,17 +110,14 @@
                         <a href="#/albums/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="albums-view">Albums</a>
                         <a href="#/videos/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="videos-view">Videos</a>
                         <a href="#/downloads/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="downloads-view">Downloads</a>
+                        <a href="#/favorites/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="favorites-view"><i class="fas fa-heart mr-1"></i>Favorites</a>
                         <a href="#/about/" class="nav-link text-gray-300 hover:text-red-500 px-3 py-2 rounded-md text-sm font-medium" data-view="about-view">About</a>
                     </div>
                 </div>
                 <div class="-mr-2 flex md:hidden">
-                    <button type="button" id="mobile-menu-button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white" aria-controls="mobile-menu" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                    <button type="button" id="mobile-menu-button" class="bg-gray-800 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none">
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-                        </svg>
-                        <svg class="hidden h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                         </svg>
                     </button>
                 </div>
@@ -121,6 +130,7 @@
                 <a href="#/albums/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="albums-view">Albums</a>
                 <a href="#/videos/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="videos-view">Videos</a>
                 <a href="#/downloads/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="downloads-view">Downloads</a>
+                <a href="#/favorites/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="favorites-view">Favorites</a>
                 <a href="#/about/" class="nav-link text-gray-300 hover:text-red-500 block px-3 py-2 rounded-md text-base font-medium" data-view="about-view">About</a>
             </div>
         </div>
@@ -130,835 +140,120 @@
         <div class="flex flex-col md:flex-row-reverse gap-8">
             
             <aside class="w-full md:w-1/4 space-y-8 md:sticky md:top-24 h-full">
-                <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+                <div class="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700">
                     <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Search Site</h3>
-                    <input type="search" id="search-bar" placeholder="Search across all content..." class="w-full px-3 py-2 bg-gray-700 text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                    <div class="relative">
+                        <input type="search" id="search-bar" placeholder="Search music..." class="w-full px-3 py-2 bg-gray-700 text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <i class="fas fa-search absolute right-3 top-3 text-gray-400"></i>
+                    </div>
                 </div>
 
-                <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+                <div class="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700">
                     <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Top Categories</h3>
                     <ul class="space-y-3">
-                        <li><a href="#/albums/" class="nav-link hover:text-red-500 transition-colors" data-view="albums-view">Full Album Downloads</a></li>
-                        <li><a href="#/videos/" class="nav-link hover:text-red-500 transition-colors" data-view="videos-view">Videos</a></li>
-                        <li><a href="#/downloads/" class="nav-link hover:text-red-500 transition-colors" data-view="downloads-view">Free Downloads (Singles)</a></li>
+                        <li><a href="#/albums/" class="nav-link hover:text-red-500 transition-colors" data-view="albums-view"><i class="fas fa-compact-disc mr-2 text-red-500"></i>Full Albums</a></li>
+                        <li><a href="#/videos/" class="nav-link hover:text-red-500 transition-colors" data-view="videos-view"><i class="fas fa-video mr-2 text-red-500"></i>Music Videos</a></li>
+                        <li><a href="#/downloads/" class="nav-link hover:text-red-500 transition-colors" data-view="downloads-view"><i class="fas fa-download mr-2 text-red-500"></i>Free MP3s</a></li>
                     </ul>
+                </div>
+
+                <div class="bg-gray-800 p-4 rounded-lg shadow-lg border border-gray-700">
+                    <h3 class="text-xl font-semibold mb-4 border-b border-gray-700 pb-2">Newsletter</h3>
+                    <p class="text-sm text-gray-400 mb-4">Stay updated with the latest music releases.</p>
+                    <div class="flex flex-col gap-2">
+                        <input type="email" placeholder="Your email..." class="px-3 py-2 bg-gray-700 text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-red-500">
+                        <button class="bg-red-500 text-white font-bold py-2 rounded-md hover:bg-red-600 transition-colors">Subscribe</button>
+                    </div>
                 </div>
             </aside>
 
             <main class="w-full md:w-3/4 space-y-8">
                 
                 <div id="home-view" class="view space-y-8">
+                    <div class="bg-gradient-to-r from-red-600 to-gray-800 p-8 rounded-2xl shadow-2xl mb-8">
+                        <h1 class="text-4xl md:text-6xl font-black mb-4">Uncover New Sounds</h1>
+                        <p class="text-xl text-gray-200">The ultimate destination for music discovery and free high-quality downloads.</p>
+                    </div>
                     <h2 class="text-3xl font-bold mb-1">Latest & Featured</h2>
                     <p class="text-gray-400 mb-4">The newest music and the stories behind the artists.</p>
-                    <div id="home-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    </div>
+                    <div id="home-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
                 </div>
 
-                <!-- Albums View -->
                 <div id="albums-view" class="view space-y-8">
                     <h2 class="text-3xl font-bold mb-1">Free Album Downloads</h2>
-                    <p class="text-gray-400 mb-4">Discover complete albums and EPs available for direct, easy download in one ZIP file.</p>
-                    <div id="albums-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    </div>
+                    <div id="albums-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
                 </div>
                 
                 <div id="videos-view" class="view space-y-8">
-                    <h2 class="text-3xl font-bold mb-1">Music Videos & Live Footage</h2>
-                    <p class="text-gray-400 mb-4">Watch the latest official music videos and exclusive live performance footage.</p>
-                    <div id="videos-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    </div>
+                    <h2 class="text-3xl font-bold mb-1">Music Videos</h2>
+                    <div id="videos-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
                 </div>
 
                 <div id="downloads-view" class="view space-y-8">
-                    <h2 class="text-3xl font-bold mb-1">Free MP3 Downloads (Singles)</h2>
-                    <p class="text-gray-400 mb-4">New music from the hottest local and international talent, available for free download.</p>
-                    <div id="downloads-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    </div>
+                    <h2 class="text-3xl font-bold mb-1">Free MP3 Singles</h2>
+                    <div id="downloads-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
                 </div>
 
-                <!-- Search Results View -->
+                <div id="favorites-view" class="view space-y-8">
+                    <h2 class="text-3xl font-bold mb-1">Your Favorites</h2>
+                    <p class="text-gray-400 mb-4">Songs and albums you've saved for later.</p>
+                    <div id="favorites-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
+                </div>
+
                 <div id="search-results-view" class="view space-y-8">
                     <h2 class="text-3xl font-bold mb-1">Search Results for: "<span id="search-query-display" class="text-red-500"></span>"</h2>
                     <p id="search-count-display" class="text-gray-400 mb-4"></p>
-                    <div id="search-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <!-- Filtered cards will be rendered here -->
-                    </div>
+                    <div id="search-content-grid" class="grid grid-cols-1 md:grid-cols-2 gap-6"></div>
                 </div>
-                <!-- END: Search Results View -->
 
                 <div id="about-view" class="view space-y-4">
                     <h2 class="text-3xl font-bold mb-4">About Unique Music Blog</h2>
-                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg space-y-4 text-gray-300 leading-relaxed">
+                    <div class="bg-gray-800 p-6 rounded-lg shadow-lg space-y-4 text-gray-300 leading-relaxed border border-gray-700">
                         <p>Welcome to Unique Music Blog, your new home for music discovery. We are a passionate collective of writers, musicians, and fans dedicated to uncovering the best new music and sharing the stories behind it.</p>
                         <p>Our mission is simple: to champion the artists we believe in. Whether it's through an in-depth album download, an exclusive feature, or a free single, we strive to provide thoughtful, engaging, and authentic content.</p>
-                    
-                    <p>Contact Details: uniquemusicblog@coe.com</p>
+                        <p>Contact Details: <span class="text-red-500 font-semibold">uniquemusicblog@coe.com</span></p>
                     </div>
                 </div>
 
                 <div id="detail-view" class="view space-y-6">
-                    <button id="back-button" class="inline-flex items-center px-4 py-2 bg-red-500 text-white font-semibold rounded-lg hover:bg-red-600 transition-colors shadow-lg">
-                        &larr; Back
+                    <button id="back-button" class="inline-flex items-center px-4 py-2 bg-gray-700 text-white font-semibold rounded-lg hover:bg-gray-600 transition-colors shadow-lg border border-gray-600">
+                        <i class="fas fa-arrow-left mr-2"></i> Back
                     </button>
-                    <div id="content-display-container" class="bg-gray-800 rounded-lg shadow-lg overflow-hidden">
-                        
-                    </div>
+                    <div id="content-display-container" class="bg-gray-800 rounded-2xl shadow-2xl overflow-hidden border border-gray-700"></div>
                 </div>
 
             </main>
         </div>
     </div>
 
-    <footer class="bg-gray-900 text-gray-500 py-8 mt-12 border-t border-gray-800">
+    <!-- Persistent Music Player -->
+    <div id="mini-player" class="fixed bottom-0 left-0 right-0 bg-gray-900 border-t border-gray-800 p-4 z-50 transform translate-y-full transition-transform duration-300 flex items-center gap-4">
+        <img id="mini-player-img" src="" class="w-12 h-12 rounded-lg object-cover bg-gray-800">
+        <div class="flex-grow overflow-hidden">
+            <h4 id="mini-player-title" class="text-sm font-bold truncate">Song Title</h4>
+            <p id="mini-player-artist" class="text-xs text-gray-400 truncate">Artist Name</p>
+        </div>
+        <audio id="main-audio" class="hidden"></audio>
+        <div class="flex items-center gap-4">
+            <button id="audio-play-pause" class="text-2xl text-red-500 hover:text-red-400"><i class="fas fa-play"></i></button>
+            <button id="close-mini-player" class="text-gray-500 hover:text-white"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="absolute top-0 left-0 h-1 bg-red-500 transition-all duration-100" id="audio-progress" style="width: 0%"></div>
+    </div>
+
+    <footer class="bg-gray-900 text-gray-500 py-12 mt-12 border-t border-gray-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p>&copy; 2025 Unique Music Blog. All Rights Reserved. Proudly designed by <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/">Brian Simumba</a></p>
+            <div class="flex justify-center space-x-6 mb-8">
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-facebook-f text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-twitter text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-instagram text-2xl"></i></a>
+                <a href="#" class="text-gray-400 hover:text-white transition-colors"><i class="fab fa-youtube text-2xl"></i></a>
+            </div>
+            <p class="mb-2">&copy; 2025 Unique Music Blog. All Rights Reserved.</p>
+            <p>Designed by <a href="https://www.facebook.com/people/Brian-Simumba/100095513534854/" class="text-red-500 hover:underline">Brian Simumba</a></p>
         </div>
     </footer>
 
-    <script>
-        // --- Data Definitions ---
-        const FLORENCE_BIO = 'Florence + The Machine is the stage name of English musician Florence Welch. Known for her dramatic, elaborate, and often gothic style of indie rock, her music frequently incorporates themes of mythology, literature, and romance. Her latest work, "Celestial Ground," is considered her most vulnerable and orchestrally ambitious project to date.';
-        
-        const contentData = [
-            // --- Standalone Song Content ---
-            {
-                id: 101,
-                type: 'song',
-                title: 'Snoop Jay ft. Jah Boy - Come Over (MP3 Download)',
-                slug: 'snoop-jay-ft-jah-boy-come-over-mp3-download',
-                artist: 'Snoop Jay',
-                category: 'DOWNLOADS',
-                date: 'Nov 15, 2025',
-                excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now.',
-                imageUrl: 'https://picsum.photos/seed/snoopjay1/600/300', 
-                downloadLink: 'https://od.lk/d/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
-                audioUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
-                artistBio: 'Phyzo is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements, creating a unique and irresistible sound. His recent work focuses on international collaborations, pushing the boundaries of the genre.'
-            },
-            {
-                id: 102,
-                type: 'song',
-                title: 'DJ Ken - City Vibes',
-                slug: 'dj-ken-city-vibes-mp3-download',
-                artist: 'DJ Ken',
-                category: 'DOWNLOADS',
-                date: 'Nov 12, 2025',
-                excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
-                imageUrl: 'https://picsum.photos/seed/djken/600/300',
-                downloadLink: 'https://example.com/downloads/city_vibes.mp3',
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
-                artistBio: 'DJ Ken is a veteran producer and mixer based in Accra. His signature sound is heavily influenced by 90s West Coast hip-hop and contemporary Ghanaian highlife, making him a fixture in the local club scene and a master of the beat drop.'
-            },
-            // --- Album Track Content (New for routing/detail view) ---
-            {
-                id: 201, 
-                type: 'song',
-                title: 'Florence + The Machine - Heaven is Waiting',
-                slug: 'florence-heaven-is-waiting',
-                artist: 'Florence + The Machine',
-                category: 'ALBUM TRACK',
-                date: 'Nov 12, 2025',
-                excerpt: 'The haunting opener to the "Celestial Ground" album, now available for individual download.',
-                imageUrl: 'https://picsum.photos/seed/florence/600/300', 
-                downloadLink: 'https://example.com/downloads/celestial_ground/01_heaven_is_waiting.mp3', 
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3', // Placeholder audio
-                artistBio: FLORENCE_BIO,
-            },
-            {
-                id: 202, 
-                type: 'song',
-                title: 'Florence + The Machine - Cosmic Wonder',
-                slug: 'florence-cosmic-wonder',
-                artist: 'Florence + The Machine',
-                category: 'ALBUM TRACK',
-                date: 'Nov 12, 2025',
-                excerpt: 'Track two from the "Celestial Ground" album, a mesmerizing blend of electronic and choral elements.',
-                imageUrl: 'https://picsum.photos/seed/florence/600/300', 
-                downloadLink: 'https://example.com/downloads/celestial_ground/02_cosmic_wonder.mp3', 
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
-                artistBio: FLORENCE_BIO,
-            },
-            {
-                id: 203, 
-                type: 'song',
-                title: 'Florence + The Machine - Lighthouse Keeper',
-                slug: 'florence-lighthouse-keeper',
-                artist: 'Florence + The Machine',
-                category: 'ALBUM TRACK',
-                date: 'Nov 12, 2025',
-                excerpt: 'The beautiful ballad, "Lighthouse Keeper," from the "Celestial Ground" album.',
-                imageUrl: 'https://picsum.photos/seed/florence/600/300', 
-                downloadLink: 'https://example.com/downloads/celestial_ground/03_lighthouse_keeper.mp3', 
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3',
-                artistBio: FLORENCE_BIO,
-            },
-            {
-                id: 204, 
-                type: 'song',
-                title: 'Florence + The Machine - Grief and Renewal',
-                slug: 'florence-grief-and-renewal',
-                artist: 'Florence + The Machine',
-                category: 'ALBUM TRACK',
-                date: 'Nov 12, 2025',
-                excerpt: 'An emotionally heavy track that forms the core narrative of the "Celestial Ground" album.',
-                imageUrl: 'https://picsum.photos/seed/florence/600/300', 
-                downloadLink: 'https://example.com/downloads/celestial_ground/04_grief_and_renewal.mp3', 
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-6.mp3',
-                artistBio: FLORENCE_BIO,
-            },
-            {
-                id: 205, 
-                type: 'song',
-                title: 'Florence + The Machine - Star Dust Hymn',
-                slug: 'florence-star-dust-hymn',
-                artist: 'Florence + The Machine',
-                category: 'ALBUM TRACK',
-                date: 'Nov 12, 2025',
-                excerpt: 'The powerful, 6-minute epic "Star Dust Hymn" is a fan favorite from the new album.',
-                imageUrl: 'https://picsum.photos/seed/florence/600/300', 
-                downloadLink: 'https://example.com/downloads/celestial_ground/05_star_dust_hymn.mp3', 
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-7.mp3',
-                artistBio: FLORENCE_BIO,
-            },
-            {
-                id: 206, 
-                type: 'song',
-                title: 'Florence + The Machine - A New Age (Instrumental)',
-                slug: 'florence-a-new-age-instrumental',
-                artist: 'Florence + The Machine',
-                category: 'ALBUM TRACK',
-                date: 'Nov 12, 2025',
-                excerpt: 'The closing instrumental track on "Celestial Ground" serves as a serene conclusion.',
-                imageUrl: 'https://picsum.photos/seed/florence/600/300', 
-                downloadLink: 'https://example.com/downloads/celestial_ground/06_a_new_age_instrumental.mp3', 
-                audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-8.mp3',
-                artistBio: FLORENCE_BIO,
-            },
-            
-            // --- Album Content (Now references new song slugs) ---
-            {
-                id: 2,
-                type: 'album', 
-                title: 'Florence + The Machine - "Celestial Ground" (Full Album)',
-                slug: 'album-florence-and-the-machine-celestial-ground',
-                category: 'ALBUMS', 
-                date: 'Nov 12, 2025',
-                excerpt: 'Florence Welch returns with a sprawling, ambitious, and deeply personal album, now available for free download in one ZIP file.',
-                content: `
-                    <p>Florence Welch has never been one for subtlety. On "Celestial Ground," her fifth studio album, she leans into her maximalist tendencies more than ever. The result is a sprawling, ambitious, and breathtaking collection of songs that feel less like pop music and more like hymns for a new age.</p>
-                    <p>This full album download includes 6 high-quality tracks and a digital booklet, showcasing her signature blend of baroque pop and orchestral rock.</p>
-                `,
-                imageUrl: 'https://picsum.photos/seed/florence/600/300',
-                // Updated tracks to include the routing slug instead of direct link
-                tracks: [ 
-                    { title: "Heaven is Waiting", duration: "4:05", songSlug: 'florence-heaven-is-waiting' },
-                    { title: "Cosmic Wonder", duration: "3:30", songSlug: 'florence-cosmic-wonder' },
-                    { title: "Lighthouse Keeper", duration: "5:12", songSlug: 'florence-lighthouse-keeper' },
-                    { title: "Grief and Renewal", duration: "4:40", songSlug: 'florence-grief-and-renewal' },
-                    { title: "Star Dust Hymn", duration: "6:01", songSlug: 'florence-star-dust-hymn' },
-                    { title: "A New Age (Instrumental)", duration: "2:55", songSlug: 'florence-a-new-age-instrumental' }
-                ],
-                zipDownloadLink: 'https://example.com/downloads/celestial_ground_album.zip' // Placeholder link
-            },
-            // --- Video Content ---
-            {
-                id: 3,
-                type: 'video',
-                title: 'Lyrics: Someday by Jucy Yung',
-                slug: 'Lyrics-someday-Jucy-yung',
-                category: 'VIDEOS',
-                date: 'Nov 10, 2025',
-                excerpt: 'A Catchy song.',
-                imageUrl: 'https://picsum.photos/seed/visualizer/600/300', 
-                videoUrl: 'https://www.youtube.com/embed/O_5Nixm0dIU',
-                content: '<p>Astra\'s new remix of "Neon City" demands a visual experience, and this 4K visualizer delivers. It perfectly captures the cyberpunk aesthetic of the track, blending retro visuals with modern, pulsing beats.</p>',
-            },
-            {
-                id: 4,
-                type: 'video',
-                title: 'The Vinyl Kids Live in London (Full Concert)',
-                slug: 'vinyl-kids-live-london-full-concert',
-                category: 'VIDEOS',
-                date: 'Oct 30, 2025',
-                excerpt: 'Watch the full, electric performance from The Vinyl Kids\' sold-out show at the Apollo.',
-                imageUrl: 'https://picsum.photos/seed/vinylkidslive/600/300', 
-                videoUrl: 'https://www.youtube.com/embed/dQw4w9WgXcQ', 
-                content: '<p>Experience the raw energy of The Vinyl Kids live on stage. This recording captures their best moments and incredible audience interaction, a must-watch for any serious fan.</p>',
-            },
-            
-        ];
-
-        // --- Core Application Logic (View & Routing) ---
-
-        const navLinks = document.querySelectorAll('.nav-link');
-        const views = document.querySelectorAll('.view');
-        const searchBar = document.getElementById('search-bar');
-        const backButton = document.getElementById('back-button');
-        const contentDisplayContainer = document.getElementById('content-display-container');
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        const mobileMenuIcons = mobileMenuButton.querySelectorAll('svg');
-
-        let currentView = 'home-view'; // The view currently displayed
-        let lastPrimaryView = 'home-view'; // The last non-detail/non-search view
-
-        // --- SEO / Metadata Functions ---
-        
-        const DEFAULT_TITLE = "Unique Music Blog | Home of Music Discovery";
-        const DEFAULT_DESCRIPTION = "The best new music, albums, and free downloads.";
-        const DEFAULT_IMAGE = "https://placehold.co/1200x630/222/ef4444?text=Unique+Music+Blog";
-
-        function setMetadata(title, description, imageUrl, url) {
-            document.title = title;
-
-            const updateMeta = (property, content, nameAttr = false) => {
-                const selector = nameAttr ? `meta[name="${property}"]` : `meta[property="${property}"]`;
-                let meta = document.head.querySelector(selector);
-                if (!meta) {
-                    meta = document.createElement('meta');
-                    if (nameAttr) {
-                        meta.setAttribute('name', property);
-                    } else {
-                        meta.setAttribute('property', property);
-                    }
-                    document.head.appendChild(meta);
-                }
-                meta.setAttribute('content', content);
-            };
-
-            updateMeta('og:title', title);
-            updateMeta('og:description', description);
-            updateMeta('og:image', imageUrl);
-            updateMeta('og:url', url);
-            updateMeta('og:type', url.includes('/downloads/') || url.includes('/videos/') || url.includes('/album/') ? 'article' : 'website');
-
-            updateMeta('description', description, true);
-        }
-
-        function resetMetadata() {
-            const url = window.location.origin + window.location.pathname; // Base URL
-            setMetadata(DEFAULT_TITLE, DEFAULT_DESCRIPTION, DEFAULT_IMAGE, url);
-        }
-
-        // --- View & Routing Logic ---
-
-        function getPathForView(viewId) {
-            switch (viewId) {
-                case 'home-view': return '/';
-                case 'albums-view': return '/albums/'; 
-                case 'videos-view': return '/videos/';
-                case 'downloads-view': return '/downloads/';
-                case 'about-view': return '/about/';
-                default: return '/';
-            }
-        }
-
-        function showView(viewId, pushHistory = true) {
-            if (['home-view', 'albums-view', 'videos-view', 'downloads-view', 'about-view'].includes(viewId)) {
-                lastPrimaryView = viewId;
-                currentView = viewId;
-                resetMetadata(); 
-            } else if (viewId === 'search-results-view' || viewId === 'detail-view') {
-                currentView = viewId;
-            }
-            
-            views.forEach(view => { view.classList.remove('active'); });
-            document.getElementById(viewId).classList.add('active');
-
-            // Update active navigation link styling
-            document.querySelectorAll('.nav-link[data-view]').forEach(link => {
-                const matchesCurrentView = link.dataset.view === currentView;
-                const matchesLastPrimary = link.dataset.view === lastPrimaryView;
-
-                if (matchesCurrentView || matchesLastPrimary && (currentView !== 'detail-view' && currentView !== 'search-results-view')) {
-                     link.classList.add('active');
-                } else if (currentView === 'detail-view' && link.dataset.view === lastPrimaryView) {
-                    link.classList.add('active');
-                } else if (currentView === 'search-results-view' && link.dataset.view === lastPrimaryView) {
-                     link.classList.add('active');
-                } else {
-                    link.classList.remove('active');
-                }
-            });
-
-            // Close mobile menu if open
-            if (mobileMenu.classList.contains('hidden') === false) {
-                mobileMenu.classList.add('hidden');
-                mobileMenuIcons[0].classList.remove('hidden');
-                mobileMenuIcons[1].classList.add('hidden');
-            }
-            
-            window.scrollTo(0, 0);
-        }
-
-        function createContentCard(item) {
-            let iconHtml = '';
-            if (item.type === 'video') {
-                iconHtml = '<div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30"><i class="fas fa-play text-white text-5xl opacity-80"></i></div>';
-            } else if (item.type === 'album') {
-                 iconHtml = '<div class="absolute inset-0 flex items-end justify-start p-4 bg-black bg-opacity-30"><i class="fas fa-compact-disc text-white text-3xl opacity-90"></i><span class="ml-2 text-white font-bold text-lg">ALBUM</span></div>';
-            }
-            
-            return `
-                <div class="content-card bg-gray-800 rounded-lg shadow-lg overflow-hidden relative" data-content-id="${item.id}">
-                    ${iconHtml}
-                    <!-- Added onerror for robust image loading -->
-                    <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-48 object-cover" 
-                        onerror="this.onerror=null; this.src='https://placehold.co/600x300/222/ef4444?text=${item.category}+IMAGE+ERROR';">
-                    <div class="p-5">
-                        <span class="text-red-500 text-xs font-semibold">${item.category}</span>
-                        <h3 class="text-xl font-bold mt-1 mb-2">${item.title}</h3>
-                        <p class="text-gray-400 text-sm">${item.excerpt}</p>
-                    </div>
-                </div>
-            `;
-        }
-        
-        function renderArticles(items, containerId) {
-            const container = document.getElementById(containerId);
-            container.innerHTML = items.map(createContentCard).join('');
-        }
-
-        function renderAllContent() {
-            // Render content for all primary category grids
-            const homeContent = contentData.filter(i => i.category !== 'ALBUM TRACK').slice(0, 4);
-            const albumsContent = contentData.filter(i => i.category === 'ALBUMS');
-            const videosContent = contentData.filter(i => i.category === 'VIDEOS');
-            // Only show standalone singles in the main downloads list
-            const downloadsContent = contentData.filter(i => i.category === 'DOWNLOADS');
-
-            renderArticles(homeContent, 'home-content-grid');
-            renderArticles(albumsContent, 'albums-content-grid');
-            renderArticles(videosContent, 'videos-content-grid');
-            renderArticles(downloadsContent, 'downloads-content-grid');
-
-            // Attach click listeners to all cards
-            document.querySelectorAll('.content-card').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    handleContentClick(parseInt(card.dataset.contentId));
-                });
-            });
-        }
-        
-        function getRelatedSongs(artistName, currentId) {
-            return contentData
-                .filter(item => item.type === 'song' && item.artist === artistName && item.id !== currentId)
-                .map(item => {
-                    const hashPath = `#/downloads/${item.slug}/`;
-                    return `
-                        <li>
-                            <a href="${hashPath}" data-content-id="${item.id}" class="related-song-link text-gray-300 hover:text-red-500 transition-colors">
-                                <span class="font-semibold">${item.title.replace('(MP3 Download)', '').trim().split('-')[1] || item.title}</span>
-                            </a>
-                        </li>
-                    `;
-                }).join('');
-        }
-
-        function generateSocialShareButtons(url, title) {
-            const encodedUrl = encodeURIComponent(url);
-            const encodedTitle = encodeURIComponent(title);
-            
-            return `
-                <div class="flex flex-wrap gap-4 mt-6">
-                    <!-- Facebook -->
-                    <a href="https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}" target="_blank" class="social-btn bg-blue-700" title="Share on Facebook">
-                        <i class="fab fa-facebook-f text-xl"></i>
-                    </a>
-                    <!-- X (Twitter) -->
-                    <a href="https://twitter.com/intent/tweet?url=${encodedUrl}&text=${encodedTitle}" target="_blank" class="social-btn bg-gray-900" title="Share on X (Twitter)">
-                        <i class="fab fa-x-twitter text-xl"></i>
-                    </a>
-                    <!-- WhatsApp -->
-                    <a href="https://wa.me/?text=${encodedTitle}%20${encodedUrl}" target="_blank" class="social-btn bg-green-500" title="Share on WhatsApp">
-                        <i class="fab fa-whatsapp text-xl"></i>
-                    </a>
-                    <!-- LinkedIn (Placeholder for 'many more') -->
-                    <a href="https://www.linkedin.com/shareArticle?mini=true&url=${encodedUrl}&title=${encodedTitle}" target="_blank" class="social-btn bg-blue-500" title="Share on LinkedIn">
-                        <i class="fab fa-linkedin-in text-xl"></i>
-                    </a>
-                </div>
-            `;
-        }
-
-        // Video Detail Rendering (Unchanged)
-        function renderVideoDetail(item) {
-            backButton.textContent = '← Back to Videos';
-            const shareUrl = window.location.href; 
-            const shareTitle = `Video: ${item.title}`;
-
-            // SET METADATA
-            setMetadata(
-                `${item.title} | Videos | Unique Music Blog`,
-                item.excerpt,
-                item.imageUrl,
-                shareUrl
-            );
-
-            return `
-                <div class="p-6 md:p-10">
-                    <span class="text-red-500 text-sm font-semibold">${item.category}</span>
-                    <h1 class="text-4xl font-black mt-2 mb-4">${item.title}</h1>
-                    <p class="text-gray-400 mb-6">Published ${item.date}</p>
-                    
-                    <!-- Embedded Video Player (Responsive 16:9 aspect ratio) -->
-                    <div class="relative overflow-hidden w-full mb-6 rounded-lg shadow-2xl" style="padding-top: 56.25%;">
-                        <iframe 
-                            class="absolute top-0 left-0 w-full h-full" 
-                            src="${item.videoUrl}" 
-                            title="Embedded Video Player" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen
-                            loading="lazy">
-                        </iframe>
-                    </div>
-
-                    <!-- Content/Description -->
-                    <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4">
-                        ${item.content}
-                    </div>
-                    
-                    <!-- Social Share -->
-                    <h2 class="text-xl font-bold mt-8 mb-4 border-t border-gray-700 pt-4">Share This Video</h2>
-                    ${generateSocialShareButtons(shareUrl, shareTitle)}
-                </div>
-            `;
-        }
-
-        // Song Detail Rendering (Displays audio player, download button, and artist bio)
-        function renderSongDetail(item) {
-            // Determine the correct back button text based on whether it's an album track or a standalone single
-            backButton.textContent = item.category === 'ALBUM TRACK' ? '← Back to Album' : '← Back to Downloads';
-            
-            // Clean up the song name for display
-            const rawSongName = item.title.split('-').length > 1 ? item.title.split('-').slice(1).join('-').trim() : item.title;
-            const songName = rawSongName.replace('(MP3 Download)', '').trim();
-            const fileName = `${item.artist.replace(/\s/g, '_')}_${songName.replace(/\s/g, '_')}.mp3`;
-            const shareUrl = window.location.href; 
-            const shareTitle = `Listen & Download: ${item.title}`;
-
-            // SET METADATA
-            setMetadata(
-                `${item.title} | Free Download | Unique Music Blog`,
-                item.excerpt,
-                item.imageUrl,
-                shareUrl
-            );
-
-            return `
-                <div class="grid grid-cols-1 lg:grid-cols-3">
-                    <div class="lg:col-span-2 p-6 md:p-10">
-                        <span class="text-red-500 text-sm font-semibold">${item.category === 'ALBUM TRACK' ? 'Album Track' : item.category} | ${item.artist}</span>
-                        <h1 class="text-4xl font-black mt-2 mb-4">${songName}</h1>
-                        <p class="text-gray-400 mb-6">Uploaded ${item.date}</p>
-                        
-                        <!-- Audio Player -->
-                        <div class="bg-gray-700 p-4 rounded-lg shadow-inner mb-6">
-                            <h2 class="text-xl font-semibold mb-3">Listen to "${songName}"</h2>
-                            <audio controls class="w-full rounded-lg">
-                                <source src="${item.audioUrl}" type="audio/mpeg">
-                                Your browser does not support the audio element.
-                            </audio>
-                            <p class="text-gray-400 text-xs mt-2">Note: This is a demo track for preview purposes.</p>
-                        </div>
-
-                        <!-- Download Section -->
-                        <div class="bg-red-500 text-gray-900 p-6 rounded-lg shadow-2xl mb-8">
-                            <h2 class="text-2xl font-bold mb-3">Download "${songName}" Now!</h2>
-                            <p class="mb-4 text-gray-800">Click the button below to get the free high-quality MP3 file of this single track.</p>
-                            <a href="${item.downloadLink}" download="${fileName}" class="inline-block px-6 py-3 bg-gray-900 text-white font-extrabold rounded-lg hover:bg-gray-700 transition-colors uppercase tracking-wider">
-                                Download MP3
-                            </a>
-                        </div>
-                        
-                        <!-- Artist Background / Bio (MOST IMPORTANT PART OF THIS REQUEST) -->
-                        <h2 class="text-3xl font-bold mt-8 mb-4 border-b border-gray-700 pb-2">Artist Bio: ${item.artist}</h2>
-                        <p class="text-gray-300 leading-relaxed">${item.artistBio}</p>
-
-                        <!-- Social Share -->
-                        <h2 class="text-xl font-bold mt-8 mb-4">Share This Track</h2>
-                        ${generateSocialShareButtons(shareUrl, shareTitle)}
-                    </div>
-
-                    <div class="lg:col-span-1 bg-gray-700 p-6 md:p-10 lg:p-6 space-y-6">
-                        <!-- Added onerror for robust image loading -->
-                        <img src="${item.imageUrl}" alt="${item.title}" class="w-full object-cover rounded-lg shadow-lg" 
-                            onerror="this.onerror=null; this.src='https://placehold.co/600x300/222/ef4444?text=IMAGE+ERROR';">
-
-                        <!-- Other Songs -->
-                        <h3 class="text-2xl font-bold mb-4 border-b border-gray-600 pb-2">More by ${item.artist}</h3>
-                        ${getRelatedSongs(item.artist, item.id).length > 0 ? `<ul class="space-y-3">${getRelatedSongs(item.artist, item.id)}</ul>` : `<p class="text-gray-400">No other songs by this artist found yet.</p>`}
-                    </div>
-                </div>
-            `;
-        }
-        
-        // Album Detail Rendering 
-        function renderAlbumDetail(item) {
-            backButton.textContent = '← Back to Albums';
-            const shareUrl = window.location.href; 
-            const shareTitle = `Full Album: ${item.title}`;
-            const zipFileName = `${item.title.replace(/[\W_]+/g, '-')}_Full_Album.zip`;
-
-            // SET METADATA
-            setMetadata(
-                `${item.title} | Album Download | Unique Music Blog`,
-                item.excerpt,
-                item.imageUrl,
-                shareUrl
-            );
-            
-            // Track List HTML - Each title now links to its detail view
-            const tracksHtml = item.tracks.map((track, index) => {
-                const songItem = contentData.find(i => i.slug === track.songSlug);
-                const hashPath = songItem ? `#/downloads/${songItem.slug}/` : '#/error/';
-
-                return `
-                    <li class="flex justify-between py-2 border-b border-gray-600 last:border-b-0 group">
-                        <!-- Link to Song Detail View -->
-                        <a href="${hashPath}" class="track-link text-gray-300 font-medium hover:text-red-500 transition-colors flex items-center" 
-                           data-slug="${track.songSlug}">
-                            <i class="fas fa-music text-red-500 text-sm mr-2 opacity-0 group-hover:opacity-100 transition-opacity"></i>
-                            ${index + 1}. ${track.title}
-                        </a>
-                        <span class="text-gray-400">${track.duration}</span>
-                    </li>
-                `;
-            }).join('');
-
-            return `
-                <img src="${item.imageUrl}" alt="${item.title}" class="w-full h-96 object-cover" 
-                    onerror="this.onerror=null; this.src='https://placehold.co/960x384/222/ef4444?text=ALBUM+ART+ERROR';" />
-                <div class="p-6 md:p-10">
-                    <span class="text-red-500 text-sm font-semibold">${item.category}</span>
-                    <h1 class="text-4xl font-black mt-2 mb-4">${item.title}</h1>
-                    <p class="text-gray-400 mb-6">${item.excerpt}</p>
-                    
-                    <div class="prose prose-invert prose-lg max-w-none text-gray-300 leading-relaxed space-y-4 mb-8">
-                        ${item.content}
-                    </div>
-                    
-                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                        <!-- Full Album Direct Download -->
-                        <div class="bg-red-700 p-6 rounded-lg shadow-xl text-white flex flex-col justify-center items-center text-center order-2 lg:order-1">
-                            <h2 class="text-2xl font-black mb-4 text-gray-900">Download Entire Album Now</h2>
-                            <p class="mb-6 font-light text-gray-100">Get all ${item.tracks.length} tracks, plus album art, in a single high-quality ZIP file.</p>
-                            
-                            <!-- Direct ZIP Download Link (Full Album Option) -->
-                            <a href="${item.zipDownloadLink}" download="${zipFileName}"
-                                class="inline-block px-8 py-4 bg-gray-900 text-white font-extrabold rounded-lg 
-                                       hover:bg-gray-700 transition-colors uppercase tracking-wider text-lg shadow-2xl">
-                                <i class="fas fa-file-archive mr-3"></i> DOWNLOAD ZIP (${item.tracks.length} Songs)
-                            </a>
-                        </div>
-                        
-                        <!-- Track List - Links to Song Detail Pages -->
-                        <div class="order-1 lg:order-2">
-                            <h2 class="text-2xl font-bold mb-4 border-b border-gray-700 pb-2">Track Listing (View/Download Singles)</h2>
-                            <p class="text-gray-400 text-sm mb-3">Click any track title to view details and download the individual song.</p>
-                            <ul class="divide-y divide-gray-700">${tracksHtml}</ul>
-                        </div>
-                    </div>
-
-                    <!-- Social Share -->
-                    <h2 class="text-xl font-bold mt-8 mb-4 border-t border-gray-700 pt-4">Share This Album</h2>
-                    ${generateSocialShareButtons(shareUrl, shareTitle)}
-                </div>
-            `;
-        }
-
-
-        function handleContentClick(contentId, pushHistory = true) {
-            const item = contentData.find(i => i.id === contentId);
-            if (!item) return;
-
-            contentDisplayContainer.innerHTML = '';
-            
-            let path = '';
-
-            if (item.type === 'video') {
-                path = `/videos/${item.slug}/`;
-                contentDisplayContainer.innerHTML = renderVideoDetail(item);
-            } else if (item.type === 'song') {
-                path = `/downloads/${item.slug}/`;
-                contentDisplayContainer.innerHTML = renderSongDetail(item);
-            } else if (item.type === 'album') { 
-                path = `/albums/${item.slug}/`;
-                contentDisplayContainer.innerHTML = renderAlbumDetail(item);
-            } else { 
-                path = `/article/${item.slug || item.id}/`;
-                contentDisplayContainer.innerHTML = ''; // Blank content for unknown types
-            }
-
-            if (pushHistory) {
-                const hashPath = '#' + path;
-                window.location.hash = hashPath;
-            }
-            
-            showView('detail-view', false); 
-
-            // Re-attach listeners for dynamically generated song links (More by Artist section)
-            if (item.type === 'song') {
-                document.querySelectorAll('.related-song-link').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        window.location.hash = link.getAttribute('href'); 
-                    });
-                });
-            }
-        }
-
-        // Global Search Handler (Unchanged)
-        function handleSearch(searchTerm) {
-            const trimmedTerm = searchTerm.toLowerCase().trim();
-
-            if (trimmedTerm === '') {
-                window.location.hash = getPathForView(lastPrimaryView);
-                resetMetadata();
-                return;
-            }
-            
-            const results = contentData.filter(item => {
-                const searchableText = `${item.title} ${item.excerpt} ${item.artist || ''} ${item.category} ${item.content || ''}`.toLowerCase();
-                return searchableText.includes(trimmedTerm);
-            });
-
-            if (window.location.hash !== `#/search/${encodeURIComponent(trimmedTerm)}`) {
-                 window.location.hash = `#/search/${encodeURIComponent(trimmedTerm)}`;
-            }
-            
-            const resultsContainer = document.getElementById('search-content-grid');
-            const queryDisplay = document.getElementById('search-query-display');
-            const countDisplay = document.getElementById('search-count-display');
-            
-            queryDisplay.textContent = trimmedTerm;
-            countDisplay.textContent = `${results.length} result${results.length !== 1 ? 's' : ''} found across all content.`;
-            
-            if (results.length > 0) {
-                resultsContainer.innerHTML = results.filter(i => i.category !== 'ALBUM TRACK').map(createContentCard).join('');
-                document.querySelectorAll('#search-content-grid .content-card').forEach(card => {
-                    card.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        handleContentClick(parseInt(card.dataset.contentId));
-                    });
-                });
-            } else {
-                resultsContainer.innerHTML = '<div class="md:col-span-2 text-center py-10 text-gray-400 text-lg bg-gray-700 rounded-lg">Sorry, no content matched your search query. Try another term.</div>';
-            }
-            
-            showView('search-results-view', false); 
-            
-            setMetadata(
-                `Search Results for "${trimmedTerm}" | Unique Music Blog`,
-                `Found ${results.length} articles, videos, and songs matching the query: "${trimmedTerm}".`,
-                DEFAULT_IMAGE,
-                window.location.href
-            );
-        }
-
-        // --- Routing and Initialization ---
-        
-        function routeToPath(fullHash) {
-            const path = fullHash.startsWith('#') ? fullHash.substring(1) : fullHash; 
-            const parts = path.split('/').filter(p => p);
-            
-            if (parts.length === 0 || path === '/') {
-                searchBar.value = ''; 
-                showView('home-view', false);
-            } else if (parts[0] === 'search' && parts.length > 1) { 
-                const searchTerm = decodeURIComponent(parts[1]);
-                searchBar.value = searchTerm;
-                handleSearch(searchTerm);
-            } else if (parts[0] === 'downloads' && parts.length > 1) {
-                const slug = parts[1];
-                const song = contentData.find(i => i.slug === slug && i.type === 'song');
-                if (song) {
-                    handleContentClick(song.id, false);
-                } else {
-                    showView('downloads-view', false);
-                }
-            } else if (parts[0] === 'videos' && parts.length > 1) { 
-                const slug = parts[1];
-                const video = contentData.find(i => i.slug === slug && i.type === 'video');
-                if (video) {
-                    handleContentClick(video.id, false);
-                } else {
-                    showView('videos-view', false);
-                }
-            } else if (parts[0] === 'albums' && parts.length > 1) { 
-                 const slug = parts[1];
-                 const album = contentData.find(i => i.slug === slug && i.type === 'album');
-                 if (album) {
-                     handleContentClick(album.id, false);
-                 } else {
-                    showView('albums-view', false);
-                 }
-            } else {
-                const viewId = parts[0] + '-view';
-                if (document.getElementById(viewId)) {
-                    searchBar.value = ''; 
-                    showView(viewId, false);
-                } else {
-                    showView('home-view', false);
-                }
-            }
-        }
-
-        window.addEventListener('hashchange', () => {
-            routeToPath(window.location.hash);
-        });
-
-        // --- Event Listeners and Startup ---
-
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                const hash = link.getAttribute('href');
-                window.location.hash = hash;
-                searchBar.value = ''; 
-            });
-        });
-
-        backButton.addEventListener('click', () => {
-            // Check if we are in a song detail page that came from an album view
-            const currentItem = contentData.find(i => window.location.hash.includes(i.slug) && i.type === 'song');
-            if (currentItem && currentItem.category === 'ALBUM TRACK') {
-                // If so, navigate back to the album page's hash directly
-                const albumSlug = 'album-florence-and-the-machine-celestial-ground'; // Hardcoded for this demo album
-                window.location.hash = `#/albums/${albumSlug}/`;
-            } else {
-                 // Otherwise, use browser history (default behavior)
-                history.back(); 
-            }
-        });
-
-        searchBar.addEventListener('keyup', (e) => {
-            const searchTerm = searchBar.value.trim();
-            if (e.key === 'Enter' || searchTerm.length > 2 || searchTerm.length === 0) {
-                handleSearch(searchTerm);
-            }
-        });
-        
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenuIcons[0].classList.toggle('hidden');
-            mobileMenuIcons[1].classList.toggle('hidden');
-        });
-
-        // Initial application setup
-        window.onload = function() {
-            renderAllContent();
-            resetMetadata(); 
-            routeToPath(window.location.hash || '#/');
-        }
-    </script>
+    <script src="app.js"></script>
 </body>
 </html>
-
-
-
-
-
-
