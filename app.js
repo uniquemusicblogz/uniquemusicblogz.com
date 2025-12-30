@@ -55,7 +55,7 @@ const contentData = [
         excerpt: 'A Catchy song.',
         imageUrl: 'https://picsum.photos/seed/visualizer/600/300', 
         videoUrl: 'https://www.youtube.com/embed/O_5Nixm0dIU',
-        content: '<p>Astra\'s new remix of "Neon City" demands a visual experience, and this 4K visualizer delivers.</p>',
+        content: '<p>Jucy\'s Someday is a song that touches people\'s lifes..</p>',
     },
     {
         id: 4,
@@ -110,16 +110,51 @@ const Favorites = {
     }
 };
 
+// --- Helper Functions ---
+function generateSocialShareButtons(title) {
+    const url = encodeURIComponent(window.location.href);
+    const text = encodeURIComponent(title);
+    
+    return "`
+        <div class=\"mt-8 pt-8 border-t border-gray-700\">
+            <h3 class=\"text-xl font-bold mb-4\">Share this</h3>
+            <div class=\"flex flex-wrap gap-4\">
+                <a href=\"https://www.facebook.com/sharer/sharer.php?u=${url}\" target=\"_blank\" class=\"social-btn bg-blue-600 hover:bg-blue-700\">
+                    <i class=\"fab fa-facebook-f text-xl\"></i>
+                </a>
+                <a href=\"https://twitter.com/intent/tweet?url=${url}&text=${text}\" target=\"_blank\" class=\"social-btn bg-gray-700 hover:bg-black\">
+                    <i class=\"fab fa-twitter text-xl\"></i>
+                </a>
+                <a href=\"https://wa.me/?text=${text}%20${url}\" target=\"_blank\" class=\"social-btn bg-green-500 hover:bg-green-600\">
+                    <i class=\"fab fa-whatsapp text-xl\"></i>
+                </a>
+                <button onclick=\"copyLink()\" class=\"social-btn bg-gray-600 hover:bg-gray-500\" title=\"Copy Link\">
+                    <i class=\"fas fa-link text-xl\"></i>
+                </button>
+            </div>
+        </div>
+    `";
+}
+
+window.copyLink = function() {
+    navigator.clipboard.writeText(window.location.href).then(() => {
+        alert("Link copied to clipboard!");
+    });
+}
+
 // --- DOM Elements ---
 const views = document.querySelectorAll('.view');
 const navLinks = document.querySelectorAll('.nav-link');
 const searchBar = document.getElementById('search-bar');
+const searchIconBtn = document.getElementById('search-icon-btn');
 const mobileMenuButton = document.getElementById('mobile-menu-button');
 const mobileMenu = document.getElementById('mobile-menu');
 const backButton = document.getElementById('back-button');
 const contentDisplayContainer = document.getElementById('content-display-container');
 const miniPlayer = document.getElementById('mini-player');
 const mainAudio = document.getElementById('main-audio');
+const newsletterBtn = document.getElementById('newsletter-btn');
+const footerSocialLinks = document.querySelectorAll('.footer-social-link');
 
 // --- Routing ---
 function showView(viewId) {
@@ -209,8 +244,10 @@ function renderGrid(items, containerId) {
 function renderDetail(item) {
     let content = '';
     const isFav = Favorites.has(item.id);
+    const socialButtons = generateSocialShareButtons(item.title);
 
     if (item.type === 'song') {
+        const downloadAction = item.downloadLink === '#' ? 'onclick="simulateDownload(event)"' : '';
         content = `
             <div class="p-6 md:p-10">
                 <div class="flex flex-col md:flex-row gap-8">
@@ -230,7 +267,7 @@ function renderDetail(item) {
                             <button onclick="playSong(${item.id})" class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-xl transition-colors flex items-center justify-center gap-2">
                                 <i class="fas fa-play"></i> Play Preview
                             </button>
-                            <a href="${item.downloadLink}" class="w-full mt-3 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
+                            <a href="${item.downloadLink}" ${downloadAction} class="w-full mt-3 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white font-bold py-3 rounded-xl transition-all flex items-center justify-center gap-2">
                                 <i class="fas fa-download"></i> Download MP3
                             </a>
                         </div>
@@ -240,6 +277,7 @@ function renderDetail(item) {
                     <h2 class="text-2xl font-bold border-b border-gray-700 pb-2 mb-4">About the Artist</h2>
                     <p class="text-gray-300 leading-relaxed text-lg">${item.artistBio}</p>
                 </div>
+                ${socialButtons}
             </div>
         `;
     } else if (item.type === 'video') {
@@ -252,9 +290,11 @@ function renderDetail(item) {
                 <div class="prose prose-invert max-w-none">
                     ${item.content}
                 </div>
+                ${socialButtons}
             </div>
         `;
     } else if (item.type === 'album') {
+        const downloadAction = item.zipDownloadLink === '#' ? 'onclick="simulateDownload(event)"' : '';
         content = `
             <div class="relative h-64 md:h-96">
                 <img src="${item.imageUrl}" class="w-full h-full object-cover">
@@ -283,12 +323,13 @@ function renderDetail(item) {
                         <div class="bg-red-600 p-6 rounded-2xl shadow-xl text-center">
                             <h4 class="text-xl font-bold mb-2">Get Full Album</h4>
                             <p class="text-sm mb-6 opacity-90">Download all tracks in a single ZIP file.</p>
-                            <a href="${item.zipDownloadLink}" class="block bg-gray-900 text-white font-black py-4 rounded-xl hover:scale-105 transition-transform">
+                            <a href="${item.zipDownloadLink}" ${downloadAction} class="block bg-gray-900 text-white font-black py-4 rounded-xl hover:scale-105 transition-transform">
                                 <i class="fas fa-file-archive mr-2"></i> DOWNLOAD ZIP
                             </a>
                         </div>
                     </div>
                 </div>
+                ${socialButtons}
             </div>
         `;
     }
@@ -325,6 +366,11 @@ window.playSong = function(id) {
     playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
 };
 
+window.simulateDownload = function(e) {
+    e.preventDefault();
+    alert("This is a demo! In a real app, the download would start now.");
+};
+
 // --- Player Logic ---
 document.getElementById('audio-play-pause').addEventListener('click', () => {
     const btn = document.getElementById('audio-play-pause');
@@ -349,6 +395,7 @@ document.getElementById('close-mini-player').addEventListener('click', () => {
 
 // --- Search ---
 function performSearch(query) {
+    if(!query) return;
     showView('search-results-view');
     const results = contentData.filter(item => 
         item.title.toLowerCase().includes(query.toLowerCase()) || 
@@ -366,6 +413,32 @@ searchBar.addEventListener('keypress', (e) => {
         if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
     }
 });
+
+searchIconBtn.addEventListener('click', () => {
+    const query = searchBar.value.trim();
+    if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
+});
+
+// --- Newsletter ---
+newsletterBtn.addEventListener('click', () => {
+    const input = newsletterBtn.previousElementSibling;
+    if (input.value.trim() !== '') {
+        alert(`Thanks for subscribing with ${input.value}! You'll hear from us soon.`);
+        input.value = '';
+    } else {
+        alert('Please enter a valid email address.');
+    }
+});
+
+// --- Footer Socials ---
+footerSocialLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const platform = link.getAttribute('data-platform');
+        alert(`Redirecting to our ${platform} page...`);
+    });
+});
+
 
 // --- Initialization ---
 window.addEventListener('hashchange', handleRouting);
