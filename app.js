@@ -55,7 +55,7 @@ const contentData = [
         excerpt: 'A Catchy song.',
         imageUrl: 'https://picsum.photos/seed/visualizer/600/300', 
         videoUrl: 'https://www.youtube.com/embed/O_5Nixm0dIU',
-        content: '<p>Jucy\'s Someday is a song that touches people\'s lifes..</p>',
+        content: '<p>Astra\'s new remix of "Neon City" demands a visual experience, and this 4K visualizer delivers.</p>',
     },
     {
         id: 4,
@@ -115,25 +115,25 @@ function generateSocialShareButtons(title) {
     const url = encodeURIComponent(window.location.href);
     const text = encodeURIComponent(title);
     
-    return "`
-        <div class=\"mt-8 pt-8 border-t border-gray-700\">
-            <h3 class=\"text-xl font-bold mb-4\">Share this</h3>
-            <div class=\"flex flex-wrap gap-4\">
-                <a href=\"https://www.facebook.com/sharer/sharer.php?u=${url}\" target=\"_blank\" class=\"social-btn bg-blue-600 hover:bg-blue-700\">
-                    <i class=\"fab fa-facebook-f text-xl\"></i>
+    return `
+        <div class="mt-8 pt-8 border-t border-gray-700">
+            <h3 class="text-xl font-bold mb-4">Share this</h3>
+            <div class="flex flex-wrap gap-4">
+                <a href="https://www.facebook.com/sharer/sharer.php?u=${url}" target="_blank" class="social-btn bg-blue-600 hover:bg-blue-700">
+                    <i class="fab fa-facebook-f text-xl"></i>
                 </a>
-                <a href=\"https://twitter.com/intent/tweet?url=${url}&text=${text}\" target=\"_blank\" class=\"social-btn bg-gray-700 hover:bg-black\">
-                    <i class=\"fab fa-twitter text-xl\"></i>
+                <a href="https://twitter.com/intent/tweet?url=${url}&text=${text}" target="_blank" class="social-btn bg-gray-700 hover:bg-black">
+                    <i class="fab fa-twitter text-xl"></i>
                 </a>
-                <a href=\"https://wa.me/?text=${text}%20${url}\" target=\"_blank\" class=\"social-btn bg-green-500 hover:bg-green-600\">
-                    <i class=\"fab fa-whatsapp text-xl\"></i>
+                <a href="https://wa.me/?text=${text}%20${url}" target="_blank" class="social-btn bg-green-500 hover:bg-green-600">
+                    <i class="fab fa-whatsapp text-xl"></i>
                 </a>
-                <button onclick=\"copyLink()\" class=\"social-btn bg-gray-600 hover:bg-gray-500\" title=\"Copy Link\">
-                    <i class=\"fas fa-link text-xl\"></i>
+                <button onclick="copyLink()" class="social-btn bg-gray-600 hover:bg-gray-500" title="Copy Link">
+                    <i class="fas fa-link text-xl"></i>
                 </button>
             </div>
         </div>
-    `";
+    `;
 }
 
 window.copyLink = function() {
