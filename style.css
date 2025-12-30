@@ -1,0 +1,58 @@
+/* Custom Refinements for Unique Music Blog */
+
+body {
+    scrollbar-gutter: stable;
+}
+
+.content-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.content-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+}
+
+.nav-link {
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #EF4444;
+    transition: width 0.3s ease;
+}
+
+.nav-link.active::after, .nav-link:hover::after {
+    width: 100%;
+}
+
+.bg-gray-750 {
+    background-color: #2a3441;
+}
+
+/* Prose overrides for dark mode */
+.prose {
+    color: #d1d5db;
+}
+.prose h1, .prose h2, .prose h3 {
+    color: #f3f4f6;
+}
+.prose strong {
+    color: #ffffff;
+}
+
+@keyframes pulse-red {
+    0%, 100% { transform: scale(1); opacity: 1; }
+    50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+.btn-pulse {
+    animation: pulse-red 2s infinite;
+}
