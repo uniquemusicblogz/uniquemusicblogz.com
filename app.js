@@ -28,6 +28,19 @@ const contentData = [
         audioUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
         artistBio: 'The song Nipaseko Mutima (feat. lveno) was released on March 11, 2023 by Jona D. '
     },
+    { id: 103,
+        type: 'song',
+        title: 'Jucy Yung - Someday',
+        slug: 'jucy-yung-someday-mp3-download',
+        artist: 'Jucy Yung',
+        category: 'DOWNLOADS',
+        date: 'Mar 12, 2023',
+        excerpt: 'A soulful, melancholic track capturing the raw ache of heartbreak and the desperate wish to turn back time.',
+        imageUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTNf/tes.jpg',
+        downloadLink: 'https://od.lk/d/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
+        audioUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
+        artistBio: 'Released on September 8, 2023, "Someday" showcases Jucy young’s signature sentimental style. The track blends soulful, emotive vocals with a poignant narrative focused on the lingering pain of a breakup, the struggle of loneliness, and the deep-seated longing to return to a relationship’s happiest moments.'
+    },
     {
         id: 2,
         type: 'album', 
