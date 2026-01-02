@@ -11,7 +11,7 @@ const contentData = [
         excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now. This Cypher features various artists from western provice of zambia',
         imageUrl: 'https://picsum.photos/seed/snoopjay1/600/300', 
         downloadLink: 'https://od.lk/d/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
-       AudioUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
+       audioUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
         artistBio: 'Phyzo is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements.'
     },
     {
@@ -25,7 +25,7 @@ const contentData = [
         excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
         imageUrl: 'https://picsum.photos/seed/djken/600/300',
         downloadLink: 'https://od.lk/d/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
-       AudioUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
+       audioUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
         artistBio: 'The song Nipaseko Mutima (feat. lveno) was released on March 11, 2023 by Jona D. '
     },
     { id: 103,
@@ -38,7 +38,7 @@ const contentData = [
         excerpt: 'A soulful, melancholic track capturing the raw ache of heartbreak and the desperate wish to turn back time.',
         imageUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTNf/tes.jpg',
         downloadLink: 'https://od.lk/d/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
-       AudioUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
+       audioUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
         artistBio: 'Released on September 8, 2023, "Someday" showcases Jucy young’s signature sentimental style. The track blends soulful, emotive vocals with a poignant narrative focused on the lingering pain of a breakup, the struggle of loneliness, and the deep-seated longing to return to a relationship’s happiest moments.'
     },
     {
@@ -81,7 +81,7 @@ const contentData = [
         excerpt: 'A soulful track about chasing your dreams in a big city.',
         imageUrl: 'https://picsum.photos/seed/dreams/600/300',
         downloadLink: '#',
-       AudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+       audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         artistBio: 'Jucy Yung is an emerging artist with a unique blend of R&B and Soul.'
     },
     {
@@ -136,7 +136,7 @@ function generateSocialShareButtons(title) {
                     <i class="fab fa-facebook-f text-xl"></i>
                 </a>
                 <a href="https://twitter.com/intent/tweet?url=${url}&text=${text}" target="_blank" class="social-btn bg-gray-700 hover:bg-black">
-                    <i class="fab fa-twitter text-xl"></i>
+                    <i class="fab fa-x-twitter text-xl"></i>
                 </a>
                 <a href="https://wa.me/?text=${text}%20${url}" target="_blank" class="social-btn bg-green-500 hover:bg-green-600">
                     <i class="fab fa-whatsapp text-xl"></i>
@@ -187,7 +187,7 @@ function showView(viewId) {
 
 function handleRouting() {
     const hash = window.location.hash || '#/';
-    const path = hash.slice(2); // Remove #/ 
+    const path = hash.slice(2); 
 
     if (!path || path === '/') {
         showView('home-view');
@@ -210,10 +210,9 @@ function handleRouting() {
         showView('about-view');
     } else if (path.startsWith('search/')) {
         const query = decodeURIComponent(path.split('/')[1]);
-        searchBar.value = query;
+        if (searchBar) searchBar.value = query;
         performSearch(query);
     } else {
-        // Handle Detail Views
         const parts = path.split('/').filter(p => p);
         if (parts.length >= 2) {
             const slug = parts[parts.length - 1];
@@ -264,7 +263,7 @@ function renderDetail(item) {
         content = `
             <div class="p-6 md:p-10">
                 <div class="flex flex-col md:flex-row gap-8">
-                    <img src="${item.imageUrl}" class="w-full md:w-1/3 rounded-2xl shadow-xl object-cover">
+                    <img src="${item.imageUrl}" class="w-full md:w-1/3 rounded-2xl shadow-xl object-cover h-[300px]">
                     <div class="flex-grow">
                         <div class="flex justify-between items-start">
                             <span class="text-red-500 font-bold uppercase tracking-widest">${item.category}</span>
@@ -347,7 +346,7 @@ function renderDetail(item) {
         `;
     }
 
-    contentDisplayContainer.innerHTML = content;
+    if (contentDisplayContainer) contentDisplayContainer.innerHTML = content;
 }
 
 // --- Actions ---
@@ -357,26 +356,28 @@ window.navigateTo = function(path) {
 
 window.toggleFavorite = function(id, refreshDetail = false) {
     Favorites.toggle(id);
-    handleRouting(); // Refresh grid or detail
+    handleRouting(); 
 };
 
 window.playSong = function(id) {
     const item = contentData.find(i => i.id === id);
-    if (!item) return;
+    if (!item || !mainDownloads) return;
 
     const miniPlayerImg = document.getElementById('mini-player-img');
     const miniPlayerTitle = document.getElementById('mini-player-title');
     const miniPlayerArtist = document.getElementById('mini-player-artist');
     const playPauseBtn = document.getElementById('Downloads-play-pause');
 
-    miniPlayerImg.src = item.imageUrl;
-    miniPlayerTitle.textContent = item.title;
-    miniPlayerArtist.textContent = item.artist;
-    mainDownloads.src = item.DownloadsUrl;
+    if (miniPlayerImg) miniPlayerImg.src = item.imageUrl;
+    if (miniPlayerTitle) miniPlayerTitle.textContent = item.title;
+    if (miniPlayerArtist) miniPlayerArtist.textContent = item.artist;
     
-    miniPlayer.classList.remove('translate-y-full');
+    // Fix: Using item.audioUrl to match your data structure
+    mainDownloads.src = item.audioUrl;
+    
+    if (miniPlayer) miniPlayer.classList.remove('translate-y-full');
     mainDownloads.play();
-    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    if (playPauseBtn) playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
 };
 
 window.simulateDownload = function(e) {
@@ -385,26 +386,36 @@ window.simulateDownload = function(e) {
 };
 
 // --- Player Logic ---
-document.getElementById('Downloads-play-pause').addEventListener('click', () => {
-    const btn = document.getElementById('Downloads-play-pause');
-    if (mainDownloads.paused) {
-        mainDownloads.play();
-        btn.innerHTML = '<i class="fas fa-pause"></i>';
-    } else {
-        mainDownloads.pause();
-        btn.innerHTML = '<i class="fas fa-play"></i>';
-    }
-});
+const playPauseBtn = document.getElementById('Downloads-play-pause');
+if (playPauseBtn && mainDownloads) {
+    playPauseBtn.addEventListener('click', () => {
+        if (mainDownloads.paused) {
+            mainDownloads.play();
+            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+        } else {
+            mainDownloads.pause();
+            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
+        }
+    });
+}
 
-mainDownloads.addEventListener('timeupdate', () => {
-    const progress = (mainDownloads.currentTime / mainDownloads.duration) * 100;
-    document.getElementById('Downloads-progress').style.width = progress + '%';
-});
+if (mainDownloads) {
+    mainDownloads.addEventListener('timeupdate', () => {
+        const progressEl = document.getElementById('Downloads-progress');
+        if (progressEl) {
+            const progress = (mainDownloads.currentTime / mainDownloads.duration) * 100;
+            progressEl.style.width = progress + '%';
+        }
+    });
+}
 
-document.getElementById('close-mini-player').addEventListener('click', () => {
-    miniPlayer.classList.add('translate-y-full');
-    mainDownloads.pause();
-});
+const closeMiniPlayer = document.getElementById('close-mini-player');
+if (closeMiniPlayer) {
+    closeMiniPlayer.addEventListener('click', () => {
+        if (miniPlayer) miniPlayer.classList.add('translate-y-full');
+        if (mainDownloads) mainDownloads.pause();
+    });
+}
 
 // --- Search ---
 function performSearch(query) {
@@ -415,22 +426,29 @@ function performSearch(query) {
         item.artist?.toLowerCase().includes(query.toLowerCase())
     );
     
-    document.getElementById('search-query-display').textContent = query;
-    document.getElementById('search-count-display').textContent = `Found ${results.length} results.`;
+    const queryDisplay = document.getElementById('search-query-display');
+    const countDisplay = document.getElementById('search-count-display');
+    
+    if (queryDisplay) queryDisplay.textContent = query;
+    if (countDisplay) countDisplay.textContent = `Found ${results.length} results.`;
     renderGrid(results, 'search-content-grid');
 }
 
-searchBar.addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') {
-        const query = searchBar.value.trim();
-        if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
-    }
-});
+if (searchBar) {
+    searchBar.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            const query = searchBar.value.trim();
+            if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
+        }
+    });
+}
 
-searchIconBtn.addEventListener('click', () => {
-    const query = searchBar.value.trim();
-    if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
-});
+if (searchIconBtn) {
+    searchIconBtn.addEventListener('click', () => {
+        const query = searchBar ? searchBar.value.trim() : '';
+        if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
+    });
+}
 
 // --- Footer Socials ---
 footerSocialLinks.forEach(link => {
@@ -441,10 +459,18 @@ footerSocialLinks.forEach(link => {
     });
 });
 
-
 // --- Initialization ---
 window.addEventListener('hashchange', handleRouting);
-backButton.addEventListener('click', () => history.back());
-mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
 
+if (backButton) {
+    backButton.addEventListener('click', () => history.back());
+}
+
+if (mobileMenuButton) {
+    mobileMenuButton.addEventListener('click', () => {
+        if (mobileMenu) mobileMenu.classList.toggle('hidden');
+    });
+}
+
+// Start the app
 handleRouting();
