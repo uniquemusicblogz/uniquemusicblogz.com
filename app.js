@@ -3,43 +3,30 @@ const contentData = [
     {
         id: 101,
         type: 'song',
-        title: 'Phyzo the Producer - Final Selection Cypher 2022 (MP3 Download)',
-        slug: 'Phyzo-the-Producer-Final-Selection-Cypher-2022-mp3-download',
-        artist: 'Phyzo the Producer',
-        category: 'Downloads',
+        title: 'Snoop Jay ft. Jah Boy - Come Over (MP3 Download)',
+        slug: 'snoop-jay-ft-jah-boy-come-over-mp3-download',
+        artist: 'Snoop Jay',
+        category: 'DOWNLOADS',
         date: 'Nov 15, 2025',
-        excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now. This Cypher features various artists from western provice of zambia',
+        excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now.',
         imageUrl: 'https://picsum.photos/seed/snoopjay1/600/300', 
         downloadLink: 'https://od.lk/d/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
-       audioUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
+        audioUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
         artistBio: 'Phyzo is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements.'
     },
     {
         id: 102,
         type: 'song',
-        title: 'Jona D ft Iveno - Nipaseko Mutima',
-        slug: 'jona-d-ft-Iveno-Nipaseko-Mutima-mp3-download',
-        artist: 'Jona D',
-        category: 'Downloads',
-        date: 'Mar 12, 2023',
+        title: 'DJ Ken - City Vibes',
+        slug: 'dj-ken-city-vibes-mp3-download',
+        artist: 'DJ Ken',
+        category: 'DOWNLOADS',
+        date: 'Nov 12, 2025',
         excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
         imageUrl: 'https://picsum.photos/seed/djken/600/300',
-        downloadLink: 'https://od.lk/d/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
-       audioUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
-        artistBio: 'The song Nipaseko Mutima (feat. lveno) was released on March 11, 2023 by Jona D. '
-    },
-    { id: 103,
-        type: 'song',
-        title: 'Jucy Yung - Someday',
-        slug: 'jucy-yung-someday-mp3-download',
-        artist: 'Jucy Yung',
-        category: 'Downloads',
-        date: 'Mar 12, 2023',
-        excerpt: 'A soulful, melancholic track capturing the raw ache of heartbreak and the desperate wish to turn back time.',
-        imageUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTNf/tes.jpg',
-        downloadLink: 'https://od.lk/d/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
-       audioUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
-        artistBio: 'Released on September 8, 2023, "Someday" showcases Jucy young’s signature sentimental style. The track blends soulful, emotive vocals with a poignant narrative focused on the lingering pain of a breakup, the struggle of loneliness, and the deep-seated longing to return to a relationship’s happiest moments.'
+        downloadLink: '#',
+        audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3',
+        artistBio: 'DJ Ken is a veteran producer and mixer based in Accra. His signature sound is heavily influenced by 90s West Coast hip-hop.'
     },
     {
         id: 2,
@@ -76,12 +63,12 @@ const contentData = [
         title: 'Jucy Yung - Dreams',
         slug: 'jucy-yung-dreams',
         artist: 'Jucy Yung',
-        category: 'Downloads',
+        category: 'DOWNLOADS',
         date: 'Oct 25, 2025',
         excerpt: 'A soulful track about chasing your dreams in a big city.',
         imageUrl: 'https://picsum.photos/seed/dreams/600/300',
         downloadLink: '#',
-       audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+        audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         artistBio: 'Jucy Yung is an emerging artist with a unique blend of R&B and Soul.'
     },
     {
@@ -129,20 +116,20 @@ function generateSocialShareButtons(title) {
     const text = encodeURIComponent(title);
     
     return `
-        <div class="mt-8 pt-8 border-t border-gray-700">
-            <h3 class="text-xl font-bold mb-4">Share this</h3>
-            <div class="flex flex-wrap gap-4">
-                <a href="https://www.facebook.com/sharer/sharer.php?u=${url}" target="_blank" class="social-btn bg-blue-600 hover:bg-blue-700">
-                    <i class="fab fa-facebook-f text-xl"></i>
+        <div class=\"mt-8 pt-8 border-t border-gray-700">
+            <h3 class=\"text-xl font-bold mb-4\">Share this</h3>
+            <div class=\"flex flex-wrap gap-4\">
+                <a href=\"https://www.facebook.com/sharer/sharer.php?u=${url}\" target=\"_blank\" class=\"social-btn bg-blue-600 hover:bg-blue-700\">
+                    <i class=\"fab fa-facebook-f text-xl\"></i>
                 </a>
-                <a href="https://twitter.com/intent/tweet?url=${url}&text=${text}" target="_blank" class="social-btn bg-gray-700 hover:bg-black">
-                    <i class="fab fa-x-twitter text-xl"></i>
+                <a href=\"https://twitter.com/intent/tweet?url=${url}&text=${text}\" target=\"_blank\" class=\"social-btn bg-gray-700 hover:bg-black\">
+                    <i class=\"fab fa-twitter text-xl\"></i>
                 </a>
-                <a href="https://wa.me/?text=${text}%20${url}" target="_blank" class="social-btn bg-green-500 hover:bg-green-600">
-                    <i class="fab fa-whatsapp text-xl"></i>
+                <a href=\"https://wa.me/?text=${text}%20${url}\" target=\"_blank\" class=\"social-btn bg-green-500 hover:bg-green-600\">
+                    <i class=\"fab fa-whatsapp text-xl\"></i>
                 </a>
-                <button onclick="copyLink()" class="social-btn bg-gray-600 hover:bg-gray-500" title="Copy Link">
-                    <i class="fas fa-link text-xl"></i>
+                <button onclick=\"copyLink()\" class=\"social-btn bg-gray-600 hover:bg-gray-500\" title=\"Copy Link\">
+                    <i class=\"fas fa-link text-xl\"></i>
                 </button>
             </div>
         </div>
@@ -165,9 +152,9 @@ const mobileMenu = document.getElementById('mobile-menu');
 const backButton = document.getElementById('back-button');
 const contentDisplayContainer = document.getElementById('content-display-container');
 const miniPlayer = document.getElementById('mini-player');
-const mainDownloads = document.getElementById('main-Downloads');
-const newsletterBtn = document.getElementById('newsletter-btn');
+const mainAudio = document.getElementById('main-audio');
 const footerSocialLinks = document.querySelectorAll('.footer-social-link');
+const mobileMenuIcons = mobileMenuButton.querySelectorAll('svg');
 
 // --- Routing ---
 function showView(viewId) {
@@ -185,7 +172,14 @@ function showView(viewId) {
     window.scrollTo(0, 0);
 }
 
-function handleRouting() {
+function routeToPath() {
+    // Mobile Menu Fix
+    if (mobileMenu) mobileMenu.classList.add('hidden');
+    if (mobileMenuIcons.length >= 2) {
+        mobileMenuIcons[0].classList.remove('hidden');
+        mobileMenuIcons[1].classList.add('hidden');
+    }
+
     const hash = window.location.hash || '#/';
     const path = hash.slice(2); 
 
@@ -198,9 +192,9 @@ function handleRouting() {
     } else if (path === 'videos/') {
         showView('videos-view');
         renderGrid(contentData.filter(i => i.type === 'video'), 'videos-content-grid');
-    } else if (path === 'Downloads/') {
-        showView('Downloads-view');
-        renderGrid(contentData.filter(i => i.type === 'song'), 'Downloads-content-grid');
+    } else if (path === 'downloads/') {
+        showView('downloads-view');
+        renderGrid(contentData.filter(i => i.type === 'song'), 'downloads-content-grid');
     } else if (path === 'favorites/') {
         showView('favorites-view');
         const favs = Favorites.get();
@@ -210,7 +204,7 @@ function handleRouting() {
         showView('about-view');
     } else if (path.startsWith('search/')) {
         const query = decodeURIComponent(path.split('/')[1]);
-        if (searchBar) searchBar.value = query;
+        searchBar.value = query;
         performSearch(query);
     } else {
         const parts = path.split('/').filter(p => p);
@@ -263,7 +257,7 @@ function renderDetail(item) {
         content = `
             <div class="p-6 md:p-10">
                 <div class="flex flex-col md:flex-row gap-8">
-                    <img src="${item.imageUrl}" class="w-full md:w-1/3 rounded-2xl shadow-xl object-cover h-[300px]">
+                    <img src="${item.imageUrl}" class="w-full md:w-1/3 rounded-2xl shadow-xl object-cover">
                     <div class="flex-grow">
                         <div class="flex justify-between items-start">
                             <span class="text-red-500 font-bold uppercase tracking-widest">${item.category}</span>
@@ -346,7 +340,7 @@ function renderDetail(item) {
         `;
     }
 
-    if (contentDisplayContainer) contentDisplayContainer.innerHTML = content;
+    contentDisplayContainer.innerHTML = content;
 }
 
 // --- Actions ---
@@ -356,28 +350,26 @@ window.navigateTo = function(path) {
 
 window.toggleFavorite = function(id, refreshDetail = false) {
     Favorites.toggle(id);
-    handleRouting(); 
+    routeToPath(); 
 };
 
 window.playSong = function(id) {
     const item = contentData.find(i => i.id === id);
-    if (!item || !mainDownloads) return;
+    if (!item) return;
 
     const miniPlayerImg = document.getElementById('mini-player-img');
     const miniPlayerTitle = document.getElementById('mini-player-title');
     const miniPlayerArtist = document.getElementById('mini-player-artist');
-    const playPauseBtn = document.getElementById('Downloads-play-pause');
+    const playPauseBtn = document.getElementById('audio-play-pause');
 
-    if (miniPlayerImg) miniPlayerImg.src = item.imageUrl;
-    if (miniPlayerTitle) miniPlayerTitle.textContent = item.title;
-    if (miniPlayerArtist) miniPlayerArtist.textContent = item.artist;
+    miniPlayerImg.src = item.imageUrl;
+    miniPlayerTitle.textContent = item.title;
+    miniPlayerArtist.textContent = item.artist;
+    mainAudio.src = item.audioUrl;
     
-    // Fix: Using item.audioUrl to match your data structure
-    mainDownloads.src = item.audioUrl;
-    
-    if (miniPlayer) miniPlayer.classList.remove('translate-y-full');
-    mainDownloads.play();
-    if (playPauseBtn) playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
+    miniPlayer.classList.remove('translate-y-full');
+    mainAudio.play();
+    playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
 };
 
 window.simulateDownload = function(e) {
@@ -386,36 +378,26 @@ window.simulateDownload = function(e) {
 };
 
 // --- Player Logic ---
-const playPauseBtn = document.getElementById('Downloads-play-pause');
-if (playPauseBtn && mainDownloads) {
-    playPauseBtn.addEventListener('click', () => {
-        if (mainDownloads.paused) {
-            mainDownloads.play();
-            playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
-        } else {
-            mainDownloads.pause();
-            playPauseBtn.innerHTML = '<i class="fas fa-play"></i>';
-        }
-    });
-}
+document.getElementById('audio-play-pause').addEventListener('click', () => {
+    const btn = document.getElementById('audio-play-pause');
+    if (mainAudio.paused) {
+        mainAudio.play();
+        btn.innerHTML = '<i class="fas fa-pause"></i>';
+    } else {
+        mainAudio.pause();
+        btn.innerHTML = '<i class="fas fa-play"></i>';
+    }
+});
 
-if (mainDownloads) {
-    mainDownloads.addEventListener('timeupdate', () => {
-        const progressEl = document.getElementById('Downloads-progress');
-        if (progressEl) {
-            const progress = (mainDownloads.currentTime / mainDownloads.duration) * 100;
-            progressEl.style.width = progress + '%';
-        }
-    });
-}
+mainAudio.addEventListener('timeupdate', () => {
+    const progress = (mainAudio.currentTime / mainAudio.duration) * 100;
+    document.getElementById('audio-progress').style.width = progress + '%';
+});
 
-const closeMiniPlayer = document.getElementById('close-mini-player');
-if (closeMiniPlayer) {
-    closeMiniPlayer.addEventListener('click', () => {
-        if (miniPlayer) miniPlayer.classList.add('translate-y-full');
-        if (mainDownloads) mainDownloads.pause();
-    });
-}
+document.getElementById('close-mini-player').addEventListener('click', () => {
+    miniPlayer.classList.add('translate-y-full');
+    mainAudio.pause();
+});
 
 // --- Search ---
 function performSearch(query) {
@@ -426,51 +408,34 @@ function performSearch(query) {
         item.artist?.toLowerCase().includes(query.toLowerCase())
     );
     
-    const queryDisplay = document.getElementById('search-query-display');
-    const countDisplay = document.getElementById('search-count-display');
-    
-    if (queryDisplay) queryDisplay.textContent = query;
-    if (countDisplay) countDisplay.textContent = `Found ${results.length} results.`;
+    document.getElementById('search-query-display').textContent = query;
+    document.getElementById('search-count-display').textContent = `Found ${results.length} results.`;
     renderGrid(results, 'search-content-grid');
 }
 
-if (searchBar) {
-    searchBar.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') {
-            const query = searchBar.value.trim();
-            if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
-        }
-    });
-}
-
-if (searchIconBtn) {
-    searchIconBtn.addEventListener('click', () => {
-        const query = searchBar ? searchBar.value.trim() : '';
+searchBar.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+        const query = searchBar.value.trim();
         if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
-    });
-}
+    }
+});
 
-// --- Footer Socials ---
-footerSocialLinks.forEach(link => {
-    link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const platform = link.getAttribute('data-platform');
-        alert(`Redirecting to our ${platform} page...`);
-    });
+searchIconBtn.addEventListener('click', () => {
+    const query = searchBar.value.trim();
+    if (query) window.location.hash = `#/search/${encodeURIComponent(query)}`;
 });
 
 // --- Initialization ---
-window.addEventListener('hashchange', handleRouting);
+window.addEventListener('hashchange', routeToPath);
+backButton.addEventListener('click', () => history.back());
 
-if (backButton) {
-    backButton.addEventListener('click', () => history.back());
-}
+mobileMenuButton.addEventListener('click', () => {
+    const isHidden = mobileMenu.classList.toggle('hidden');
+    mobileMenuIcons[0].classList.toggle('hidden', !isHidden);
+    mobileMenuIcons[1].classList.toggle('hidden', isHidden);
+});
 
-if (mobileMenuButton) {
-    mobileMenuButton.addEventListener('click', () => {
-        if (mobileMenu) mobileMenu.classList.toggle('hidden');
-    });
-}
+// Initial setup
+renderGrid(contentData, 'home-content-grid');
+routeToPath();
 
-// Start the app
-handleRouting();
