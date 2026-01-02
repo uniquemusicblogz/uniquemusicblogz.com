@@ -11,7 +11,7 @@ const contentData = [
         excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now. This Cypher features various artists from western provice of zambia',
         imageUrl: 'https://picsum.photos/seed/snoopjay1/600/300', 
         downloadLink: 'https://od.lk/d/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
-        DownloadsUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
+       AudioUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
         artistBio: 'Phyzo is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements.'
     },
     {
@@ -25,7 +25,7 @@ const contentData = [
         excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
         imageUrl: 'https://picsum.photos/seed/djken/600/300',
         downloadLink: 'https://od.lk/d/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
-        DownloadsUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
+       AudioUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
         artistBio: 'The song Nipaseko Mutima (feat. lveno) was released on March 11, 2023 by Jona D. '
     },
     { id: 103,
@@ -38,7 +38,7 @@ const contentData = [
         excerpt: 'A soulful, melancholic track capturing the raw ache of heartbreak and the desperate wish to turn back time.',
         imageUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTNf/tes.jpg',
         downloadLink: 'https://od.lk/d/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
-        DownloadsUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
+       AudioUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
         artistBio: 'Released on September 8, 2023, "Someday" showcases Jucy young’s signature sentimental style. The track blends soulful, emotive vocals with a poignant narrative focused on the lingering pain of a breakup, the struggle of loneliness, and the deep-seated longing to return to a relationship’s happiest moments.'
     },
     {
@@ -81,7 +81,7 @@ const contentData = [
         excerpt: 'A soulful track about chasing your dreams in a big city.',
         imageUrl: 'https://picsum.photos/seed/dreams/600/300',
         downloadLink: '#',
-        DownloadsUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+       AudioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         artistBio: 'Jucy Yung is an emerging artist with a unique blend of R&B and Soul.'
     },
     {
