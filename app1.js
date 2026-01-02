@@ -292,58 +292,39 @@ const Favorites = {
     }
 };
 
-// --- Comment System ---
-const CommentManager = {
-    // Set this to TRUE if you have a PHP server running and want to use api/comments.php
-    USE_PHP: true, 
+// --- Disqus Helper ---
+function loadDisqus(pageIdentifier, pageUrl, pageTitle) {
+    // Reset the div
+    const container = document.getElementById('disqus_thread');
+    if (!container) return;
+    container.innerHTML = ''; 
 
-    async getComments(postId) {
-        if (this.USE_PHP) {
-            try {
-                const res = await fetch(`api/comments.php?post_id=${postId}`);
-                return await res.json();
-            } catch (e) {
-                console.error("Failed to fetch comments", e);
-                return [];
+    // If Disqus is already loaded, just reset it
+    if (window.DISQUS) {
+        window.DISQUS.reset({
+            reload: true,
+            config: function () {
+                this.page.identifier = pageIdentifier;
+                this.page.url = pageUrl;
+                this.page.title = pageTitle;
             }
-        } else {
-            // LocalStorage Simulation
-            const all = JSON.parse(localStorage.getItem('site_comments') || '{}');
-            return all[postId] || [];
-        }
-    },
-
-    async addComment(postId, name, text) {
-        const newComment = {
-            id: Date.now().toString(),
-            name: name || 'Anonymous',
-            text: text,
-            date: new Date().toLocaleString()
+        });
+    } else {
+        // Initial Load
+        window.disqus_config = function () {
+            this.page.url = pageUrl; 
+            this.page.identifier = pageIdentifier; 
+            this.page.title = pageTitle;
         };
-
-        if (this.USE_PHP) {
-            try {
-                const res = await fetch('api/comments.php', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ post_id: postId, name, text })
-                });
-                const data = await res.json();
-                if (data.success) return data.comment;
-            } catch (e) {
-                console.error("Failed to post comment", e);
-                alert("Error posting comment to server.");
-            }
-        } else {
-            // LocalStorage Simulation
-            const all = JSON.parse(localStorage.getItem('site_comments') || '{}');
-            if (!all[postId]) all[postId] = [];
-            all[postId].unshift(newComment); // Add to top
-            localStorage.setItem('site_comments', JSON.stringify(all));
-            return newComment;
-        }
+        (function() { 
+            var d = document, s = d.createElement('script');
+            // Updated with your specific Disqus shortname
+            s.src = 'https://https-uniquemusicblogz-github-io.disqus.com/embed.js';
+            s.setAttribute('data-timestamp', +new Date());
+            (d.head || d.body).appendChild(s);
+        })();
     }
-};
+}
 
 // --- Helper Functions ---
 function generateSocialShareButtons(title) {
@@ -519,32 +500,22 @@ function renderDetail(item) {
                     <p class="text-gray-300 leading-relaxed text-lg">${item.artistBio}</p>
                 </div>
 
-                <!-- Comments Section -->
+                <!-- Disqus Comments Section -->
                 <div class="mt-12 pt-10 border-t border-gray-700">
                     <h3 class="text-2xl font-bold mb-6">Comments</h3>
-                    
-                    <div id="comments-container-${item.id}" class="space-y-4 mb-8">
-                        <div class="text-gray-500 text-center py-4">Loading comments...</div>
-                    </div>
-
-                    <form onsubmit="handleCommentSubmit(event, ${item.id})" class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-lg">
-                        <h4 class="text-lg font-bold mb-4">Leave a Reply</h4>
-                        <div class="grid grid-cols-1 gap-4">
-                            <input type="text" name="name" placeholder="Your Name" required class="w-full bg-gray-700 text-white rounded-lg p-3 border border-gray-600 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition">
-                            <textarea name="text" placeholder="Your Comment..." rows="3" required class="w-full bg-gray-700 text-white rounded-lg p-3 border border-gray-600 focus:border-red-500 focus:ring-1 focus:ring-red-500 outline-none transition"></textarea>
-                        </div>
-                        <button type="submit" class="mt-4 bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-6 rounded-lg transition-colors shadow-md">
-                            Post Comment
-                        </button>
-                    </form>
+                    <div id="disqus_thread" class="bg-gray-800 p-6 rounded-xl border border-gray-700 shadow-lg min-h-[200px]"></div>
+                    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
                 </div>
 
                 ${socialButtons}
             </div>
         `;
         
-        // Load comments after rendering
-        setTimeout(() => loadComments(item.id), 100);
+        // Initialize/Reload Disqus
+        // We use the item.slug as the unique identifier
+        setTimeout(() => {
+            loadDisqus(item.slug, `https://uniquemusicblogz.github.io/#/downloads/${item.slug}`, item.title);
+        }, 100);
 
     } else if (item.type === 'video') {
         content = `
@@ -602,53 +573,6 @@ function renderDetail(item) {
 
     contentDisplayContainer.innerHTML = content;
 }
-
-// --- Comment Actions ---
-async function loadComments(postId) {
-    const container = document.getElementById(`comments-container-${postId}`);
-    if (!container) return;
-
-    const comments = await CommentManager.getComments(postId);
-    
-    if (comments.length === 0) {
-        container.innerHTML = '<p class="text-gray-500 italic">No comments yet. Be the first!</p>';
-        return;
-    }
-
-    container.innerHTML = comments.map(c => `
-        <div class="bg-gray-900 p-4 rounded-lg border border-gray-800">
-            <div class="flex justify-between items-center mb-2">
-                <span class="font-bold text-red-500">${c.name}</span>
-                <span class="text-xs text-gray-500">${c.date}</span>
-            </div>
-            <p class="text-gray-300">${c.text}</p>
-        </div>
-    `).join('');
-}
-
-window.handleCommentSubmit = async function(e, postId) {
-    e.preventDefault();
-    const form = e.target;
-    const btn = form.querySelector('button');
-    const originalText = btn.innerText;
-    
-    const name = form.name.value.trim();
-    const text = form.text.value.trim();
-
-    if (!name || !text) return;
-
-    btn.disabled = true;
-    btn.innerText = "Posting...";
-
-    await CommentManager.addComment(postId, name, text);
-    
-    // Refresh list and clear form
-    await loadComments(postId);
-    form.reset();
-    
-    btn.disabled = false;
-    btn.innerText = originalText;
-};
 
 // --- Actions ---
 window.navigateTo = function(path) {
