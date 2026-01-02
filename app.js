@@ -6,7 +6,7 @@ const contentData = [
         title: 'Phyzo the Producer - Final Selection Cypher 2022 (MP3 Download)',
         slug: 'Phyzo-the-Producer-Final-Selection-Cypher-2022-mp3-download',
         artist: 'Phyzo the Producer',
-        category: 'DOWNLOADS',
+        category: 'Audio',
         date: 'Nov 15, 2025',
         excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now. This Cypher features various artists from western provice of zambia',
         imageUrl: 'https://picsum.photos/seed/snoopjay1/600/300', 
@@ -20,7 +20,7 @@ const contentData = [
         title: 'Jona D ft Iveno - Nipaseko Mutima',
         slug: 'jona-d-ft-Iveno-Nipaseko-Mutima-mp3-download',
         artist: 'Jona D',
-        category: 'DOWNLOADS',
+        category: 'Audio',
         date: 'Mar 12, 2023',
         excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
         imageUrl: 'https://picsum.photos/seed/djken/600/300',
@@ -33,7 +33,7 @@ const contentData = [
         title: 'Jucy Yung - Someday',
         slug: 'jucy-yung-someday-mp3-download',
         artist: 'Jucy Yung',
-        category: 'DOWNLOADS',
+        category: 'Audio',
         date: 'Mar 12, 2023',
         excerpt: 'A soulful, melancholic track capturing the raw ache of heartbreak and the desperate wish to turn back time.',
         imageUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTNf/tes.jpg',
@@ -76,7 +76,7 @@ const contentData = [
         title: 'Jucy Yung - Dreams',
         slug: 'jucy-yung-dreams',
         artist: 'Jucy Yung',
-        category: 'DOWNLOADS',
+        category: 'Audio',
         date: 'Oct 25, 2025',
         excerpt: 'A soulful track about chasing your dreams in a big city.',
         imageUrl: 'https://picsum.photos/seed/dreams/600/300',
@@ -198,9 +198,9 @@ function handleRouting() {
     } else if (path === 'videos/') {
         showView('videos-view');
         renderGrid(contentData.filter(i => i.type === 'video'), 'videos-content-grid');
-    } else if (path === 'downloads/') {
-        showView('downloads-view');
-        renderGrid(contentData.filter(i => i.type === 'song'), 'downloads-content-grid');
+    } else if (path === 'Audio/') {
+        showView('Audio-view');
+        renderGrid(contentData.filter(i => i.type === 'song'), 'Audio-content-grid');
     } else if (path === 'favorites/') {
         showView('favorites-view');
         const favs = Favorites.get();
