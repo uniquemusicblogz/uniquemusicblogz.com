@@ -6,12 +6,12 @@ const contentData = [
         title: 'Phyzo the Producer - Final Selection Cypher 2022 (MP3 Download)',
         slug: 'Phyzo-the-Producer-Final-Selection-Cypher-2022-mp3-download',
         artist: 'Phyzo the Producer',
-        category: 'Audio',
+        category: 'Downloads',
         date: 'Nov 15, 2025',
         excerpt: 'The highly anticipated collaboration is finally here! Get the free MP3 download now. This Cypher features various artists from western provice of zambia',
         imageUrl: 'https://picsum.photos/seed/snoopjay1/600/300', 
         downloadLink: 'https://od.lk/d/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
-        audioUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
+        DownloadsUrl: 'https://od.lk/s/NTBfMzQ1NzA0MDZf/Phyzo%20the%20Producer%20-%20Final%20Selection%20Cypher%20Mp3.mp3', 
         artistBio: 'Phyzo is a rising star in the Afrobeats scene, known for his smooth vocals and infectious rhythms. Hailing from Lagos, he blends traditional West African sounds with modern trap elements.'
     },
     {
@@ -20,12 +20,12 @@ const contentData = [
         title: 'Jona D ft Iveno - Nipaseko Mutima',
         slug: 'jona-d-ft-Iveno-Nipaseko-Mutima-mp3-download',
         artist: 'Jona D',
-        category: 'Audio',
+        category: 'Downloads',
         date: 'Mar 12, 2023',
         excerpt: 'A fresh new instrumental track perfect for late-night cruising.',
         imageUrl: 'https://picsum.photos/seed/djken/600/300',
         downloadLink: 'https://od.lk/d/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
-        audioUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
+        DownloadsUrl: 'https://od.lk/s/NTBfMzQ2OTU1MDVf/Jona%20D%20ft%20Iveno%20-%20Nipase%20mutima.mp3',
         artistBio: 'The song Nipaseko Mutima (feat. lveno) was released on March 11, 2023 by Jona D. '
     },
     { id: 103,
@@ -33,12 +33,12 @@ const contentData = [
         title: 'Jucy Yung - Someday',
         slug: 'jucy-yung-someday-mp3-download',
         artist: 'Jucy Yung',
-        category: 'Audio',
+        category: 'Downloads',
         date: 'Mar 12, 2023',
         excerpt: 'A soulful, melancholic track capturing the raw ache of heartbreak and the desperate wish to turn back time.',
         imageUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTNf/tes.jpg',
         downloadLink: 'https://od.lk/d/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
-        audioUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
+        DownloadsUrl: 'https://od.lk/s/NTBfMzQ2OTY4OTJf/Jucy%20Yung%20-%20Someday.mp3',
         artistBio: 'Released on September 8, 2023, "Someday" showcases Jucy young’s signature sentimental style. The track blends soulful, emotive vocals with a poignant narrative focused on the lingering pain of a breakup, the struggle of loneliness, and the deep-seated longing to return to a relationship’s happiest moments.'
     },
     {
@@ -76,12 +76,12 @@ const contentData = [
         title: 'Jucy Yung - Dreams',
         slug: 'jucy-yung-dreams',
         artist: 'Jucy Yung',
-        category: 'Audio',
+        category: 'Downloads',
         date: 'Oct 25, 2025',
         excerpt: 'A soulful track about chasing your dreams in a big city.',
         imageUrl: 'https://picsum.photos/seed/dreams/600/300',
         downloadLink: '#',
-        audioUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
+        DownloadsUrl: 'https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3',
         artistBio: 'Jucy Yung is an emerging artist with a unique blend of R&B and Soul.'
     },
     {
@@ -165,7 +165,7 @@ const mobileMenu = document.getElementById('mobile-menu');
 const backButton = document.getElementById('back-button');
 const contentDisplayContainer = document.getElementById('content-display-container');
 const miniPlayer = document.getElementById('mini-player');
-const mainAudio = document.getElementById('main-audio');
+const mainDownloads = document.getElementById('main-Downloads');
 const newsletterBtn = document.getElementById('newsletter-btn');
 const footerSocialLinks = document.querySelectorAll('.footer-social-link');
 
@@ -198,9 +198,9 @@ function handleRouting() {
     } else if (path === 'videos/') {
         showView('videos-view');
         renderGrid(contentData.filter(i => i.type === 'video'), 'videos-content-grid');
-    } else if (path === 'Audio/') {
-        showView('Audio-view');
-        renderGrid(contentData.filter(i => i.type === 'song'), 'Audio-content-grid');
+    } else if (path === 'Downloads/') {
+        showView('Downloads-view');
+        renderGrid(contentData.filter(i => i.type === 'song'), 'Downloads-content-grid');
     } else if (path === 'favorites/') {
         showView('favorites-view');
         const favs = Favorites.get();
@@ -367,15 +367,15 @@ window.playSong = function(id) {
     const miniPlayerImg = document.getElementById('mini-player-img');
     const miniPlayerTitle = document.getElementById('mini-player-title');
     const miniPlayerArtist = document.getElementById('mini-player-artist');
-    const playPauseBtn = document.getElementById('audio-play-pause');
+    const playPauseBtn = document.getElementById('Downloads-play-pause');
 
     miniPlayerImg.src = item.imageUrl;
     miniPlayerTitle.textContent = item.title;
     miniPlayerArtist.textContent = item.artist;
-    mainAudio.src = item.audioUrl;
+    mainDownloads.src = item.DownloadsUrl;
     
     miniPlayer.classList.remove('translate-y-full');
-    mainAudio.play();
+    mainDownloads.play();
     playPauseBtn.innerHTML = '<i class="fas fa-pause"></i>';
 };
 
@@ -385,25 +385,25 @@ window.simulateDownload = function(e) {
 };
 
 // --- Player Logic ---
-document.getElementById('audio-play-pause').addEventListener('click', () => {
-    const btn = document.getElementById('audio-play-pause');
-    if (mainAudio.paused) {
-        mainAudio.play();
+document.getElementById('Downloads-play-pause').addEventListener('click', () => {
+    const btn = document.getElementById('Downloads-play-pause');
+    if (mainDownloads.paused) {
+        mainDownloads.play();
         btn.innerHTML = '<i class="fas fa-pause"></i>';
     } else {
-        mainAudio.pause();
+        mainDownloads.pause();
         btn.innerHTML = '<i class="fas fa-play"></i>';
     }
 });
 
-mainAudio.addEventListener('timeupdate', () => {
-    const progress = (mainAudio.currentTime / mainAudio.duration) * 100;
-    document.getElementById('audio-progress').style.width = progress + '%';
+mainDownloads.addEventListener('timeupdate', () => {
+    const progress = (mainDownloads.currentTime / mainDownloads.duration) * 100;
+    document.getElementById('Downloads-progress').style.width = progress + '%';
 });
 
 document.getElementById('close-mini-player').addEventListener('click', () => {
     miniPlayer.classList.add('translate-y-full');
-    mainAudio.pause();
+    mainDownloads.pause();
 });
 
 // --- Search ---
